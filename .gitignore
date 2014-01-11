@@ -12,10 +12,15 @@
 xcuserdata
 profile
 *.moved-aside
-DerivedData
+DerivedData/
 .idea/
 *.hmap
 *.xccheckout
+*.swp
+.Trashes
+*.lock
+*~.nib
+project.xcworkspace/
 
 #CocoaPods
 Pods
