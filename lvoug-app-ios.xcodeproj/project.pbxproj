@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88C9285318A7C0390089D375 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9284E18A7C0390089D375 /* MFSideMenuContainerViewController.m */; };
+		88C9285418A7C0390089D375 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285018A7C0390089D375 /* MFSideMenuShadow.m */; };
+		88C9285518A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285218A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m */; };
+		88C9285818A7C1A10089D375 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285718A7C1A10089D375 /* DemoViewController.m */; };
+		88C9285B18A7C5460089D375 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285A18A7C5460089D375 /* SideMenuViewController.m */; };
 		B517B90A1881F5A2000A53BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B9091881F5A2000A53BD /* Foundation.framework */; };
 		B517B90C1881F5A2000A53BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B90B1881F5A2000A53BD /* CoreGraphics.framework */; };
 		B517B90E1881F5A2000A53BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B90D1881F5A2000A53BD /* UIKit.framework */; };
@@ -33,6 +38,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		88C9284C18A7C0390089D375 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
+		88C9284D18A7C0390089D375 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
+		88C9284E18A7C0390089D375 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
+		88C9284F18A7C0390089D375 /* MFSideMenuShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuShadow.h; sourceTree = "<group>"; };
+		88C9285018A7C0390089D375 /* MFSideMenuShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuShadow.m; sourceTree = "<group>"; };
+		88C9285118A7C0390089D375 /* UIViewController+MFSideMenuAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MFSideMenuAdditions.h"; sourceTree = "<group>"; };
+		88C9285218A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
+		88C9285618A7C1A10089D375 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoViewController.h; path = "../../../../Downloads/MFSideMenu-master/Demos/MFSideMenuDemoStoryboard/MFSideMenuDemoStoryboard/DemoViewController.h"; sourceTree = "<group>"; };
+		88C9285718A7C1A10089D375 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoViewController.m; path = "../../../../Downloads/MFSideMenu-master/Demos/MFSideMenuDemoStoryboard/MFSideMenuDemoStoryboard/DemoViewController.m"; sourceTree = "<group>"; };
+		88C9285918A7C5460089D375 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMenuViewController.h; path = "../../../../Downloads/MFSideMenu-master/Demos/MFSideMenuDemoStoryboard/MFSideMenuDemoStoryboard/SideMenuViewController.h"; sourceTree = "<group>"; };
+		88C9285A18A7C5460089D375 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SideMenuViewController.m; path = "../../../../Downloads/MFSideMenu-master/Demos/MFSideMenuDemoStoryboard/MFSideMenuDemoStoryboard/SideMenuViewController.m"; sourceTree = "<group>"; };
 		B517B9061881F5A2000A53BD /* lvoug-app-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lvoug-app-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B517B9091881F5A2000A53BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B517B90B1881F5A2000A53BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -76,6 +92,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		88C9284B18A7C0390089D375 /* MFSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				88C9284C18A7C0390089D375 /* MFSideMenu.h */,
+				88C9284D18A7C0390089D375 /* MFSideMenuContainerViewController.h */,
+				88C9284E18A7C0390089D375 /* MFSideMenuContainerViewController.m */,
+				88C9284F18A7C0390089D375 /* MFSideMenuShadow.h */,
+				88C9285018A7C0390089D375 /* MFSideMenuShadow.m */,
+				88C9285118A7C0390089D375 /* UIViewController+MFSideMenuAdditions.h */,
+				88C9285218A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m */,
+			);
+			name = MFSideMenu;
+			path = "../../../Downloads/MFSideMenu-master/MFSideMenu";
+			sourceTree = "<group>";
+		};
 		B517B8FD1881F5A2000A53BD = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +114,7 @@
 				B517B9281881F5A2000A53BD /* lvoug-app-iosTests */,
 				B517B9081881F5A2000A53BD /* Frameworks */,
 				B517B9071881F5A2000A53BD /* Products */,
+				88C9284B18A7C0390089D375 /* MFSideMenu */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,11 +141,15 @@
 		B517B90F1881F5A2000A53BD /* lvoug-app-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B517B9381881F62F000A53BD /* Home.storyboard */,
+				88C9285918A7C5460089D375 /* SideMenuViewController.h */,
+				88C9285A18A7C5460089D375 /* SideMenuViewController.m */,
+				88C9285618A7C1A10089D375 /* DemoViewController.h */,
+				88C9285718A7C1A10089D375 /* DemoViewController.m */,
 				B517B9181881F5A2000A53BD /* OUGAppDelegate.h */,
 				B517B9191881F5A2000A53BD /* OUGAppDelegate.m */,
 				B517B91B1881F5A2000A53BD /* Images.xcassets */,
 				B517B9101881F5A2000A53BD /* Supporting Files */,
-				B517B9381881F62F000A53BD /* Home.storyboard */,
 			);
 			path = "lvoug-app-ios";
 			sourceTree = "<group>";
@@ -244,7 +280,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C9285418A7C0390089D375 /* MFSideMenuShadow.m in Sources */,
 				B517B91A1881F5A2000A53BD /* OUGAppDelegate.m in Sources */,
+				88C9285518A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m in Sources */,
+				88C9285818A7C1A10089D375 /* DemoViewController.m in Sources */,
+				88C9285318A7C0390089D375 /* MFSideMenuContainerViewController.m in Sources */,
+				88C9285B18A7C5460089D375 /* SideMenuViewController.m in Sources */,
 				B517B9161881F5A2000A53BD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +487,7 @@
 				B517B9341881F5A2000A53BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B517B9351881F5A2000A53BD /* Build configuration list for PBXNativeTarget "lvoug-app-iosTests" */ = {
 			isa = XCConfigurationList;
@@ -454,6 +496,7 @@
 				B517B9371881F5A2000A53BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
