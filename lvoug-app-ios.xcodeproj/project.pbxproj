@@ -12,6 +12,7 @@
 		88C9285518A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285218A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m */; };
 		88C9285818A7C1A10089D375 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285718A7C1A10089D375 /* DemoViewController.m */; };
 		88C9285B18A7C5460089D375 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285A18A7C5460089D375 /* SideMenuViewController.m */; };
+		88C9285E18A7CABE0089D375 /* ico_about.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C9285D18A7CABE0089D375 /* ico_about.png */; };
 		B517B90A1881F5A2000A53BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B9091881F5A2000A53BD /* Foundation.framework */; };
 		B517B90C1881F5A2000A53BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B90B1881F5A2000A53BD /* CoreGraphics.framework */; };
 		B517B90E1881F5A2000A53BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B90D1881F5A2000A53BD /* UIKit.framework */; };
@@ -49,6 +50,7 @@
 		88C9285718A7C1A10089D375 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoViewController.m; path = "../../../../Downloads/MFSideMenu-master/Demos/MFSideMenuDemoStoryboard/MFSideMenuDemoStoryboard/DemoViewController.m"; sourceTree = "<group>"; };
 		88C9285918A7C5460089D375 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMenuViewController.h; path = "../../../../Downloads/MFSideMenu-master/Demos/MFSideMenuDemoStoryboard/MFSideMenuDemoStoryboard/SideMenuViewController.h"; sourceTree = "<group>"; };
 		88C9285A18A7C5460089D375 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SideMenuViewController.m; path = "../../../../Downloads/MFSideMenu-master/Demos/MFSideMenuDemoStoryboard/MFSideMenuDemoStoryboard/SideMenuViewController.m"; sourceTree = "<group>"; };
+		88C9285D18A7CABE0089D375 /* ico_about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ico_about.png; path = ../../../../Desktop/ico_about.png; sourceTree = "<group>"; };
 		B517B9061881F5A2000A53BD /* lvoug-app-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lvoug-app-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B517B9091881F5A2000A53BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B517B90B1881F5A2000A53BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -107,6 +109,14 @@
 			path = "../../../Downloads/MFSideMenu-master/MFSideMenu";
 			sourceTree = "<group>";
 		};
+		88C9285C18A7CAB70089D375 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				88C9285D18A7CABE0089D375 /* ico_about.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		B517B8FD1881F5A2000A53BD = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		B517B90F1881F5A2000A53BD /* lvoug-app-ios */ = {
 			isa = PBXGroup;
 			children = (
+				88C9285C18A7CAB70089D375 /* Images */,
 				B517B9381881F62F000A53BD /* Home.storyboard */,
 				88C9285918A7C5460089D375 /* SideMenuViewController.h */,
 				88C9285A18A7C5460089D375 /* SideMenuViewController.m */,
@@ -260,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B517B9391881F62F000A53BD /* Home.storyboard in Resources */,
+				88C9285E18A7CABE0089D375 /* ico_about.png in Resources */,
 				B517B9141881F5A2000A53BD /* InfoPlist.strings in Resources */,
 				B517B91C1881F5A2000A53BD /* Images.xcassets in Resources */,
 			);
