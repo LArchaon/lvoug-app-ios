@@ -10,4 +10,7 @@
 
 @interface SideMenuViewController : UITableViewController
 
+@property (strong, nonatomic) NSMutableArray *titles;
+@property (strong, nonatomic) NSMutableArray *icons;
+
 @end

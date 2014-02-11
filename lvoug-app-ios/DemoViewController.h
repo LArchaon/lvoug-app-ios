@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DemoViewController : UIViewController
+@interface DemoViewController : UITableViewController
+
+//this will hold the data
+@property (strong, nonatomic) NSMutableArray *names;
 
 - (IBAction)showLeftMenuPressed:(id)sender;
 

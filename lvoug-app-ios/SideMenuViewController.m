@@ -13,6 +13,42 @@
 #pragma mark -
 #pragma mark - UITableViewDataSource
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self.titles addObject:@"Home"];
+    [self.titles addObject:@"News"];
+    [self.titles addObject:@"Past events"];
+    [self.titles addObject:@"About"];
+    [self.titles addObject:@"Twitter"];
+    
+    [self.icons addObject:@"ico_home.png"];
+    [self.icons addObject:@"ico_news.png"];
+    [self.icons addObject:@"ico_events.png"];
+    [self.icons addObject:@"ico_about.png"];
+    [self.icons addObject:@"ico_twitter.png"];
+}
+
+
+//wtf
+-(NSMutableArray*)titles
+{
+    if (_titles == nil) {
+        _titles = [[NSMutableArray alloc]init];
+    }
+    return _titles;
+}
+
+-(NSMutableArray*)icons
+{
+    if (_icons == nil) {
+        _icons = [[NSMutableArray alloc]init];
+    }
+    return _icons;
+}
+
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return nil;
 }
@@ -25,17 +61,6 @@
     return 5;
 }
 
-- (UIImage*)imageWithImage:(UIImage*)image
-              scaledToSize:(CGSize)newSize;
-{
-    UIGraphicsBeginImageContext( newSize );
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     
@@ -45,29 +70,12 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    NSString *title;
-    NSString *image;
-    
-    if (indexPath.row == 0) {
-        title = @"Home";
-        image = @"ico_home.png";
-    } else if (indexPath.row == 1) {
-        title = @"News";
-        image = @"ico_news.png";
-    } else if (indexPath.row == 2) {
-        title = @"Past Events";
-        image = @"ico_events.png";
-    } else if (indexPath.row == 3) {
-        title = @"About";
-        image = @"ico_about.png";
-    } else if (indexPath.row == 4) {
-        title = @"Twitter";
-        image = @"ico_twitter.png";
-    }
+    NSString *title = self.titles [indexPath.row];
+    NSString *image = self.icons [indexPath.row];
+
     
     cell.textLabel.text = [NSString stringWithFormat:title, indexPath.row];
     UIImage *uiImage = [UIImage imageNamed:image];
-    //cell.imageView.image = [self imageWithImage:uiImage scaledToSize:CGSizeMake(30.0, 30.0)];
     cell.imageView.image = uiImage;
     if (indexPath.row == 0) {
         cell.imageView.highlightedImage = uiImage;
@@ -85,7 +93,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 4) {
+    if (indexPath.row == 4) { // twitter
         BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://user?id=lvoug"]];
         
         if (canOpen) {
@@ -94,20 +102,32 @@
             NSURL *url = [NSURL URLWithString:@"https://www.twitter.com/lvoug"];
             [[UIApplication sharedApplication] openURL:url];
         }
-    } else if (indexPath.row == 3) {
+    } else if (indexPath.row == 3) { // about
         
         UIViewController *aboutViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"aboutViewController"];
         
-        aboutViewController.title = @"About";
+        aboutViewController.title = self.titles [indexPath.row];
         
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
         NSArray *controllers = [NSArray arrayWithObject:aboutViewController];
         navigationController.viewControllers = controllers;
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+        
+    } else if (indexPath.row == 1) { // news
+        
+        UITableViewController *newsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"demoViewController"];
+        
+        newsViewController.title = self.titles [indexPath.row];
+        
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+        NSArray *controllers = [NSArray arrayWithObject:newsViewController];
+        navigationController.viewControllers = controllers;
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
 
     } else {
-        DemoViewController *demoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DemoViewController"];
-        demoViewController.title = [NSString stringWithFormat:@"Demo #%d-%d", indexPath.section, indexPath.row];
+        UITableViewController *demoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"demoViewController"];
+        
+        demoViewController.title = self.titles [indexPath.row];
         
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
         NSArray *controllers = [NSArray arrayWithObject:demoViewController];
