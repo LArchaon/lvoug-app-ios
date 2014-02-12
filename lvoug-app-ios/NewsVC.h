@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DemoViewController : UITableViewController
+@interface NewsVC : UITableViewController
 
 //this will hold the data
 @property (strong, nonatomic) NSMutableArray *names;

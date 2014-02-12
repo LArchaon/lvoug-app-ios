@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Michael Frederick. All rights reserved.
 //
 
-#import "DemoViewController.h"
+#import "NewsVC.h"
 #import "MFSideMenu.h"
 
-@implementation DemoViewController
+@implementation NewsVC
 
 #pragma mark -
 #pragma mark - UITableViewDataSource
@@ -18,9 +18,9 @@
 {
     [super viewDidLoad];
         
-    [self.names addObject:@"Daniel"];
-    [self.names addObject:@"Alex"];
-    [self.names addObject:@"Deemah"];
+    [self.names addObject:@"news1"];
+    [self.names addObject:@"news2"];
+    [self.names addObject:@"news3"];
 }
 
 - (IBAction)showLeftMenuPressed:(id)sender {
@@ -51,14 +51,13 @@
 - (UITableViewCell *) tableView:(UITableView *)tableView
           cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView setSeparatorInset:UIEdgeInsetsZero];
+    [tableView setSeparatorColor:[UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f]];
     
-    UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"reusableCell1"];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reusableCell1"];
-    }
+    UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"newsCell"];
     
     cell.textLabel.text = self.names [indexPath.row];
+    cell.detailTextLabel.text = @"wow details";
     cell.imageView.image = [UIImage imageNamed:@"ico_news.png"];
     return cell;
 }

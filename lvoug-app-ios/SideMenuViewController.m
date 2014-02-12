@@ -6,7 +6,7 @@
 
 #import "SideMenuViewController.h"
 #import "MFSideMenu.h"
-#import "DemoViewController.h"
+#import "NewsVC.h"
 
 @implementation SideMenuViewController
 
@@ -28,6 +28,8 @@
     [self.icons addObject:@"ico_events.png"];
     [self.icons addObject:@"ico_about.png"];
     [self.icons addObject:@"ico_twitter.png"];
+    
+        
 }
 
 
@@ -62,6 +64,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView setSeparatorInset:UIEdgeInsetsZero];
+    
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -115,19 +119,15 @@
         
     } else if (indexPath.row == 1) { // news
         
-        UITableViewController *newsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"demoViewController"];
-        
-        newsViewController.title = self.titles [indexPath.row];
+        NewsVC *newsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"newsVC"];
         
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-        NSArray *controllers = [NSArray arrayWithObject:newsViewController];
+        NSArray *controllers = [NSArray arrayWithObject:newsVC];
         navigationController.viewControllers = controllers;
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
 
     } else {
         UITableViewController *demoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"demoViewController"];
-        
-        demoViewController.title = self.titles [indexPath.row];
         
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
         NSArray *controllers = [NSArray arrayWithObject:demoViewController];
