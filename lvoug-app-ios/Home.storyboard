@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller - Root View Controller-->
+        <!--Base First LevelTVC - Home-->
         <scene sceneID="hgO-20-sTG">
             <objects>
-                <tableViewController storyboardIdentifier="demoViewController" id="ExS-zJ-Jrw" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="demoViewController" id="ExS-zJ-Jrw" customClass="BaseFirstLevelTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="tableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EkO-je-3Rq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,16 +23,22 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="xwI-ig-NeS"/>
+                    <navigationItem key="navigationItem" title="Home" id="xwI-ig-NeS">
+                        <barButtonItem key="leftBarButtonItem" image="menu-icon-1" id="Iuw-31-CDH">
+                            <connections>
+                                <action selector="showLeftMenuPressed:" destination="ExS-zJ-Jrw" id="FtO-hk-3S3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5M-hL-Piw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-735" y="-1469"/>
         </scene>
-        <!--Table View Controller - Events-->
+        <!--Base First LevelTVC - Events-->
         <scene sceneID="VAu-2S-Lta">
             <objects>
-                <tableViewController storyboardIdentifier="eventsVC" title="Events" id="99T-J1-SXt" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="eventsVC" title="Events" id="99T-J1-SXt" customClass="BaseFirstLevelTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9Fo-70-7ic">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,6 +58,9 @@
                             <outlet property="delegate" destination="99T-J1-SXt" id="Zwj-1e-Tts"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="YJy-Pp-p1Z">
+                        <barButtonItem key="leftBarButtonItem" image="menu-icon-1" id="Jku-so-G1B"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nru-CR-TKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -68,6 +77,23 @@
                     <view key="view" contentMode="scaleToFill" id="Dhr-Cw-gSh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ub-Jh-woi">
+                                <rect key="frame" x="20" y="127" width="280" height="461"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="news Heading" translatesAutoresizingMaskIntoConstraints="NO" id="ZYL-43-c7W">
+                                <rect key="frame" x="20" y="58" width="275" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="h9a-uN-iuE"/>
@@ -123,10 +149,17 @@
                             <outlet property="delegate" destination="paZ-2g-bxG" id="0Bl-Nq-YSq"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="dH4-6o-kGp">
+                        <barButtonItem key="leftBarButtonItem" image="menu-icon-1" id="7Py-nh-Ixp">
+                            <connections>
+                                <action selector="showLeftMenuPressed:" destination="paZ-2g-bxG" id="aK5-p4-iS1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aqx-bx-UTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="522" y="-1021"/>
+            <point key="canvasLocation" x="522" y="-1016"/>
         </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="j00-Ls-659">
@@ -215,6 +248,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6oZ-KF-zMC">
+                        <barButtonItem key="leftBarButtonItem" image="menu-icon-1" id="rYY-Pm-lrA"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqk-6u-ciP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -224,6 +260,7 @@
     <resources>
         <image name="ico_about" width="70" height="70"/>
         <image name="logo_lvoug" width="100" height="27"/>
+        <image name="menu-icon-1" width="22" height="17"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

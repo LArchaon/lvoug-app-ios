@@ -1,11 +1,3 @@
-//
-//  DemoViewController.m
-//  MFSideMenuDemoStoryboard
-//
-//  Created by Michael Frederick on 4/9/13.
-//  Copyright (c) 2013 Michael Frederick. All rights reserved.
-//
-
 #import "NewsVC.h"
 #import "MFSideMenu.h"
 
@@ -21,10 +13,6 @@
     [self.names addObject:@"news1"];
     [self.names addObject:@"news2"];
     [self.names addObject:@"news3"];
-}
-
-- (IBAction)showLeftMenuPressed:(id)sender {
-    [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
 }
 
 //lazy instantiation

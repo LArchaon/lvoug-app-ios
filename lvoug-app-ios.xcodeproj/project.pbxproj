@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		883145A818AD739800C71E68 /* BaseFirstLevelTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 883145A718AD739800C71E68 /* BaseFirstLevelTVC.m */; };
 		88C9285318A7C0390089D375 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9284E18A7C0390089D375 /* MFSideMenuContainerViewController.m */; };
 		88C9285418A7C0390089D375 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285018A7C0390089D375 /* MFSideMenuShadow.m */; };
 		88C9285518A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285218A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		883145A618AD739800C71E68 /* BaseFirstLevelTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFirstLevelTVC.h; sourceTree = "<group>"; };
+		883145A718AD739800C71E68 /* BaseFirstLevelTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFirstLevelTVC.m; sourceTree = "<group>"; };
 		88C9284C18A7C0390089D375 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
 		88C9284D18A7C0390089D375 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
 		88C9284E18A7C0390089D375 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				B517B9191881F5A2000A53BD /* OUGAppDelegate.m */,
 				B517B91B1881F5A2000A53BD /* Images.xcassets */,
 				B517B9101881F5A2000A53BD /* Supporting Files */,
+				883145A618AD739800C71E68 /* BaseFirstLevelTVC.h */,
+				883145A718AD739800C71E68 /* BaseFirstLevelTVC.m */,
 			);
 			path = "lvoug-app-ios";
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88C9285418A7C0390089D375 /* MFSideMenuShadow.m in Sources */,
+				883145A818AD739800C71E68 /* BaseFirstLevelTVC.m in Sources */,
 				B517B91A1881F5A2000A53BD /* OUGAppDelegate.m in Sources */,
 				88C9285518A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				88C9286F18A7EE9E0089D375 /* NewsVC.m in Sources */,

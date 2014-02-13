@@ -28,8 +28,6 @@
     [self.icons addObject:@"ico_events.png"];
     [self.icons addObject:@"ico_about.png"];
     [self.icons addObject:@"ico_twitter.png"];
-    
-        
 }
 
 
@@ -99,7 +97,6 @@
     
     if (indexPath.row == 4) { // twitter
         BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://user?id=lvoug"]];
-        
         if (canOpen) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"twitter://user?id=lvoug"]];
         } else {
@@ -109,9 +106,7 @@
     } else if (indexPath.row == 3) { // about
         
         UIViewController *aboutViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"aboutViewController"];
-        
         aboutViewController.title = self.titles [indexPath.row];
-        
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
         NSArray *controllers = [NSArray arrayWithObject:aboutViewController];
         navigationController.viewControllers = controllers;
@@ -120,7 +115,6 @@
     } else if (indexPath.row == 1) { // news
         
         NewsVC *newsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"newsVC"];
-        
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
         NSArray *controllers = [NSArray arrayWithObject:newsVC];
         navigationController.viewControllers = controllers;
