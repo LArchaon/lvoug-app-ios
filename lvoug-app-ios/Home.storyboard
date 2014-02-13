@@ -13,13 +13,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="reusableCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="txT-5g-YBc">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="reusableCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" id="txT-5g-YBc">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="txT-5g-YBc" id="eH6-nS-ZHa">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -35,22 +36,23 @@
             </objects>
             <point key="canvasLocation" x="-735" y="-1469"/>
         </scene>
-        <!--Base First LevelTVC - Events-->
+        <!--EventsVC - Events-->
         <scene sceneID="VAu-2S-Lta">
             <objects>
-                <tableViewController storyboardIdentifier="eventsVC" title="Events" id="99T-J1-SXt" customClass="BaseFirstLevelTVC" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="eventsVC" title="Events" id="99T-J1-SXt" customClass="EventsVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9Fo-70-7ic">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="llq-Nj-UpA">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventsCell" id="llq-Nj-UpA">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="llq-Nj-UpA" id="8Qd-rS-gBR">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -59,7 +61,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="YJy-Pp-p1Z">
-                        <barButtonItem key="leftBarButtonItem" image="menu-icon-1" id="Jku-so-G1B"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu-icon-1" id="Jku-so-G1B">
+                            <connections>
+                                <action selector="showLeftMenuPressed:" destination="99T-J1-SXt" id="Egf-cz-czD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nru-CR-TKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -161,22 +167,23 @@
             </objects>
             <point key="canvasLocation" x="522" y="-1016"/>
         </scene>
-        <!--Side Menu View Controller-->
+        <!--Side MenuVC-->
         <scene sceneID="j00-Ls-659">
             <objects>
-                <tableViewController storyboardIdentifier="leftSideMenuViewController" id="DYA-hW-NMK" customClass="SideMenuViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="leftSideMenuViewController" id="DYA-hW-NMK" customClass="SideMenuVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4D6-vy-eBq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="RV4-vb-mB3">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="leftNavCell" id="RV4-vb-mB3">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RV4-vb-mB3" id="dFz-He-nzH">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -221,10 +228,10 @@
             </objects>
             <point key="canvasLocation" x="-1383" y="-593"/>
         </scene>
-        <!--View Controller - About-->
+        <!--Base First LevelVC - About-->
         <scene sceneID="UF1-F2-c6H">
             <objects>
-                <viewController storyboardIdentifier="aboutViewController" title="About" id="qvZ-rx-A5a" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="aboutViewController" title="About" id="qvZ-rx-A5a" customClass="BaseFirstLevelVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X86-2Q-whl"/>
                         <viewControllerLayoutGuide type="bottom" id="Ts6-6z-IxA"/>
@@ -249,7 +256,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="6oZ-KF-zMC">
-                        <barButtonItem key="leftBarButtonItem" image="menu-icon-1" id="rYY-Pm-lrA"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu-icon-1" id="rYY-Pm-lrA">
+                            <connections>
+                                <action selector="showLeftMenuPressed:" destination="qvZ-rx-A5a" id="YXi-Gk-oj4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqk-6u-ciP" userLabel="First Responder" sceneMemberID="firstResponder"/>

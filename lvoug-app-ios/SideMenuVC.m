@@ -4,11 +4,12 @@
 //
 //  Created by Michael Frederick on 3/19/12.
 
-#import "SideMenuViewController.h"
+#import "SideMenuVC.h"
 #import "MFSideMenu.h"
 #import "NewsVC.h"
+#import "EventsVC.h"
 
-@implementation SideMenuViewController
+@implementation SideMenuVC
 
 #pragma mark -
 #pragma mark - UITableViewDataSource
@@ -64,7 +65,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView setSeparatorInset:UIEdgeInsetsZero];
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"leftNavCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -119,8 +120,15 @@
         NSArray *controllers = [NSArray arrayWithObject:newsVC];
         navigationController.viewControllers = controllers;
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+    } else if (indexPath.row == 2) { // events
+        
+        EventsVC *eventsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"eventsVC"];
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+        NSArray *controllers = [NSArray arrayWithObject:eventsVC];
+        navigationController.viewControllers = controllers;
+        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
 
-    } else {
+    } else { // home
         UITableViewController *demoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"demoViewController"];
         
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
