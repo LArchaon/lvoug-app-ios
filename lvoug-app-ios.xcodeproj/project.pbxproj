@@ -10,6 +10,7 @@
 		883145A818AD739800C71E68 /* BaseFirstLevelTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 883145A718AD739800C71E68 /* BaseFirstLevelTVC.m */; };
 		886B7BA718AD786700A407EE /* BaseFirstLevelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 886B7BA618AD786700A407EE /* BaseFirstLevelVC.m */; };
 		886B7BAA18AD796600A407EE /* EventsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 886B7BA918AD796600A407EE /* EventsVC.m */; };
+		886B7BAD18B0F4FB00A407EE /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 886B7BAC18B0F4FB00A407EE /* HomeVC.m */; };
 		88C9285318A7C0390089D375 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9284E18A7C0390089D375 /* MFSideMenuContainerViewController.m */; };
 		88C9285418A7C0390089D375 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285018A7C0390089D375 /* MFSideMenuShadow.m */; };
 		88C9285518A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285218A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m */; };
@@ -47,6 +48,8 @@
 		886B7BA618AD786700A407EE /* BaseFirstLevelVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseFirstLevelVC.m; path = "lvoug-app-ios/BaseFirstLevelVC.m"; sourceTree = "<group>"; };
 		886B7BA818AD796600A407EE /* EventsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsVC.h; sourceTree = "<group>"; };
 		886B7BA918AD796600A407EE /* EventsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsVC.m; sourceTree = "<group>"; };
+		886B7BAB18B0F4FB00A407EE /* HomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
+		886B7BAC18B0F4FB00A407EE /* HomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
 		88C9284C18A7C0390089D375 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
 		88C9284D18A7C0390089D375 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
 		88C9284E18A7C0390089D375 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
@@ -170,8 +173,10 @@
 			isa = PBXGroup;
 			children = (
 				88C9286B18A7EE9E0089D375 /* NewsVC.h */,
-				886B7BA418AD783700A407EE /* baseVC */,
 				88C9286C18A7EE9E0089D375 /* NewsVC.m */,
+				886B7BAB18B0F4FB00A407EE /* HomeVC.h */,
+				886B7BAC18B0F4FB00A407EE /* HomeVC.m */,
+				886B7BA418AD783700A407EE /* baseVC */,
 				88C9286D18A7EE9E0089D375 /* SideMenuVC.h */,
 				88C9286E18A7EE9E0089D375 /* SideMenuVC.m */,
 				88C9285C18A7CAB70089D375 /* Images */,
@@ -318,6 +323,7 @@
 				886B7BAA18AD796600A407EE /* EventsVC.m in Sources */,
 				B517B91A1881F5A2000A53BD /* OUGAppDelegate.m in Sources */,
 				88C9285518A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m in Sources */,
+				886B7BAD18B0F4FB00A407EE /* HomeVC.m in Sources */,
 				88C9286F18A7EE9E0089D375 /* NewsVC.m in Sources */,
 				88C9285318A7C0390089D375 /* MFSideMenuContainerViewController.m in Sources */,
 				88C9287018A7EE9E0089D375 /* SideMenuVC.m in Sources */,

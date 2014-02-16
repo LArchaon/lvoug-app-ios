@@ -1,36 +1,41 @@
-#import "EventsVC.h"
+//
+//  HomeVC.m
+//  lvoug-app-ios
+//
+//  Created by Daniel Louchansky on 16/02/14.
+//  Copyright (c) 2014 LVOUG. All rights reserved.
+//
 
-@interface EventsVC ()
+#import "HomeVC.h"
+
+@interface HomeVC ()
 
 @end
 
-@implementation EventsVC
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@implementation HomeVC
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    [self.names addObject:@"home1"];
+    [self.names addObject:@"home2"];
+    [self.names addObject:@"home3"];
 }
 
-- (void)didReceiveMemoryWarning
+//lazy instantiation
+-(NSMutableArray*)names
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (_names == nil) {
+        _names = [[NSMutableArray alloc]init];
+    }
+    return _names;
 }
 
 //table view
 -(NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return [self.names count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -45,9 +50,9 @@
     [tableView setSeparatorInset:UIEdgeInsetsZero];
     [tableView setSeparatorColor:[UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f]];
     
-    UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"eventsCell"];
+    UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"homeCell"];
     
-    cell.textLabel.text = @"dsdfdsfs";
+    cell.textLabel.text = self.names [indexPath.row];
     cell.detailTextLabel.text = @"wow details";
     cell.imageView.image = [UIImage imageNamed:@"ico_news.png"];
     return cell;

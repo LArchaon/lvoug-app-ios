@@ -29,6 +29,8 @@
     [self.icons addObject:@"ico_events.png"];
     [self.icons addObject:@"ico_about.png"];
     [self.icons addObject:@"ico_twitter.png"];
+    
+    [self.tableView setContentInset:UIEdgeInsetsMake(20, self.tableView.contentInset.left, self.tableView.contentInset.bottom, self.tableView.contentInset.right)];
 }
 
 
@@ -75,7 +77,7 @@
     
     NSString *title = self.titles [indexPath.row];
     NSString *image = self.icons [indexPath.row];
-
+    
     
     cell.textLabel.text = [NSString stringWithFormat:title, indexPath.row];
     UIImage *uiImage = [UIImage imageNamed:image];
@@ -86,8 +88,7 @@
     
     cell.imageView.layer.masksToBounds = YES;
     cell.imageView.layer.cornerRadius = 4.0;
-    //cell.imageView.backgroundColor = [UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f];
-
+    
     return cell;
 }
 
@@ -97,6 +98,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 4) { // twitter
+        
         BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://user?id=lvoug"]];
         if (canOpen) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"twitter://user?id=lvoug"]];
@@ -104,6 +106,7 @@
             NSURL *url = [NSURL URLWithString:@"https://www.twitter.com/lvoug"];
             [[UIApplication sharedApplication] openURL:url];
         }
+        
     } else if (indexPath.row == 3) { // about
         
         UIViewController *aboutViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"aboutViewController"];
@@ -120,6 +123,7 @@
         NSArray *controllers = [NSArray arrayWithObject:newsVC];
         navigationController.viewControllers = controllers;
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+        
     } else if (indexPath.row == 2) { // events
         
         EventsVC *eventsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"eventsVC"];
@@ -129,12 +133,13 @@
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
 
     } else { // home
-        UITableViewController *demoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"demoViewController"];
         
+        UITableViewController *demoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeViewController"];
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
         NSArray *controllers = [NSArray arrayWithObject:demoViewController];
         navigationController.viewControllers = controllers;
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+        
     }
 }
 
