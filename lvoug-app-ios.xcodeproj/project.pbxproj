@@ -12,6 +12,7 @@
 		886B7BAA18AD796600A407EE /* EventsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 886B7BA918AD796600A407EE /* EventsVC.m */; };
 		886B7BAD18B0F4FB00A407EE /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 886B7BAC18B0F4FB00A407EE /* HomeVC.m */; };
 		886B7BB018B1108500A407EE /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 886B7BAF18B1108500A407EE /* APIClient.m */; };
+		886B7BB418B139FA00A407EE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886B7BB318B139FA00A407EE /* MapKit.framework */; };
 		88C9285318A7C0390089D375 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9284E18A7C0390089D375 /* MFSideMenuContainerViewController.m */; };
 		88C9285418A7C0390089D375 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285018A7C0390089D375 /* MFSideMenuShadow.m */; };
 		88C9285518A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285218A7C0390089D375 /* UIViewController+MFSideMenuAdditions.m */; };
@@ -53,6 +54,7 @@
 		886B7BAC18B0F4FB00A407EE /* HomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
 		886B7BAE18B1108500A407EE /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
 		886B7BAF18B1108500A407EE /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
+		886B7BB318B139FA00A407EE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		88C9284C18A7C0390089D375 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
 		88C9284D18A7C0390089D375 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
 		88C9284E18A7C0390089D375 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				886B7BB418B139FA00A407EE /* MapKit.framework in Frameworks */,
 				B517B90C1881F5A2000A53BD /* CoreGraphics.framework in Frameworks */,
 				B517B90E1881F5A2000A53BD /* UIKit.framework in Frameworks */,
 				B517B90A1881F5A2000A53BD /* Foundation.framework in Frameworks */,
@@ -170,6 +173,7 @@
 		B517B9081881F5A2000A53BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				886B7BB318B139FA00A407EE /* MapKit.framework */,
 				B517B9091881F5A2000A53BD /* Foundation.framework */,
 				B517B90B1881F5A2000A53BD /* CoreGraphics.framework */,
 				B517B90D1881F5A2000A53BD /* UIKit.framework */,
