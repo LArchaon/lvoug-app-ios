@@ -1,9 +1,3 @@
-//
-//  SideMenuViewController.m
-//  MFSideMenuDemo
-//
-//  Created by Michael Frederick on 3/19/12.
-
 #import "SideMenuVC.h"
 #import "MFSideMenu.h"
 #import "NewsVC.h"
@@ -33,8 +27,6 @@
     [self.tableView setContentInset:UIEdgeInsetsMake(20, self.tableView.contentInset.left, self.tableView.contentInset.bottom, self.tableView.contentInset.right)];
 }
 
-
-//wtf
 -(NSMutableArray*)titles
 {
     if (_titles == nil) {
@@ -50,7 +42,6 @@
     }
     return _icons;
 }
-
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return nil;
@@ -70,21 +61,13 @@
     static NSString *CellIdentifier = @"leftNavCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
     
     NSString *title = self.titles [indexPath.row];
     NSString *image = self.icons [indexPath.row];
     
-    
     cell.textLabel.text = [NSString stringWithFormat:title, indexPath.row];
     UIImage *uiImage = [UIImage imageNamed:image];
     cell.imageView.image = uiImage;
-    if (indexPath.row == 0) {
-        cell.imageView.highlightedImage = uiImage;
-    }
     
     cell.imageView.layer.masksToBounds = YES;
     cell.imageView.layer.cornerRadius = 4.0;
@@ -92,10 +75,13 @@
     return cell;
 }
 
+
 #pragma mark -
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 4) { // twitter
         

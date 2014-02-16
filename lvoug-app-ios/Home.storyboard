@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="reusableCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" rowHeight="133" id="txT-5g-YBc">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="reusableCell" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" rowHeight="133" id="txT-5g-YBc">
                                 <rect key="frame" x="0.0" y="86" width="320" height="133"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="txT-5g-YBc" id="eH6-nS-ZHa">
@@ -208,8 +208,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="paZ-2g-bxG" id="xTB-2i-T75"/>
-                            <outlet property="delegate" destination="paZ-2g-bxG" id="0Bl-Nq-YSq"/>
+                            <outlet property="dataSource" destination="paZ-2g-bxG" id="XPg-lC-F7T"/>
+                            <outlet property="delegate" destination="paZ-2g-bxG" id="ahm-cm-6ef"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="dH4-6o-kGp">

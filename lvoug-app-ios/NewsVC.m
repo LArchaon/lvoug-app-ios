@@ -1,5 +1,6 @@
 #import "NewsVC.h"
 #import "MFSideMenu.h"
+#import "APIClient.h"
 
 @implementation NewsVC
 
@@ -9,10 +10,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
-    [self.names addObject:@"news1"];
-    [self.names addObject:@"news2"];
-    [self.names addObject:@"news3"];
+    
+    id client = [APIClient restClient];
+    NSMutableArray *articles = [client news];
+    
+    for (id article in articles) {
+        [self.names addObject:article];
+    }
 }
 
 //lazy instantiation
@@ -44,9 +48,13 @@
     
     UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"newsCell"];
     
-    cell.textLabel.text = self.names [indexPath.row];
-    cell.detailTextLabel.text = @"wow details";
-    cell.imageView.image = [UIImage imageNamed:@"ico_news.png"];
+    NSDictionary *article = self.names [indexPath.row];
+    cell.textLabel.text = [article objectForKey:@"title"];
+    cell.detailTextLabel.text = [[article objectForKey:@"description"] substringWithRange:NSMakeRange(0, 5)];
+    
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [article objectForKey:@"image"]]];
+    cell.imageView.image = [UIImage imageWithData: imageData];
+    
     return cell;
 }
 
