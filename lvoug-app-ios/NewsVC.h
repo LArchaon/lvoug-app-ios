@@ -3,6 +3,6 @@
 
 @interface NewsVC : BaseFirstLevelTVC
 
-@property (strong, nonatomic) NSMutableArray *names;
+@property (strong, nonatomic) NSMutableArray *articles;
 
 @end

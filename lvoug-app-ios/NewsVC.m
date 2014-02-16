@@ -1,5 +1,4 @@
 #import "NewsVC.h"
-#import "MFSideMenu.h"
 #import "APIClient.h"
 
 @implementation NewsVC
@@ -11,46 +10,43 @@
 {
     [super viewDidLoad];
     
-    id client = [APIClient restClient];
-    NSMutableArray *articles = [client news];
+    NSMutableArray *articleList = [[APIClient restClient] news];
     
-    for (id article in articles) {
-        [self.names addObject:article];
+    for (id article in articleList) {
+        [self.articles addObject:article];
     }
+    
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f]];
+    // full length item delimiter hack
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
 }
 
-//lazy instantiation
--(NSMutableArray*)names
+-(NSMutableArray*)articles
 {
-    if (_names == nil) {
-        _names = [[NSMutableArray alloc]init];
+    if (_articles == nil) {
+        _articles = [[NSMutableArray alloc]init];
     }
-    return _names;
+    return _articles;
 }
 
-//table view
 -(NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.names count];
+    return [self.articles count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView
           cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView setSeparatorInset:UIEdgeInsetsZero];
-    [tableView setSeparatorColor:[UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f]];
-    
     UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"newsCell"];
     
-    NSDictionary *article = self.names [indexPath.row];
+    NSDictionary *article = self.articles [indexPath.row];
     cell.textLabel.text = [article objectForKey:@"title"];
-    cell.detailTextLabel.text = [[article objectForKey:@"description"] substringWithRange:NSMakeRange(0, 5)];
+    cell.detailTextLabel.text = [article objectForKey:@"description"];
     
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [article objectForKey:@"image"]]];
     cell.imageView.image = [UIImage imageWithData: imageData];

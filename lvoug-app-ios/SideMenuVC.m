@@ -12,75 +12,59 @@
 {
     [super viewDidLoad];
     
-    [self.titles addObject:@"Home"];
-    [self.titles addObject:@"News"];
-    [self.titles addObject:@"Past events"];
-    [self.titles addObject:@"About"];
-    [self.titles addObject:@"Twitter"];
+    [self.menuItems addObject:@{@"title":@"Home", @"img":@"ico_home.png", @"controllerId": @"homeVC"}];
+    [self.menuItems addObject:@{@"title":@"News", @"img":@"ico_news.png", @"controllerId": @"newsVC"}];
+    [self.menuItems addObject:@{@"title":@"Past events", @"img":@"ico_events.png", @"controllerId": @"eventsVC"}];
+    [self.menuItems addObject:@{@"title":@"About", @"img":@"ico_about.png", @"controllerId": @"aboutVC"}];
+    [self.menuItems addObject:@{@"title":@"Twitter", @"img":@"ico_twitter.png"}];
     
-    [self.icons addObject:@"ico_home.png"];
-    [self.icons addObject:@"ico_news.png"];
-    [self.icons addObject:@"ico_events.png"];
-    [self.icons addObject:@"ico_about.png"];
-    [self.icons addObject:@"ico_twitter.png"];
-    
+    // upper margin hack
     [self.tableView setContentInset:UIEdgeInsetsMake(20, self.tableView.contentInset.left, self.tableView.contentInset.bottom, self.tableView.contentInset.right)];
+    
+    // full length item delimiter hack
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
 }
 
--(NSMutableArray*)titles
+-(NSMutableArray*)menuItems
 {
-    if (_titles == nil) {
-        _titles = [[NSMutableArray alloc]init];
+    if (_menuItems == nil) {
+        _menuItems = [[NSMutableArray alloc]init];
     }
-    return _titles;
+    return _menuItems;
 }
 
--(NSMutableArray*)icons
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (_icons == nil) {
-        _icons = [[NSMutableArray alloc]init];
-    }
-    return _icons;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return nil;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self. menuItems count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView setSeparatorInset:UIEdgeInsetsZero];
-    
-    static NSString *CellIdentifier = @"leftNavCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    NSString *title = self.titles [indexPath.row];
-    NSString *image = self.icons [indexPath.row];
-    
-    cell.textLabel.text = [NSString stringWithFormat:title, indexPath.row];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *menuItem = self.menuItems [indexPath.row];
+    NSString *title = [menuItem objectForKey:@"title"];
+    NSString *image = [menuItem objectForKey:@"img"];
     UIImage *uiImage = [UIImage imageNamed:image];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"leftNavCell"];
+    cell.textLabel.text = [NSString stringWithFormat:title, indexPath.row];
     cell.imageView.image = uiImage;
-    
-    cell.imageView.layer.masksToBounds = YES;
-    cell.imageView.layer.cornerRadius = 4.0;
-    
+
     return cell;
 }
 
-
-#pragma mark -
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // hack for deselecting item after it was clicked
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 4) { // twitter
@@ -93,36 +77,16 @@
             [[UIApplication sharedApplication] openURL:url];
         }
         
-    } else if (indexPath.row == 3) { // about
+    } else {
         
-        UIViewController *aboutViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"aboutViewController"];
-        aboutViewController.title = self.titles [indexPath.row];
-        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-        NSArray *controllers = [NSArray arrayWithObject:aboutViewController];
-        navigationController.viewControllers = controllers;
-        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
-        
-    } else if (indexPath.row == 1) { // news
-        
-        NewsVC *newsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"newsVC"];
-        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-        NSArray *controllers = [NSArray arrayWithObject:newsVC];
-        navigationController.viewControllers = controllers;
-        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
-        
-    } else if (indexPath.row == 2) { // events
-        
-        EventsVC *eventsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"eventsVC"];
-        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-        NSArray *controllers = [NSArray arrayWithObject:eventsVC];
-        navigationController.viewControllers = controllers;
-        [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+        NSDictionary *menuItem = self.menuItems [indexPath.row];
+        NSString *controllerId = [menuItem objectForKey:@"controllerId"];
 
-    } else { // home
+        UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:controllerId];
+        controller.title = [menuItem objectForKey:@"title"];
         
-        UITableViewController *demoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeViewController"];
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-        NSArray *controllers = [NSArray arrayWithObject:demoViewController];
+        NSArray *controllers = [NSArray arrayWithObject:controller];
         navigationController.viewControllers = controllers;
         [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
         

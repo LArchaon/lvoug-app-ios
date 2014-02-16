@@ -7,7 +7,7 @@
         <!--HomeVC - Home-->
         <scene sceneID="hgO-20-sTG">
             <objects>
-                <tableViewController storyboardIdentifier="homeViewController" id="ExS-zJ-Jrw" customClass="HomeVC" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="homeVC" id="ExS-zJ-Jrw" customClass="HomeVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="tableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="133" sectionHeaderHeight="22" sectionFooterHeight="22" id="EkO-je-3Rq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,12 +237,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="leftNavCell" id="RV4-vb-mB3">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="leftNavCell" textLabel="SI9-Uk-qXa" imageView="YqO-h3-6L7" style="IBUITableViewCellStyleDefault" id="RV4-vb-mB3">
                                 <rect key="frame" x="0.0" y="22" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RV4-vb-mB3" id="dFz-He-nzH">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SI9-Uk-qXa">
+                                            <rect key="frame" x="74" y="0.0" width="231" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.49999999999999961" contentMode="scaleAspectFit" image="ico_about" id="YqO-h3-6L7">
+                                            <rect key="frame" x="15" y="0.0" width="44" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
@@ -292,7 +305,7 @@
         <!--Base First LevelVC - About-->
         <scene sceneID="UF1-F2-c6H">
             <objects>
-                <viewController storyboardIdentifier="aboutViewController" title="About" id="qvZ-rx-A5a" customClass="BaseFirstLevelVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="aboutVC" title="About" id="qvZ-rx-A5a" customClass="BaseFirstLevelVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X86-2Q-whl"/>
                         <viewControllerLayoutGuide type="bottom" id="Ts6-6z-IxA"/>
@@ -330,6 +343,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ico_about" width="70" height="70"/>
         <image name="ico_events" width="70" height="70"/>
         <image name="ico_news" width="70" height="70"/>
         <image name="logo_lvoug" width="100" height="27"/>

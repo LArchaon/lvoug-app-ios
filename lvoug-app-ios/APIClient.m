@@ -4,7 +4,8 @@ static APIClient* _restClient = nil;
 
 @implementation APIClient
 
-+(APIClient*)restClient {
++ (APIClient*)restClient
+{
     if (_restClient == nil) {
         _restClient = [[APIClient alloc] init];
     }
@@ -20,33 +21,58 @@ static APIClient* _restClient = nil;
     return _news;
 }
 
-// force reload
+- (NSMutableArray *)events
+{
+    if (_events == nil) {
+        [self reloadEvents];
+    }
+    return _events;
+}
+
 - (void)reloadNews
 {
     _news = [[NSMutableArray alloc]init];
+
+    NSString *url = @"http://lvoug-webservice.herokuapp.com/api/articles";
     
+    NSDictionary *list = [self getDataFromUrl:url];
+    NSArray *articles = [list objectForKey:@"articles"];
+    
+    for (id object in articles) {
+        [_news addObject:object];
+    }
+}
+
+- (void)reloadEvents
+{
+    _events = [[NSMutableArray alloc]init];
+    
+    NSString *url = @"http://lvoug-webservice.herokuapp.com/api/events";
+    
+    NSDictionary *list = [self getDataFromUrl:url];
+    NSArray *articles = [list objectForKey:@"events"];
+        
+    for (id object in articles) {
+        [_events addObject:object];
+    }
+}
+
+- (NSDictionary *)getDataFromUrl:(NSString *)stringUrl
+{
     NSError *error = nil;
-    NSURL *url = [NSURL URLWithString:@"http://lvoug-webservice.herokuapp.com/api/articles"];
+    NSURL *url = [NSURL URLWithString:stringUrl];
     NSString *json = [NSString stringWithContentsOfURL:url
                                               encoding:NSASCIIStringEncoding
                                                  error:&error];
-    
     if(!error) {
         NSData *jsonData = [json dataUsingEncoding:NSASCIIStringEncoding];
         NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                  options:kNilOptions
                                                                    error:&error];
-        
-        NSArray *articles = [jsonDict objectForKey:@"articles"];
-        
-        for (id object in articles) {
-            [_news addObject:object];
-        }
-        
-        NSLog(@"JSON: %@", jsonDict);
+        return jsonDict;
     }
     
-    // todo if error maybe send error message in result and display it on screen
+    return [[NSDictionary init] alloc];
 }
 
 @end

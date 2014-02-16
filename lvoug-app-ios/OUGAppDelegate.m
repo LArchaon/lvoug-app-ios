@@ -20,12 +20,13 @@
         // load everything on startup
         id client = [APIClient restClient];
         [client news];
+        [client events];
         
         /*
         dispatch_sync(dispatch_get_main_queue(), ^{
             mb unblock screen here?
         });
-         */
+        */
     });
     
     return YES;
