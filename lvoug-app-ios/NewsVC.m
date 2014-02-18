@@ -1,5 +1,6 @@
 #import "NewsVC.h"
 #import "APIClient.h"
+#import "ArticleVC.h"
 
 @implementation NewsVC
 
@@ -10,7 +11,7 @@
 {
     [super viewDidLoad];
     
-    NSMutableArray *articleList = [[APIClient restClient] news];
+    NSMutableArray *articleList = [[APIClient instance] news];
     
     for (id article in articleList) {
         [self.articles addObject:article];
@@ -52,6 +53,15 @@
     cell.imageView.image = [UIImage imageWithData: imageData];
     
     return cell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"openArticle"]) {
+        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
+        NSDictionary *article = [self.articles objectAtIndex:ip.row];
+        [segue.destinationViewController setArticle:[article objectForKey:@"id"]];
+    }
 }
 
 @end

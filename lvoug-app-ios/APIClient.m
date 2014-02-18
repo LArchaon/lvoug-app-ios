@@ -4,7 +4,7 @@ static APIClient* _restClient = nil;
 
 @implementation APIClient
 
-+ (APIClient*)restClient
++ (APIClient*)instance
 {
     if (_restClient == nil) {
         _restClient = [[APIClient alloc] init];
@@ -27,6 +27,26 @@ static APIClient* _restClient = nil;
         [self reloadEvents];
     }
     return _events;
+}
+
+- (NSDictionary *)article:(NSString *)articleId
+{
+    NSArray *news = [self news];
+    for (NSDictionary *article in news) {
+        if ([article objectForKey:@"id"] == articleId)
+            return article;
+    }
+    return nil;
+}
+
+- (NSDictionary *)event:(NSString *)eventId
+{
+    NSArray *events = [self events];
+    for (NSDictionary *article in events) {
+        if ([article objectForKey:@"id"] == eventId)
+            return article;
+    }
+    return nil;
 }
 
 - (void)reloadNews

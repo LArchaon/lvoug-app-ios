@@ -74,7 +74,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="DyF-AW-8hX" kind="push" id="tg6-bv-BZn"/>
+                                    <segue destination="DyF-AW-8hX" kind="push" identifier="openEvent" id="tg6-bv-BZn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -95,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="1062" y="-1969"/>
         </scene>
-        <!--View Controller-->
+        <!--EventVC-->
         <scene sceneID="GJk-2a-477">
             <objects>
-                <viewController storyboardIdentifier="event" id="DyF-AW-8hX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="event" id="DyF-AW-8hX" customClass="EventVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yCm-ql-GRX"/>
                         <viewControllerLayoutGuide type="bottom" id="OJD-Is-SQH"/>
@@ -129,15 +129,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="cal-VW-uWv"/>
+                    <connections>
+                        <outlet property="eventMap" destination="729-He-srV" id="4B0-QM-X4B"/>
+                        <outlet property="eventText" destination="8Tx-9X-ap1" id="TEt-Vf-2qT"/>
+                        <outlet property="eventTitle" destination="9sM-ya-zfE" id="eol-mg-CdC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jtq-e5-03L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1602" y="-1969"/>
         </scene>
-        <!--View Controller - Article-->
+        <!--ArticleVC - Article-->
         <scene sceneID="Pzt-yw-V6R">
             <objects>
-                <viewController storyboardIdentifier="articleVC" title="Article" id="d2D-y6-293" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="articleVC" title="Article" id="d2D-y6-293" customClass="ArticleVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uGd-dD-b74"/>
                         <viewControllerLayoutGuide type="bottom" id="Mbh-W2-deU"/>
@@ -164,6 +169,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="h9a-uN-iuE"/>
+                    <connections>
+                        <outlet property="articleText" destination="7ub-Jh-woi" id="hGz-Uo-Hm6"/>
+                        <outlet property="articleTitle" destination="ZYL-43-c7W" id="t8l-bW-MSk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="onF-LB-3NN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -207,7 +216,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.64201108870000001" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="d2D-y6-293" kind="push" id="Awk-uX-tjE"/>
+                                    <segue destination="d2D-y6-293" kind="push" identifier="openArticle" id="Awk-uX-tjE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

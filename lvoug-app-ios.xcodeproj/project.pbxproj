@@ -13,6 +13,8 @@
 		886B7BAD18B0F4FB00A407EE /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 886B7BAC18B0F4FB00A407EE /* HomeVC.m */; };
 		886B7BB018B1108500A407EE /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 886B7BAF18B1108500A407EE /* APIClient.m */; };
 		886B7BB418B139FA00A407EE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886B7BB318B139FA00A407EE /* MapKit.framework */; };
+		88A2452718B3F19200AC4FF6 /* ArticleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2452618B3F19200AC4FF6 /* ArticleVC.m */; };
+		88A2452A18B3FB6400AC4FF6 /* EventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2452918B3FB6300AC4FF6 /* EventVC.m */; };
 		88B0973F18B15F1200B2CC2E /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B0973E18B15F1200B2CC2E /* ImageHelper.m */; };
 		88C9285318A7C0390089D375 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9284E18A7C0390089D375 /* MFSideMenuContainerViewController.m */; };
 		88C9285418A7C0390089D375 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9285018A7C0390089D375 /* MFSideMenuShadow.m */; };
@@ -56,6 +58,10 @@
 		886B7BAE18B1108500A407EE /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
 		886B7BAF18B1108500A407EE /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
 		886B7BB318B139FA00A407EE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		88A2452518B3F19200AC4FF6 /* ArticleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleVC.h; sourceTree = "<group>"; };
+		88A2452618B3F19200AC4FF6 /* ArticleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleVC.m; sourceTree = "<group>"; };
+		88A2452818B3FB6300AC4FF6 /* EventVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventVC.h; sourceTree = "<group>"; };
+		88A2452918B3FB6300AC4FF6 /* EventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventVC.m; sourceTree = "<group>"; };
 		88B0973D18B15F1200B2CC2E /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
 		88B0973E18B15F1200B2CC2E /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
 		88C9284C18A7C0390089D375 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
@@ -134,6 +140,10 @@
 				88C9286C18A7EE9E0089D375 /* NewsVC.m */,
 				886B7BA818AD796600A407EE /* EventsVC.h */,
 				886B7BA918AD796600A407EE /* EventsVC.m */,
+				88A2452518B3F19200AC4FF6 /* ArticleVC.h */,
+				88A2452618B3F19200AC4FF6 /* ArticleVC.m */,
+				88A2452818B3FB6300AC4FF6 /* EventVC.h */,
+				88A2452918B3FB6300AC4FF6 /* EventVC.m */,
 			);
 			name = pageVCs;
 			sourceTree = "<group>";
@@ -334,6 +344,7 @@
 				88C9285418A7C0390089D375 /* MFSideMenuShadow.m in Sources */,
 				886B7BA718AD786700A407EE /* BaseFirstLevelVC.m in Sources */,
 				883145A818AD739800C71E68 /* BaseFirstLevelTVC.m in Sources */,
+				88A2452A18B3FB6400AC4FF6 /* EventVC.m in Sources */,
 				88B0973F18B15F1200B2CC2E /* ImageHelper.m in Sources */,
 				886B7BAA18AD796600A407EE /* EventsVC.m in Sources */,
 				B517B91A1881F5A2000A53BD /* OUGAppDelegate.m in Sources */,
@@ -342,6 +353,7 @@
 				88C9286F18A7EE9E0089D375 /* NewsVC.m in Sources */,
 				886B7BB018B1108500A407EE /* APIClient.m in Sources */,
 				88C9285318A7C0390089D375 /* MFSideMenuContainerViewController.m in Sources */,
+				88A2452718B3F19200AC4FF6 /* ArticleVC.m in Sources */,
 				88C9287018A7EE9E0089D375 /* SideMenuVC.m in Sources */,
 				B517B9161881F5A2000A53BD /* main.m in Sources */,
 			);

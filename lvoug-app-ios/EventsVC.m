@@ -1,6 +1,7 @@
 #import "EventsVC.h"
 #import "APIClient.h"
 #import "ImageHelper.h"
+#import "EventVC.h"
 
 @interface EventsVC ()
 
@@ -12,7 +13,7 @@
 {
     [super viewDidLoad];
 
-    NSMutableArray *eventList = [[APIClient restClient] events];
+    NSMutableArray *eventList = [[APIClient instance] events];
     
     for (id event in eventList) {
         [self.events addObject:event];
@@ -55,6 +56,15 @@
     cell.imageView.image = [ImageHelper imageWithImage:[UIImage imageWithData: imageData] scaledToSize:CGSizeMake(40.0, 40.0)];
     
     return cell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"openEvent"]) {
+        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
+        NSDictionary *event = [self.events objectAtIndex:ip.row];
+        [segue.destinationViewController setEvent:[event objectForKey:@"id"]];
+    }
 }
 
 @end
