@@ -12,8 +12,6 @@
     self.articles = [[DataService instance] articles];
     
     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f]];
-    // full length item delimiter hack
-    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
 }
 
 -(NSArray*)articles

@@ -21,8 +21,11 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Article"
                                               inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    NSError* error;
     
+    NSSortDescriptor *sortByIdDesc = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
+    [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByIdDesc, nil]];
+    
+    NSError* error;
     return [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
@@ -33,8 +36,11 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event"
                                               inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    NSError* error;
     
+    NSSortDescriptor *sortByIdDesc = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
+    [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByIdDesc, nil]];
+    
+    NSError* error;
     return [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 

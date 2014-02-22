@@ -1,7 +1,5 @@
-#import "BaseFirstLevelTVC.h"
+#import "BaseFirstLevelVC.h"
 
-@interface HomeVC : BaseFirstLevelTVC
-
-@property (strong, nonatomic) NSMutableArray *names;
+@interface HomeVC : BaseFirstLevelVC
 
 @end

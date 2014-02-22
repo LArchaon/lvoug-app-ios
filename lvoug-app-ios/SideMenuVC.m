@@ -20,9 +20,6 @@
     
     // upper margin hack
     [self.tableView setContentInset:UIEdgeInsetsMake(20, self.tableView.contentInset.left, self.tableView.contentInset.bottom, self.tableView.contentInset.right)];
-    
-    // full length item delimiter hack
-    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
 }
 
 -(NSMutableArray*)menuItems
@@ -58,7 +55,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"leftNavCell"];
     cell.textLabel.text = [NSString stringWithFormat:title, indexPath.row];
     cell.imageView.image = uiImage;
-
+    
     return cell;
 }
 
