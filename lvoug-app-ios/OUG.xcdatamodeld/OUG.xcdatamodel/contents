@@ -8,11 +8,11 @@
     </entity>
     <entity name="Contact" representedClassName="Contact" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="event" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="eventContact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="eventContacts" inverseEntity="Event" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,18 +24,21 @@
         <attribute name="logo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="eventContacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Contact" inverseName="eventContact" inverseEntity="Contact" syncable="YES"/>
+        <relationship name="eventMaterials" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Material" inverseName="eventMaterial" inverseEntity="Material" syncable="YES"/>
+        <relationship name="eventSponsors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sponsor" inverseName="eventSponsor" inverseEntity="Sponsor" syncable="YES"/>
     </entity>
     <entity name="Material" representedClassName="Material" syncable="YES">
-        <attribute name="event" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="eventMaterial" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="eventMaterials" inverseEntity="Event" syncable="YES"/>
     </entity>
     <entity name="Sponsor" representedClassName="Sponsor" syncable="YES">
-        <attribute name="event" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="eventSponsor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="eventSponsors" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
         <element name="Article" positionX="0" positionY="0" width="0" height="0"/>

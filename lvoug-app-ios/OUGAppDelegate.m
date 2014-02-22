@@ -69,7 +69,7 @@
                                    initWithManagedObjectModel:[self managedObjectModel]];
     if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
                                                   configuration:nil URL:storeUrl options:nil error:&error]) {
-        /*Error for store creation should be handled in here*/
+        /* Error for store creation should be handled in here */
     }
     
     return _persistentStoreCoordinator;

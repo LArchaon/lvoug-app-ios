@@ -1,4 +1,8 @@
 #import "Event.h"
+#import "Contact.h"
+#import "Material.h"
+#import "Sponsor.h"
+
 
 @implementation Event
 
@@ -11,5 +15,8 @@
 @dynamic logo;
 @dynamic text;
 @dynamic title;
+@dynamic eventContacts;
+@dynamic eventMaterials;
+@dynamic eventSponsors;
 
 @end
