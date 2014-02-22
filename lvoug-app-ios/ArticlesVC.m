@@ -1,31 +1,25 @@
-#import "NewsVC.h"
+#import "ArticlesVC.h"
 #import "APIClient.h"
 #import "ArticleVC.h"
+#import "Article.h"
 
-@implementation NewsVC
-
-#pragma mark -
-#pragma mark - UITableViewDataSource
+@implementation ArticlesVC
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    NSMutableArray *articleList = [[APIClient instance] news];
-    
-    for (id article in articleList) {
-        [self.articles addObject:article];
-    }
+    self.articles = [[APIClient instance] articles];
     
     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f]];
     // full length item delimiter hack
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
 }
 
--(NSMutableArray*)articles
+-(NSArray*)articles
 {
     if (_articles == nil) {
-        _articles = [[NSMutableArray alloc]init];
+        _articles = [[NSArray alloc]init];
     }
     return _articles;
 }
@@ -45,11 +39,11 @@
 {
     UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"newsCell"];
     
-    NSDictionary *article = self.articles [indexPath.row];
-    cell.textLabel.text = [article objectForKey:@"title"];
-    cell.detailTextLabel.text = [article objectForKey:@"description"];
+    Article *article = self.articles [indexPath.row];
+    cell.textLabel.text = article.title;
+    cell.detailTextLabel.text = article.text;
     
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [article objectForKey:@"image"]]];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: article.image]];
     cell.imageView.image = [UIImage imageWithData: imageData];
     
     return cell;
@@ -59,8 +53,8 @@
 {
     if ([segue.identifier isEqualToString:@"openArticle"]) {
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-        NSDictionary *article = [self.articles objectAtIndex:ip.row];
-        [segue.destinationViewController setArticle:[article objectForKey:@"id"]];
+        Article *article = [self.articles objectAtIndex:ip.row];
+        [segue.destinationViewController setArticle:article.id];
     }
 }
 

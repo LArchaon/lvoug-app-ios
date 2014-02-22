@@ -1,24 +1,38 @@
 #import "APIClient.h"
+#import "OUGAppDelegate.h"
+
+#import "Event.h"
+#import "Contact.h"
+#import "Material.h"
+#import "Sponsor.h"
+#import "Article.h"
 
 static APIClient* _restClient = nil;
 
 @implementation APIClient
 
+
 + (APIClient*)instance
 {
     if (_restClient == nil) {
         _restClient = [[APIClient alloc] init];
+        OUGAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        _restClient.managedObjectContext = appDelegate.managedObjectContext;
     }
     
     return _restClient;
 }
 
-- (NSMutableArray *)news
+- (NSArray *)articles
 {
-    if (_news == nil) {
-        [self reloadNews];
-    }
-    return _news;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Article"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError* error;
+    
+    return [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
 
 - (NSMutableArray *)events
@@ -29,11 +43,11 @@ static APIClient* _restClient = nil;
     return _events;
 }
 
-- (NSDictionary *)article:(NSString *)articleId
+- (Article *)article:(NSNumber *)articleId
 {
-    NSArray *news = [self news];
-    for (NSDictionary *article in news) {
-        if ([article objectForKey:@"id"] == articleId)
+    NSArray *articles = [self articles];
+    for (Article *article in articles) {
+        if (article.id == articleId)
             return article;
     }
     return nil;
@@ -49,17 +63,31 @@ static APIClient* _restClient = nil;
     return nil;
 }
 
-- (void)reloadNews
+- (void)reloadArticles
 {
-    _news = [[NSMutableArray alloc]init];
-
-    NSString *url = @"http://lvoug-webservice.herokuapp.com/api/articles";
+    _articles = [[NSArray alloc]init];
     
+    NSString *url = @"http://lvoug-webservice.herokuapp.com/api/articles";
     NSDictionary *list = [self getDataFromUrl:url];
     NSArray *articles = [list objectForKey:@"articles"];
     
-    for (id object in articles) {
-        [_news addObject:object];
+    for (id article in articles) {
+        NSManagedObject * articleId = [self article:[article objectForKey:@"id"]];
+        if (articleId != nil) {
+            [self.managedObjectContext deleteObject:articleId];
+        }
+        
+        Article * newArticle = [NSEntityDescription insertNewObjectForEntityForName:@"Article"
+                                                          inManagedObjectContext:self.managedObjectContext];
+        newArticle.id = [article objectForKey:@"id"];
+        newArticle.title = [article objectForKey:@"title"];
+        newArticle.text = [article objectForKey:@"description"];
+        newArticle.image = [article objectForKey:@"image"];
+        
+        NSError *error;
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
     }
 }
 

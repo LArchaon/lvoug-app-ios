@@ -1,5 +1,6 @@
 #import "ArticleVC.h"
 #import "APIClient.h"
+#import "Article.h"
 
 @interface ArticleVC ()
 
@@ -11,13 +12,13 @@
 {
     [super viewDidLoad];
     
-    NSDictionary *article = [[APIClient instance] article:_chosenArticle];
+    Article *article = [[APIClient instance] article:_chosenArticle];
     
-    self.articleTitle.text = [article objectForKey:@"title"];
-    self.articleText.text = [article objectForKey:@"description"];
+    self.articleTitle.text = article.title;
+    self.articleText.text = article.text;
 }
 
--(void)setArticle:(NSString *)articleId
+-(void)setArticle:(NSNumber *)articleId
 {
     _chosenArticle = articleId;
 }

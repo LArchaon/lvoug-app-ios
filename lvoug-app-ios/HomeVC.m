@@ -8,6 +8,7 @@
 
 - (void)viewDidLoad
 {
+    // if not data in storage, show "no data loaded"
     [super viewDidLoad];
     
     [self.names addObject:@"home1"];

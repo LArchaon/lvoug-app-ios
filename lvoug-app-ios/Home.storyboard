@@ -178,10 +178,10 @@
             </objects>
             <point key="canvasLocation" x="1602" y="-1184"/>
         </scene>
-        <!--NewsVC - News-->
+        <!--ArticlesVC - News-->
         <scene sceneID="AF8-yU-Ji3">
             <objects>
-                <tableViewController storyboardIdentifier="newsVC" title="News" id="paZ-2g-bxG" customClass="NewsVC" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="articlesVC" title="News" id="paZ-2g-bxG" customClass="ArticlesVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="152" sectionHeaderHeight="22" sectionFooterHeight="22" id="6w7-b6-uOs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

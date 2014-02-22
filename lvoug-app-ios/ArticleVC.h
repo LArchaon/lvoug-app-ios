@@ -2,8 +2,8 @@
 
 @interface ArticleVC : UIViewController
 
-@property(strong, nonatomic) NSString *chosenArticle;
--(void)setArticle:(NSString *)articleId;
+@property(strong, nonatomic) NSNumber *chosenArticle;
+-(void)setArticle:(NSNumber *)articleId;
 @property (weak, nonatomic) IBOutlet UITextView *articleTitle;
 @property (weak, nonatomic) IBOutlet UITextView *articleText;
 

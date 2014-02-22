@@ -1,22 +1,25 @@
 #import <Foundation/Foundation.h>
+#import "Article.h"
 
 @interface APIClient : NSObject
 
-@property (strong, nonatomic) NSMutableArray *news;
+@property (strong, nonatomic) NSArray *articles;
 @property (strong, nonatomic) NSMutableArray *events;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
 
 // singleton
 + (APIClient*)instance;
 
 // get data from cache or load from webservice if cache is empty
 - (NSMutableArray *)events;
-- (NSMutableArray *)news;
+- (NSArray *)articles;
 
-- (NSDictionary *)article:(NSString *)articleId;
+- (Article *)article:(NSNumber *)articleId;
 - (NSDictionary *)event:(NSString *)eventId;
 
 // force data load from webservice
-- (void)reloadNews;
+- (void)reloadArticles;
 - (void)reloadEvents;
 
 @end
