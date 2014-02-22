@@ -7,7 +7,6 @@
         <!--HomeVC - Home-->
         <scene sceneID="hgO-20-sTG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H5M-hL-Piw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="homeVC" id="ExS-zJ-Jrw" customClass="HomeVC" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Home" id="xwI-ig-NeS">
                         <barButtonItem key="leftBarButtonItem" image="menu-icon-1" id="Iuw-31-CDH">
@@ -16,7 +15,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="paZ-2g-bxG" kind="push" id="e7J-V9-Ff7"/>
+                        <segue destination="qvZ-rx-A5a" kind="push" id="4p2-Z8-1kA"/>
+                        <segue destination="99T-J1-SXt" kind="push" id="sfc-YN-hLv"/>
+                    </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H5M-hL-Piw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="531" y="-798"/>
         </scene>
@@ -31,7 +36,7 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventsCell" textLabel="Llx-Yf-Rp0" detailTextLabel="7pJ-My-9AY" imageView="fKg-7n-HPI" rowHeight="100" style="IBUITableViewCellStyleSubtitle" id="llq-Nj-UpA">
-                                <rect key="frame" x="0.0" y="22" width="320" height="100"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="llq-Nj-UpA" id="8Qd-rS-gBR">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="99"/>
@@ -175,7 +180,7 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsCell" textLabel="da0-ct-nf9" detailTextLabel="2Qz-Lr-Obo" imageView="v1z-Hp-q3i" rowHeight="152" style="IBUITableViewCellStyleSubtitle" id="36p-P9-hRj">
-                                <rect key="frame" x="0.0" y="22" width="320" height="152"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="152"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="36p-P9-hRj" id="Zid-4c-inH">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="151"/>
@@ -192,7 +197,7 @@
                                             <rect key="frame" x="15" y="40" width="70" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Qz-Lr-Obo">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="43" id="2Qz-Lr-Obo">
                                             <rect key="frame" x="100" y="79" width="43" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -279,7 +284,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ExS-zJ-Jrw" kind="relationship" relationship="rootViewController" id="d09-Kn-bP3"/>
+                        <segue destination="ExS-zJ-Jrw" kind="relationship" relationship="rootViewController" id="YJE-PC-476"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4t-Ct-kMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -311,19 +316,22 @@
                         <viewControllerLayoutGuide type="top" id="X86-2Q-whl"/>
                         <viewControllerLayoutGuide type="bottom" id="Ts6-6z-IxA"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="66W-Du-msf">
+                    <view key="view" contentMode="bottom" id="66W-Du-msf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="About text" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bft-az-wTC">
-                                <rect key="frame" x="20" y="137" width="280" height="214"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bft-az-wTC">
+                                <rect key="frame" x="20" y="118" width="280" height="341"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">Latvian Oracle User Group (LVOUG) ir neatkarīga organizācija, kas apvieno Oracle lietotājus, profesionāļus un citus interesantus Latvijā. Tās mērķis ir veicināt informācijas, zināšanu un pieredzes apmaiņu  starp grupas dalībniekiem, informēt par Oracle produktu uzlabojumiem un jauninājumiem kā arī nodrošināt atgriezenisko saiti ar Oracle.
+
+Par grupas dalībnieku var kļūt jebkurš interesents.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo_lvoug" translatesAutoresizingMaskIntoConstraints="NO" id="0TZ-eG-qip">
-                                <rect key="frame" x="92" y="70" width="137" height="59"/>
+                                <rect key="frame" x="92" y="51" width="137" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -338,6 +346,9 @@
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqk-6u-ciP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationBar contentMode="scaleToFill" id="Zgl-CA-1PT">
+                    <autoresizingMask key="autoresizingMask"/>
+                </navigationBar>
             </objects>
             <point key="canvasLocation" x="1062" y="-508"/>
         </scene>
