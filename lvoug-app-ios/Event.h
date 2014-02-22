@@ -7,7 +7,7 @@
 
 @property (nonatomic, retain) NSString * address;
 @property (nonatomic, retain) NSNumber * address_latitude;
-@property (nonatomic, retain) NSDecimalNumber * address_longitude;
+@property (nonatomic, retain) NSNumber * address_longitude;
 @property (nonatomic, retain) NSString * date;
 @property (nonatomic, retain) NSString * event_page;
 @property (nonatomic, retain) NSNumber * id;
@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSSet *eventContacts;
 @property (nonatomic, retain) NSSet *eventMaterials;
 @property (nonatomic, retain) NSSet *eventSponsors;
+
 @end
 
 @interface Event (CoreDataGeneratedAccessors)
