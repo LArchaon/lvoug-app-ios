@@ -1,6 +1,5 @@
 #import "EventVC.h"
-#import "APIClient.h"
-#define METERS_PER_MILE 1609.344
+#import "DataService.h"
 
 @interface EventVC ()
 
@@ -12,13 +11,13 @@
 {
     [super viewDidLoad];
     
-    NSDictionary *event = [[APIClient instance] event:_chosenEvent];
+    Event *event = [[DataService instance] event:_chosenEvent];
     
-    self.eventTitle.text = [event objectForKey:@"title"];
-    self.eventText.text = [event objectForKey:@"description"];
+    self.eventTitle.text = event.title;
+    self.eventText.text = event.text;
     
-    id latitude = [event objectForKey:@"address_latitude"];
-    id longitude = [event objectForKey:@"address_longitude"];
+    id latitude = event.address_latitude;
+    id longitude = event.address_longitude;
     [self initMapWithLatitude:[latitude doubleValue] andWithLongitude:[longitude doubleValue]];
 
 }
@@ -33,7 +32,7 @@
     zoomLocation.latitude = latitude;
     zoomLocation.longitude = longitude;
     
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 20000, 20000);
     
     MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
     annotationPoint.coordinate = annotationCoord;
@@ -43,7 +42,7 @@
     [self.eventMap addAnnotation:annotationPoint];
 }
 
--(void)setEvent:(NSString *)eventId
+-(void)setEvent:(NSNumber *)eventId
 {
     _chosenEvent = eventId;
 }

@@ -3,8 +3,8 @@
 
 @interface EventVC : UIViewController
 
-@property(strong, nonatomic) NSString *chosenEvent;
--(void)setEvent:(NSString *)eventId;
+@property(strong, nonatomic) NSNumber *chosenEvent;
+-(void)setEvent:(NSNumber *)eventId;
 @property (weak, nonatomic) IBOutlet UITextView *eventTitle;
 @property (weak, nonatomic) IBOutlet UITextView *eventText;
 @property (weak, nonatomic) IBOutlet MKMapView *eventMap;

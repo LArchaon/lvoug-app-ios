@@ -1,6 +1,6 @@
 #import "OUGAppDelegate.h"
 #import "MFSideMenuContainerViewController.h"
-#import "APIClient.h"
+#import "DataService.h"
 #import <CoreData/CoreData.h>
 
 @implementation OUGAppDelegate
@@ -20,7 +20,7 @@
     [container setLeftMenuViewController:leftSideMenuViewController];
     [container setCenterViewController:navigationController];
     
-    id client = [APIClient instance];
+    id client = [DataService instance];
     [client reloadArticles];
     [client reloadEvents];
     

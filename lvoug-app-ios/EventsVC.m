@@ -1,5 +1,5 @@
 #import "EventsVC.h"
-#import "APIClient.h"
+#import "DataService.h"
 #import "ImageHelper.h"
 #import "EventVC.h"
 
@@ -13,7 +13,7 @@
 {
     [super viewDidLoad];
 
-    NSMutableArray *eventList = [[APIClient instance] events];
+    NSArray *eventList = [[DataService instance] events];
     
     for (id event in eventList) {
         [self.events addObject:event];
@@ -47,12 +47,12 @@
 {
     UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"eventsCell"];
     
-    NSDictionary *event = self.events [indexPath.row];
+    Event *event = self.events [indexPath.row];
     
-    cell.textLabel.text = [event objectForKey:@"title"];
-    cell.detailTextLabel.text = [event objectForKey:@"description"];
+    cell.textLabel.text = event.title;
+    cell.detailTextLabel.text = event.text;
     
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [event objectForKey:@"logo"]]];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: event.logo]];
     cell.imageView.image = [ImageHelper imageWithImage:[UIImage imageWithData: imageData] scaledToSize:CGSizeMake(40.0, 40.0)];
     
     return cell;
@@ -62,8 +62,8 @@
 {
     if ([segue.identifier isEqualToString:@"openEvent"]) {
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-        NSDictionary *event = [self.events objectAtIndex:ip.row];
-        [segue.destinationViewController setEvent:[event objectForKey:@"id"]];
+        Event *event = [self.events objectAtIndex:ip.row];
+        [segue.destinationViewController setEvent: event.id];
     }
 }
 

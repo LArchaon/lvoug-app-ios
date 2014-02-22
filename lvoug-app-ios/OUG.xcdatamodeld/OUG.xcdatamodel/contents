@@ -24,9 +24,9 @@
         <attribute name="logo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="eventContacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Contact" inverseName="eventContact" inverseEntity="Contact" syncable="YES"/>
-        <relationship name="eventMaterials" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Material" inverseName="eventMaterial" inverseEntity="Material" syncable="YES"/>
-        <relationship name="eventSponsors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sponsor" inverseName="eventSponsor" inverseEntity="Sponsor" syncable="YES"/>
+        <relationship name="eventContacts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Contact" inverseName="eventContact" inverseEntity="Contact" syncable="YES"/>
+        <relationship name="eventMaterials" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Material" inverseName="eventMaterial" inverseEntity="Material" syncable="YES"/>
+        <relationship name="eventSponsors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Sponsor" inverseName="eventSponsor" inverseEntity="Sponsor" syncable="YES"/>
     </entity>
     <entity name="Material" representedClassName="Material" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>

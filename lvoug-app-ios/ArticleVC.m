@@ -1,5 +1,5 @@
 #import "ArticleVC.h"
-#import "APIClient.h"
+#import "DataService.h"
 #import "Article.h"
 
 @interface ArticleVC ()
@@ -12,7 +12,7 @@
 {
     [super viewDidLoad];
     
-    Article *article = [[APIClient instance] article:_chosenArticle];
+    Article *article = [[DataService instance] article:_chosenArticle];
     
     self.articleTitle.text = article.title;
     self.articleText.text = article.text;

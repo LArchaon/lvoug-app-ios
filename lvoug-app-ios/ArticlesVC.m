@@ -1,5 +1,5 @@
 #import "ArticlesVC.h"
-#import "APIClient.h"
+#import "DataService.h"
 #import "ArticleVC.h"
 #import "Article.h"
 
@@ -9,7 +9,7 @@
 {
     [super viewDidLoad];
     
-    self.articles = [[APIClient instance] articles];
+    self.articles = [[DataService instance] articles];
     
     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f]];
     // full length item delimiter hack
