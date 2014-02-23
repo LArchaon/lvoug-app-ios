@@ -19,7 +19,9 @@
     id latitude = event.address_latitude;
     id longitude = event.address_longitude;
     [self initMapWithLatitude:[latitude doubleValue] andWithLongitude:[longitude doubleValue]];
-
+    
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: event.logo]];
+    self.eventImage.image = [UIImage imageWithData: imageData];
 }
 
 -(void)initMapWithLatitude:(double)latitude andWithLongitude:(double)longitude
