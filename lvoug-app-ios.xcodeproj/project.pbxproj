@@ -31,6 +31,7 @@
 		88B0973F18B15F1200B2CC2E /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B0973E18B15F1200B2CC2E /* ImageHelper.m */; };
 		88C9286F18A7EE9E0089D375 /* ArticlesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9286C18A7EE9E0089D375 /* ArticlesVC.m */; };
 		88C9287018A7EE9E0089D375 /* SideMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9286E18A7EE9E0089D375 /* SideMenuVC.m */; };
+		88D570D718C214AB00D5C535 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D570D618C214AB00D5C535 /* DateHelper.m */; };
 		B517B90A1881F5A2000A53BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B9091881F5A2000A53BD /* Foundation.framework */; };
 		B517B90C1881F5A2000A53BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B90B1881F5A2000A53BD /* CoreGraphics.framework */; };
 		B517B90E1881F5A2000A53BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B90D1881F5A2000A53BD /* UIKit.framework */; };
@@ -103,6 +104,8 @@
 		88C9286C18A7EE9E0089D375 /* ArticlesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticlesVC.m; sourceTree = "<group>"; };
 		88C9286D18A7EE9E0089D375 /* SideMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuVC.h; sourceTree = "<group>"; };
 		88C9286E18A7EE9E0089D375 /* SideMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuVC.m; sourceTree = "<group>"; };
+		88D570D518C214AB00D5C535 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
+		88D570D618C214AB00D5C535 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
 		B517B9061881F5A2000A53BD /* lvoug-app-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lvoug-app-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B517B9091881F5A2000A53BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B517B90B1881F5A2000A53BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -273,6 +276,8 @@
 				B517B9381881F62F000A53BD /* Home.storyboard */,
 				88B0973D18B15F1200B2CC2E /* ImageHelper.h */,
 				88B0973E18B15F1200B2CC2E /* ImageHelper.m */,
+				88D570D518C214AB00D5C535 /* DateHelper.h */,
+				88D570D618C214AB00D5C535 /* DateHelper.m */,
 			);
 			path = "lvoug-app-ios";
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				B517B91A1881F5A2000A53BD /* OUGAppDelegate.m in Sources */,
 				886244A318BD372C00C5C13F /* MFSideMenuContainerViewController.m in Sources */,
 				884F195C18B9333F001A1396 /* JSONConverter.m in Sources */,
+				88D570D718C214AB00D5C535 /* DateHelper.m in Sources */,
 				884F197518B95261001A1396 /* Contact.m in Sources */,
 				886B7BAD18B0F4FB00A407EE /* HomeVC.m in Sources */,
 				88C9286F18A7EE9E0089D375 /* ArticlesVC.m in Sources */,

@@ -31,7 +31,7 @@ static DataService *_dataService = nil;
 {
     NSArray *articles = [self articles];
     for (Article *article in articles) {
-        if (article.id == articleId)
+        if ([article.id intValue] == [articleId intValue])
             return article;
     }
     return nil;
@@ -41,7 +41,7 @@ static DataService *_dataService = nil;
 {
     NSArray *events = [self events];
     for (Event *event in events) {
-        if (event.id == eventId)
+        if ([event.id intValue] == [eventId intValue])
             return event;
     }
     return nil;
@@ -62,7 +62,7 @@ static DataService *_dataService = nil;
 {
     NSArray *events = [self.apiClient getEvents];
     for (id event in events) {
-        // todo check if all associated objects remove when event is deleted.
+        // todo check if all associated objects removed when event is deleted.
         [self.dbClient removeExistingObject:[self event:[event objectForKey:@"id"]]];
         Event * newEvent = [self.dbClient createEvent];
         [JSONConverter constructEvent:newEvent fromJson:event];

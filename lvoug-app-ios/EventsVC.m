@@ -1,6 +1,7 @@
 #import "EventsVC.h"
 #import "DataService.h"
 #import "ImageHelper.h"
+#import "DateHelper.h"
 #import "EventVC.h"
 
 @interface EventsVC ()
@@ -48,7 +49,7 @@
     Event *event = self.events [indexPath.row];
     
     cell.textLabel.text = event.title;
-    cell.detailTextLabel.text = event.text;
+    cell.detailTextLabel.text = [DateHelper getDateFromUnixtime: event.date];
     
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: event.logo]];
     cell.imageView.image = [ImageHelper imageWithImage:[UIImage imageWithData: imageData] scaledToSize:CGSizeMake(40.0, 40.0)];
