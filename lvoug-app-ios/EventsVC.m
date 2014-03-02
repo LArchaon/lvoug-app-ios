@@ -51,9 +51,10 @@
     cell.textLabel.text = event.title;
     cell.detailTextLabel.text = [DateHelper getDateFromUnixtime: event.date];
     
+    /* uncomment to add event image to event list
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: event.logo]];
     cell.imageView.image = [ImageHelper imageWithImage:[UIImage imageWithData: imageData] scaledToSize:CGSizeMake(40.0, 40.0)];
-    
+    */
     return cell;
 }
 

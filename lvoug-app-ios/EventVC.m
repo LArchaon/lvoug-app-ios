@@ -15,6 +15,7 @@
     
     self.eventTitle.text = event.title;
     self.eventText.text = event.text;
+
     
     id latitude = event.address_latitude;
     id longitude = event.address_longitude;
@@ -22,6 +23,11 @@
     
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: event.logo]];
     self.eventImage.image = [UIImage imageWithData: imageData];
+    
+    [self.eventImage sizeToFit];
+    [self.eventTitle sizeToFit];
+    [self.eventText sizeToFit];
+    [self.eventMap sizeToFit];
 }
 
 -(void)initMapWithLatitude:(double)latitude andWithLongitude:(double)longitude

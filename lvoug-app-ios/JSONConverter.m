@@ -26,6 +26,7 @@
     article.title = [json objectForKey:@"title"];
     article.text = [json objectForKey:@"description"];
     article.image = [json objectForKey:@"image"];
+    article.date = [json objectForKey:@"created_at"];
 }
 
 +(void)constructSponsor:(Sponsor *)sponsor fromJson:(NSDictionary *)json

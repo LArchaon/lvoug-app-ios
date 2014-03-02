@@ -3,5 +3,6 @@
 @interface DateHelper : NSObject
 
 +(NSString *)getDateFromUnixtime:(NSString *)sDate;
++(NSString *)getDateTimeFromUnixtime:(NSString *)sDate;
 
 @end

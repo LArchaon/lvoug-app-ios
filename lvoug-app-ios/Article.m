@@ -7,5 +7,6 @@
 @dynamic image;
 @dynamic text;
 @dynamic title;
+@dynamic date;
 
 @end

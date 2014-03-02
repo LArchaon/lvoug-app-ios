@@ -8,5 +8,6 @@
 @property (nonatomic, retain) NSString * image;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * date;
 
 @end

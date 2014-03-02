@@ -17,13 +17,16 @@
     Article *article = [[DataService instance] article:_chosenArticle];
     
     self.articleTitle.text = article.title;
-    [self.articleTitle sizeToFit];
+
     self.articleText.text = article.text;
-    [self.articleText sizeToFit];
-    [self.articleImage sizeToFit];
+
     
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: article.image]];
     self.articleImage.image = [UIImage imageWithData: imageData];
+    
+    [self.articleImage sizeToFit];
+    [self.articleTitle sizeToFit];
+    [self.articleText sizeToFit];
 }
 
 -(void)setArticle:(NSNumber *)articleId
