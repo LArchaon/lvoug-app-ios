@@ -20,19 +20,6 @@
     [container setLeftMenuViewController:leftSideMenuViewController];
     [container setCenterViewController:navigationController];
     
-    id client = [DataService instance];
-    [client reloadArticles];
-    [client reloadEvents];
-    
-    /*
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            mb unblock screen here?
-        });
-     
-    });
-    */
-    
     return YES;
 }
 
