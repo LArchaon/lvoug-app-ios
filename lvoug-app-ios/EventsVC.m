@@ -49,7 +49,7 @@
     Event *event = self.events [indexPath.row];
     
     cell.textLabel.text = event.title;
-    cell.detailTextLabel.text = [DateHelper getDateFromUnixtime: event.date];
+    cell.detailTextLabel.text = [DateHelper getDateFromApiFormat:event.date];
     
     /* uncomment to add event image to event list
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: event.logo]];

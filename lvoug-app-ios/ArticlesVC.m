@@ -40,7 +40,7 @@
     
     Article *article = self.articles [indexPath.row];
     cell.textLabel.text = article.title;
-    cell.detailTextLabel.text = [DateHelper getDateFromUnixtime: article.date];
+    cell.detailTextLabel.text = [DateHelper getDateFromApiFormat:article.date];
     
     /* uncomment to show image in news list
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: article.image]];
