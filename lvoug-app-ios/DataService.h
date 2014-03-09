@@ -10,17 +10,25 @@
 @property (strong, nonatomic) APIClient *apiClient;
 @property (strong, nonatomic) DBClient *dbClient;
 
-- (NSArray *)events;
-- (NSArray *)articles;
-
 // singleton
 + (DataService*)instance;
 
+// get from DB
+- (NSArray *)events;
+- (NSArray *)articles;
 - (Article *)article:(NSNumber *)articleId;
 - (Event *)event:(NSNumber *)eventId;
 
-// force data load from webservice
-- (void)reloadArticles;
-- (void)reloadEvents;
+// async load data from webservice
+- (void)syncData;
+- (void)forceSyncData:(NSDate *)lastUpdateDate;
+
+// get from user storage
+- (void)storeLastUpdateDate:(NSDate *)date;
+- (NSDate *)getLastUpdateDate;
+
+- (void)storeLastLogoutDate:(NSDate *)date;
+- (NSDate *)getLastLogoutDate; // unused
+
 
 @end

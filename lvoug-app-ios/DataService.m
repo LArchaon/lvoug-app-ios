@@ -47,20 +47,56 @@ static DataService *_dataService = nil;
     return nil;
 }
 
-- (void)reloadArticles
+- (void)syncData {
+    NSDate *lastDate = [[DataService instance] getLastUpdateDate];
+    NSTimeInterval timeDiff = [[NSDate date] timeIntervalSinceDate:lastDate];
+    if (lastDate == nil || timeDiff > (60 * 60 * 24)) {
+        [self forceSyncData:lastDate];
+    }
+}
+
+- (void)forceSyncData:(NSDate *)lastUpdateDate {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
+        // todo add "update" icon to status bar
+        
+        Boolean articlesUpdated = FALSE;
+        Boolean eventsUpdated = FALSE;
+        
+        @try {
+            articlesUpdated = [self reloadArticles:lastUpdateDate];
+            eventsUpdated = [self reloadEvents:lastUpdateDate];
+            [self storeLastUpdateDate:[NSDate date]];
+        }
+        @catch (NSException *exception) {
+            // todo view popup with no internet connection
+        }
+        
+        // todo force view reload if:
+        // 1) we are on home screen
+        // 2) we are on news list and it was updated
+        // 3) we are on events list and it was updated
+    });
+}
+
+- (Boolean)reloadArticles:(NSDate *)lastUpdateDate
 {
-    NSArray *articles = [self.apiClient getArticles];
+    NSArray *articles = [self.apiClient getArticles:lastUpdateDate];
     for (id article in articles) {
         [self.dbClient removeExistingObject:[self article:[article objectForKey:@"id"]]];
         Article * newArticle = [self.dbClient createArticle];
         [JSONConverter constructArticle:newArticle fromJson:article];
         [self.dbClient saveAll];
     }
+    
+    if (articles.count == 0)
+        return FALSE;
+    else
+        return TRUE;
 }
 
-- (void)reloadEvents
+- (Boolean)reloadEvents:(NSDate *)lastUpdateDate
 {
-    NSArray *events = [self.apiClient getEvents];
+    NSArray *events = [self.apiClient getEvents:lastUpdateDate];
     for (id event in events) {
         // todo check if all associated objects removed when event is deleted.
         [self.dbClient removeExistingObject:[self event:[event objectForKey:@"id"]]];
@@ -96,7 +132,27 @@ static DataService *_dataService = nil;
         
         [self.dbClient saveAll];
     }
+    
+    if (events.count == 0)
+        return FALSE;
+    else
+        return TRUE;
 }
 
+- (void)storeLastLogoutDate:(NSDate *)date {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"kLastCloseDate"];
+}
+
+- (NSDate *)getLastLogoutDate {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"kLastCloseDate"];
+}
+
+- (void)storeLastUpdateDate:(NSDate *)date {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"kLastUpdateDate"];
+}
+
+- (NSDate *)getLastUpdateDate {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"kLastUpdateDate"];
+}
 
 @end

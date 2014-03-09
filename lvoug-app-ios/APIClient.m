@@ -2,17 +2,34 @@
 
 @implementation APIClient
 
-- (NSArray *)getArticles
+- (NSArray *)getArticles:(NSDate *)fetchFromDate
 {
-    NSString *url = @"http://lvoug-webservice.herokuapp.com/api/articles";
+    NSString *url;
+    if (fetchFromDate == nil) {
+        url = @"http://lvoug-webservice.herokuapp.com/api/articles";
+    } else {
+        NSMutableString *s1 = [NSMutableString init];
+        [s1 appendString:@"http://lvoug-webservice.herokuapp.com/api/articles?from="];
+        [s1 appendString:[NSString stringWithFormat:@"%f", [fetchFromDate timeIntervalSince1970]]];
+        url = s1;
+    }
+
     NSDictionary *list = [self getDataFromUrl:url];
     NSArray *articles = [list objectForKey:@"articles"];
     return articles;
 }
 
-- (NSArray *)getEvents
+- (NSArray *)getEvents:(NSDate *)fetchFromDate
 {
-    NSString *url = @"http://lvoug-webservice.herokuapp.com/api/events";
+    NSString *url;
+    if (fetchFromDate == nil) {
+        url = @"http://lvoug-webservice.herokuapp.com/api/events";
+    } else {
+        NSMutableString *s1 = [NSMutableString init];
+        [s1 appendString:@"http://lvoug-webservice.herokuapp.com/api/events?from="];
+        [s1 appendString:[NSString stringWithFormat:@"%f", [fetchFromDate timeIntervalSince1970]]];
+        url = s1;
+    }
     NSDictionary *list = [self getDataFromUrl:url];
     NSArray *events = [list objectForKey:@"events"];
     return events;
@@ -33,6 +50,7 @@
         return jsonDict;
     }
     
+    [NSException raise:@"Webservice error" format:@"webservice error"];
     return [[NSDictionary init] alloc];
 }
 

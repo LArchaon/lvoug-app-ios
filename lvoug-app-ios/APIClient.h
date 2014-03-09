@@ -2,7 +2,7 @@
 
 @interface APIClient : NSObject
 
-- (NSArray *)getEvents;
-- (NSArray *)getArticles;
+- (NSArray *)getEvents:(NSDate *)fetchFromDate;
+- (NSArray *)getArticles:(NSDate *)fetchFromDate;
 
 @end

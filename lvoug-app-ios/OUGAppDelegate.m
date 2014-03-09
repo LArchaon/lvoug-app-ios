@@ -20,7 +20,20 @@
     [container setLeftMenuViewController:leftSideMenuViewController];
     [container setCenterViewController:navigationController];
     
+    [[DataService instance] syncData];
     return YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    [[DataService instance] syncData];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    [[DataService instance] storeLastLogoutDate:[NSDate date]];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    [[DataService instance] storeLastLogoutDate:[NSDate date]];
 }
 
 - (NSManagedObjectContext *) managedObjectContext {
