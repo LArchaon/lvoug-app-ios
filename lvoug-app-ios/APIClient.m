@@ -4,14 +4,11 @@
 
 - (NSArray *)getArticles:(NSDate *)fetchFromDate
 {
-    NSString *url;
-    if (fetchFromDate == nil) {
-        url = @"http://lvoug-webservice.herokuapp.com/api/articles";
-    } else {
-        NSMutableString *s1 = [NSMutableString init];
-        [s1 appendString:@"http://lvoug-webservice.herokuapp.com/api/articles?from="];
-        [s1 appendString:[NSString stringWithFormat:@"%f", [fetchFromDate timeIntervalSince1970]]];
-        url = s1;
+    NSMutableString *url = [NSMutableString init];
+    [url appendString:@"http://lvoug-webservice.herokuapp.com/api/articles"];
+    if (fetchFromDate != nil) {
+        [url appendString:@"?from="];
+        [url appendString:[NSString stringWithFormat:@"%f", [fetchFromDate timeIntervalSince1970]]];
     }
 
     NSDictionary *list = [self getDataFromUrl:url];
@@ -21,14 +18,11 @@
 
 - (NSArray *)getEvents:(NSDate *)fetchFromDate
 {
-    NSString *url;
-    if (fetchFromDate == nil) {
-        url = @"http://lvoug-webservice.herokuapp.com/api/events";
-    } else {
-        NSMutableString *s1 = [NSMutableString init];
-        [s1 appendString:@"http://lvoug-webservice.herokuapp.com/api/events?from="];
-        [s1 appendString:[NSString stringWithFormat:@"%f", [fetchFromDate timeIntervalSince1970]]];
-        url = s1;
+    NSMutableString *url = [NSMutableString init];
+    [url appendString:@"http://lvoug-webservice.herokuapp.com/api/events"];
+    if (fetchFromDate != nil) {
+        [url appendString:@"?from="];
+        [url appendString:[NSString stringWithFormat:@"%f", [fetchFromDate timeIntervalSince1970]]];
     }
     NSDictionary *list = [self getDataFromUrl:url];
     NSArray *events = [list objectForKey:@"events"];

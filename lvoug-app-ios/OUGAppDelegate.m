@@ -12,7 +12,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
-    MFSideMenuContainerViewController *container = (MFSideMenuContainerViewController *) self.window.rootViewController;
+    MFSideMenuContainerViewController *container = [self getRootController];
     
     UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"navigationController"];
     UIViewController *leftSideMenuViewController = [storyboard instantiateViewControllerWithIdentifier:@"leftSideMenuViewController"];
@@ -24,8 +24,20 @@
     return YES;
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    [[DataService instance] syncData];
+- (UIViewController *)getCurrentVC {
+    MFSideMenuContainerViewController *container = [self getRootController];
+    return [[container centerViewController] topViewController];
+}
+
+- (void)reloadCurrentView {
+    UIView *currentview = [self getCurrentVC].view;
+    UIView *superview = currentview.superview;
+    [currentview removeFromSuperview];
+    [superview addSubview:currentview];
+}
+
+- (MFSideMenuContainerViewController *) getRootController {
+    return (MFSideMenuContainerViewController *) self.window.rootViewController;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

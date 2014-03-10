@@ -1,5 +1,8 @@
 #import "DataService.h"
 #import "OUGAppDelegate.h"
+#import "HomeVC.h"
+#import "ArticlesVC.h"
+#import "EventsVC.h"
 
 static DataService *_dataService = nil;
 
@@ -50,14 +53,14 @@ static DataService *_dataService = nil;
 - (void)syncData {
     NSDate *lastDate = [[DataService instance] getLastUpdateDate];
     NSTimeInterval timeDiff = [[NSDate date] timeIntervalSinceDate:lastDate];
-    if (lastDate == nil || timeDiff > (60 * 60 * 24)) {
+    if (lastDate == nil || timeDiff > (60 * 60)) {
         [self forceSyncData:lastDate];
     }
 }
 
 - (void)forceSyncData:(NSDate *)lastUpdateDate {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
-        // todo add "update" icon to status bar
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
         
         Boolean articlesUpdated = FALSE;
         Boolean eventsUpdated = FALSE;
@@ -68,13 +71,41 @@ static DataService *_dataService = nil;
             [self storeLastUpdateDate:[NSDate date]];
         }
         @catch (NSException *exception) {
-            // todo view popup with no internet connection
+            NSString *alertTitle;
+            NSString *alertText;
+            
+            if (lastUpdateDate == nil) {
+                alertTitle = @"No network connection";
+                alertText = @"You must be connected to the internet to use this app.";
+            } else {
+                alertTitle = @"No network connection";
+                alertText = @"Internet connection needed to load new data.";
+            }
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                            message:alertText
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        @finally {
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         }
         
-        // todo force view reload if:
-        // 1) we are on home screen
-        // 2) we are on news list and it was updated
-        // 3) we are on events list and it was updated
+        OUGAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        
+        Boolean isHomeVC = [[appDelegate getCurrentVC] isKindOfClass:[HomeVC class]];
+        Boolean isEventsVC = [[appDelegate getCurrentVC] isKindOfClass:[EventsVC class]];
+        Boolean isArticlesVC = [[appDelegate getCurrentVC] isKindOfClass:[ArticlesVC class]];
+        
+        if (isHomeVC && (eventsUpdated || articlesUpdated)) {
+            [appDelegate reloadCurrentView];
+        } else if (isEventsVC && eventsUpdated) {
+            [appDelegate reloadCurrentView];
+        } else if (isArticlesVC && articlesUpdated) {
+            [appDelegate reloadCurrentView];
+        }
     });
 }
 

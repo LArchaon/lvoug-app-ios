@@ -24,9 +24,6 @@
 - (void)forceSyncData:(NSDate *)lastUpdateDate;
 
 // get from user storage
-- (void)storeLastUpdateDate:(NSDate *)date;
-- (NSDate *)getLastUpdateDate;
-
 - (void)storeLastLogoutDate:(NSDate *)date;
 - (NSDate *)getLastLogoutDate; // unused
 
