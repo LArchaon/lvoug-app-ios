@@ -67,12 +67,20 @@
 
 - (Event *)get:(NSNumber *)eventId;
 {
-    NSArray *events = [self getAll];
-    for (Event *event in events) {
-        if ([event.id intValue] == [eventId intValue])
-            return event;
-    }
-    return nil;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"id == %@", eventId];
+    [fetchRequest setPredicate:predicate];
+    
+    NSEntityDescription *entity = [self.dbClient getQueryObject:@"Event"];
+    [fetchRequest setEntity:entity];
+    
+    NSArray * result = [self.dbClient getResult:fetchRequest];
+    
+    if (result.count == 0)
+        return nil;
+    else
+        return [result objectAtIndex:0];
 }
 
 

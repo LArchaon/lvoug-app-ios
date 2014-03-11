@@ -38,12 +38,20 @@
 
 - (Article *)get:(NSNumber *)articleId
 {
-    NSArray *articles = [self getAll];
-    for (Article *article in articles) {
-        if ([article.id intValue] == [articleId intValue])
-            return article;
-    }
-    return nil;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"id == %@", articleId];
+    [fetchRequest setPredicate:predicate];
+    
+    NSEntityDescription *entity = [self.dbClient getQueryObject:@"Article"];
+    [fetchRequest setEntity:entity];
+
+    NSArray * result = [self.dbClient getResult:fetchRequest];
+    
+    if (result.count == 0)
+        return nil;
+    else
+        return [result objectAtIndex:0];
 }
 
 @end
