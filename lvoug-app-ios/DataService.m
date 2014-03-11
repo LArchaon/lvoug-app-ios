@@ -13,7 +13,9 @@ static DataService *_dataService = nil;
     if (_dataService == nil) {
         _dataService = [[DataService alloc] init];
         OUGAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-        _dataService.dbClient = [[DBClient alloc] initWithContext:appDelegate.managedObjectContext];
+        DBClient * dbClient = [[DBClient alloc] initWithContext:appDelegate.managedObjectContext];
+        _dataService.articleRepository = [[ArticleRepository alloc] initWithDbClient:dbClient];
+        _dataService.eventRepository = [[EventRepository alloc] initWithDbClient:dbClient];
         _dataService.apiClient = [[APIClient alloc] init];
     }
     
@@ -22,32 +24,22 @@ static DataService *_dataService = nil;
 
 - (NSArray *)articles
 {
-    return [self.dbClient getArticles];
+    return [self.articleRepository getAll];
 }
 
 - (NSArray *)events
 {
-    return [self.dbClient getEvents];
+    return [self.eventRepository getAll];
 }
 
 - (Article *)article:(NSNumber *)articleId
 {
-    NSArray *articles = [self articles];
-    for (Article *article in articles) {
-        if ([article.id intValue] == [articleId intValue])
-            return article;
-    }
-    return nil;
+    return [self.articleRepository get:articleId];
 }
 
 - (Event *)event:(NSNumber *)eventId
 {
-    NSArray *events = [self events];
-    for (Event *event in events) {
-        if ([event.id intValue] == [eventId intValue])
-            return event;
-    }
-    return nil;
+    return [self.eventRepository get:eventId];
 }
 
 - (void)syncData {
@@ -112,12 +104,8 @@ static DataService *_dataService = nil;
 - (Boolean)reloadArticles:(NSDate *)lastUpdateDate
 {
     NSArray *articles = [self.apiClient getArticles:lastUpdateDate];
-    for (id article in articles) {
-        [self.dbClient removeExistingObject:[self article:[article objectForKey:@"id"]]];
-        Article * newArticle = [self.dbClient createArticle];
-        [JSONConverter constructArticle:newArticle fromJson:article];
-        [self.dbClient saveAll];
-    }
+
+    [self.articleRepository updateAll:articles];
     
     if (articles.count == 0)
         return FALSE;
@@ -128,42 +116,9 @@ static DataService *_dataService = nil;
 - (Boolean)reloadEvents:(NSDate *)lastUpdateDate
 {
     NSArray *events = [self.apiClient getEvents:lastUpdateDate];
-    for (id event in events) {
-        // todo check if all associated objects removed when event is deleted.
-        [self.dbClient removeExistingObject:[self event:[event objectForKey:@"id"]]];
-        Event * newEvent = [self.dbClient createEvent];
-        [JSONConverter constructEvent:newEvent fromJson:event];
     
-        NSArray *materials = [event objectForKey:@"event_materials"];
-        NSMutableArray *newMaterials = [[NSMutableArray alloc] init];
-        for (id material in materials) {
-            Material *newMaterial = [self.dbClient createMaterial];
-            [JSONConverter constructMaterial:newMaterial fromJson:material];
-            [newMaterials addObject:newMaterial];
-        }
-        newEvent.eventMaterials = [NSSet setWithArray:newMaterials];
-        
-        NSArray *contacts = [event objectForKey:@"contacts"];
-        NSMutableArray *newContacts = [[NSMutableArray alloc] init];
-        for (id contact in contacts) {
-            Contact *newContact = [self.dbClient createContact];
-            [JSONConverter constructContact:newContact fromJson:contact];
-            [newContacts addObject:newContact];
-        }
-        newEvent.eventContacts = [NSSet setWithArray:newContacts];
-        
-        NSArray *sponsors = [event objectForKey:@"sponsors"];
-        NSMutableArray *newSponsors = [[NSMutableArray alloc] init];
-        for (id sponsor in sponsors) {
-            Sponsor *newSponsor = [self.dbClient createSponsor];
-            [JSONConverter constructSponsor:newSponsor fromJson:sponsor];
-            [newSponsors addObject:newSponsor];
-        }
-        newEvent.eventSponsors = [NSSet setWithArray:newSponsors];
-        
-        [self.dbClient saveAll];
-    }
-    
+    [self.eventRepository updateAll:events];
+
     if (events.count == 0)
         return FALSE;
     else

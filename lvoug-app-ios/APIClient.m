@@ -4,8 +4,7 @@
 
 - (NSArray *)getArticles:(NSDate *)fetchFromDate
 {
-    NSMutableString *url = [NSMutableString init];
-    [url appendString:@"http://lvoug-webservice.herokuapp.com/api/articles"];
+    NSMutableString *url = [[NSMutableString alloc] initWithString:@"http://lvoug-webservice.herokuapp.com/api/articles"];
     if (fetchFromDate != nil) {
         [url appendString:@"?from="];
         [url appendString:[NSString stringWithFormat:@"%f", [fetchFromDate timeIntervalSince1970]]];
@@ -18,8 +17,7 @@
 
 - (NSArray *)getEvents:(NSDate *)fetchFromDate
 {
-    NSMutableString *url = [NSMutableString init];
-    [url appendString:@"http://lvoug-webservice.herokuapp.com/api/events"];
+    NSMutableString *url = [[NSMutableString alloc] initWithString:@"http://lvoug-webservice.herokuapp.com/api/events"];
     if (fetchFromDate != nil) {
         [url appendString:@"?from="];
         [url appendString:[NSString stringWithFormat:@"%f", [fetchFromDate timeIntervalSince1970]]];

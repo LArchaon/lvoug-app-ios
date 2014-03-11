@@ -2,13 +2,15 @@
 #import "Article.h"
 #import "Event.h"
 #import "APIClient.h"
-#import "DBClient.h"
 #import "JSONConverter.h"
+#import "EventRepository.h"
+#import "ArticleRepository.h"
 
 @interface DataService : NSObject
 
 @property (strong, nonatomic) APIClient *apiClient;
-@property (strong, nonatomic) DBClient *dbClient;
+@property (strong, nonatomic) EventRepository *eventRepository;
+@property (strong, nonatomic) ArticleRepository *articleRepository;
 
 // singleton
 + (DataService*)instance;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88088FB318CEE20A0050E3A9 /* EventRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 88088FB218CEE20A0050E3A9 /* EventRepository.m */; };
+		88088FB618CEE21C0050E3A9 /* ArticleRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 88088FB518CEE21C0050E3A9 /* ArticleRepository.m */; };
 		883145A818AD739800C71E68 /* BaseFirstLevelTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 883145A718AD739800C71E68 /* BaseFirstLevelTVC.m */; };
 		8843813918B7FA900034309D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8843813818B7FA900034309D /* CoreData.framework */; };
 		8843813C18B7FB0D0034309D /* OUG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8843813A18B7FB0D0034309D /* OUG.xcdatamodeld */; };
@@ -58,8 +60,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		883145A618AD739800C71E68 /* BaseFirstLevelTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseFirstLevelTVC.h; path = "lvoug-app-ios/BaseFirstLevelTVC.h"; sourceTree = "<group>"; };
-		883145A718AD739800C71E68 /* BaseFirstLevelTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseFirstLevelTVC.m; path = "lvoug-app-ios/BaseFirstLevelTVC.m"; sourceTree = "<group>"; };
+		88088FB118CEE20A0050E3A9 /* EventRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventRepository.h; sourceTree = "<group>"; };
+		88088FB218CEE20A0050E3A9 /* EventRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventRepository.m; sourceTree = "<group>"; };
+		88088FB418CEE21C0050E3A9 /* ArticleRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleRepository.h; sourceTree = "<group>"; };
+		88088FB518CEE21C0050E3A9 /* ArticleRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleRepository.m; sourceTree = "<group>"; };
+		883145A618AD739800C71E68 /* BaseFirstLevelTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFirstLevelTVC.h; sourceTree = "<group>"; };
+		883145A718AD739800C71E68 /* BaseFirstLevelTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFirstLevelTVC.m; sourceTree = "<group>"; };
 		8843813818B7FA900034309D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8843813B18B7FB0D0034309D /* OUG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OUG.xcdatamodel; sourceTree = "<group>"; };
 		884F195418B9251A001A1396 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
@@ -85,8 +91,8 @@
 		886244A018BD372C00C5C13F /* MFSideMenuShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuShadow.m; sourceTree = "<group>"; };
 		886244A118BD372C00C5C13F /* UIViewController+MFSideMenuAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MFSideMenuAdditions.h"; sourceTree = "<group>"; };
 		886244A218BD372C00C5C13F /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
-		886B7BA518AD786700A407EE /* BaseFirstLevelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseFirstLevelVC.h; path = "lvoug-app-ios/BaseFirstLevelVC.h"; sourceTree = "<group>"; };
-		886B7BA618AD786700A407EE /* BaseFirstLevelVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseFirstLevelVC.m; path = "lvoug-app-ios/BaseFirstLevelVC.m"; sourceTree = "<group>"; };
+		886B7BA518AD786700A407EE /* BaseFirstLevelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFirstLevelVC.h; sourceTree = "<group>"; };
+		886B7BA618AD786700A407EE /* BaseFirstLevelVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFirstLevelVC.m; sourceTree = "<group>"; };
 		886B7BA818AD796600A407EE /* EventsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsVC.h; sourceTree = "<group>"; };
 		886B7BA918AD796600A407EE /* EventsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsVC.m; sourceTree = "<group>"; wrapsLines = 0; };
 		886B7BAB18B0F4FB00A407EE /* HomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
@@ -151,12 +157,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		884F194418B8FAB6001A1396 /* model */ = {
+		88088FB718CF98DE0050E3A9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				884F196318B93420001A1396 /* domain */,
 				884F195A18B9333F001A1396 /* JSONConverter.h */,
 				884F195B18B9333F001A1396 /* JSONConverter.m */,
+				88B0973D18B15F1200B2CC2E /* ImageHelper.h */,
+				88B0973E18B15F1200B2CC2E /* ImageHelper.m */,
+				88D570D518C214AB00D5C535 /* DateHelper.h */,
+				88D570D618C214AB00D5C535 /* DateHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		88088FB818CF9A610050E3A9 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				883145A618AD739800C71E68 /* BaseFirstLevelTVC.h */,
+				883145A718AD739800C71E68 /* BaseFirstLevelTVC.m */,
+				886B7BA518AD786700A407EE /* BaseFirstLevelVC.h */,
+				886B7BA618AD786700A407EE /* BaseFirstLevelVC.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		884F194418B8FAB6001A1396 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				88088FB118CEE20A0050E3A9 /* EventRepository.h */,
+				88088FB218CEE20A0050E3A9 /* EventRepository.m */,
+				88088FB418CEE21C0050E3A9 /* ArticleRepository.h */,
+				88088FB518CEE21C0050E3A9 /* ArticleRepository.m */,
 				884F195418B9251A001A1396 /* APIClient.h */,
 				884F195518B9251A001A1396 /* APIClient.m */,
 				884F196418B93482001A1396 /* DBClient.h */,
@@ -164,10 +195,10 @@
 				884F195D18B933DC001A1396 /* DataService.h */,
 				884F195E18B933DC001A1396 /* DataService.m */,
 			);
-			name = model;
+			name = Services;
 			sourceTree = "<group>";
 		};
-		884F196318B93420001A1396 /* domain */ = {
+		884F196318B93420001A1396 /* Domain Entities */ = {
 			isa = PBXGroup;
 			children = (
 				8843813A18B7FB0D0034309D /* OUG.xcdatamodeld */,
@@ -182,7 +213,7 @@
 				884F196A18B95261001A1396 /* Sponsor.h */,
 				884F196B18B95261001A1396 /* Sponsor.m */,
 			);
-			name = domain;
+			name = "Domain Entities";
 			sourceTree = "<group>";
 		};
 		8862449B18BD372C00C5C13F /* MFSideMenu */ = {
@@ -199,21 +230,12 @@
 			path = MFSideMenu;
 			sourceTree = "<group>";
 		};
-		886B7BA418AD783700A407EE /* baseVC */ = {
+		886B7BB218B12D3800A407EE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				883145A618AD739800C71E68 /* BaseFirstLevelTVC.h */,
-				883145A718AD739800C71E68 /* BaseFirstLevelTVC.m */,
-				886B7BA518AD786700A407EE /* BaseFirstLevelVC.h */,
-				886B7BA618AD786700A407EE /* BaseFirstLevelVC.m */,
-			);
-			name = baseVC;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		886B7BB218B12D3800A407EE /* pageVCs */ = {
-			isa = PBXGroup;
-			children = (
+				88088FB818CF9A610050E3A9 /* Base */,
+				88C9286D18A7EE9E0089D375 /* SideMenuVC.h */,
+				88C9286E18A7EE9E0089D375 /* SideMenuVC.m */,
 				886B7BAB18B0F4FB00A407EE /* HomeVC.h */,
 				886B7BAC18B0F4FB00A407EE /* HomeVC.m */,
 				88C9286B18A7EE9E0089D375 /* ArticlesVC.h */,
@@ -225,7 +247,7 @@
 				88A2452818B3FB6300AC4FF6 /* EventVC.h */,
 				88A2452918B3FB6300AC4FF6 /* EventVC.m */,
 			);
-			name = pageVCs;
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		B517B8FD1881F5A2000A53BD = {
@@ -263,21 +285,16 @@
 		B517B90F1881F5A2000A53BD /* lvoug-app-ios */ = {
 			isa = PBXGroup;
 			children = (
-				8862449B18BD372C00C5C13F /* MFSideMenu */,
-				884F194418B8FAB6001A1396 /* model */,
 				B517B91B1881F5A2000A53BD /* Images.xcassets */,
+				8862449B18BD372C00C5C13F /* MFSideMenu */,
 				B517B9101881F5A2000A53BD /* Supporting Files */,
-				886B7BB218B12D3800A407EE /* pageVCs */,
-				886B7BA418AD783700A407EE /* baseVC */,
-				88C9286D18A7EE9E0089D375 /* SideMenuVC.h */,
-				88C9286E18A7EE9E0089D375 /* SideMenuVC.m */,
+				88088FB718CF98DE0050E3A9 /* Helpers */,
+				884F196318B93420001A1396 /* Domain Entities */,
+				884F194418B8FAB6001A1396 /* Services */,
+				886B7BB218B12D3800A407EE /* View Controllers */,
 				B517B9181881F5A2000A53BD /* OUGAppDelegate.h */,
 				B517B9191881F5A2000A53BD /* OUGAppDelegate.m */,
 				B517B9381881F62F000A53BD /* Home.storyboard */,
-				88B0973D18B15F1200B2CC2E /* ImageHelper.h */,
-				88B0973E18B15F1200B2CC2E /* ImageHelper.m */,
-				88D570D518C214AB00D5C535 /* DateHelper.h */,
-				88D570D618C214AB00D5C535 /* DateHelper.m */,
 			);
 			path = "lvoug-app-ios";
 			sourceTree = "<group>";
@@ -421,6 +438,7 @@
 				884F196F18B95261001A1396 /* Event.m in Sources */,
 				884F197218B95261001A1396 /* Material.m in Sources */,
 				886B7BAA18AD796600A407EE /* EventsVC.m in Sources */,
+				88088FB618CEE21C0050E3A9 /* ArticleRepository.m in Sources */,
 				B517B91A1881F5A2000A53BD /* OUGAppDelegate.m in Sources */,
 				886244A318BD372C00C5C13F /* MFSideMenuContainerViewController.m in Sources */,
 				884F195C18B9333F001A1396 /* JSONConverter.m in Sources */,
@@ -432,6 +450,7 @@
 				88A2452718B3F19200AC4FF6 /* ArticleVC.m in Sources */,
 				886244A518BD372C00C5C13F /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				88C9287018A7EE9E0089D375 /* SideMenuVC.m in Sources */,
+				88088FB318CEE20A0050E3A9 /* EventRepository.m in Sources */,
 				B517B9161881F5A2000A53BD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
