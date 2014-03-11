@@ -1,11 +1,5 @@
 #import "DBClient.h"
 
-#import "Event.h"
-#import "Contact.h"
-#import "Material.h"
-#import "Sponsor.h"
-#import "Article.h"
-
 @implementation DBClient
 
 - (id)initWithContext:(NSManagedObjectContext *)nsManagedObjectContext
@@ -14,34 +8,16 @@
     return self;
 }
 
-- (NSArray *)getArticles
+- (NSEntityDescription *)getQueryObject:(NSString *)className
 {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Article"
-                                              inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    NSSortDescriptor *sortByIdDesc = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
-    [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByIdDesc, nil]];
-    
-    NSError* error;
-    return [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    return [NSEntityDescription entityForName:className
+                       inManagedObjectContext:self.managedObjectContext];
 }
 
-- (NSArray *)getEvents
+- (NSManagedObject *)createDbObject:(NSString *)className
 {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event"
-                                              inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    NSSortDescriptor *sortByIdDesc = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
-    [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByIdDesc, nil]];
-    
-    NSError* error;
-    return [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    return [NSEntityDescription insertNewObjectForEntityForName:className
+                                         inManagedObjectContext:self.managedObjectContext];
 }
 
 - (void)removeExistingObject:(NSManagedObject *)object
@@ -51,34 +27,10 @@
     }
 }
 
-- (Article *)createArticle
+- (NSArray *)getResult:(NSFetchRequest *)request
 {
-    return [NSEntityDescription insertNewObjectForEntityForName:@"Article"
-                                  inManagedObjectContext:self.managedObjectContext];
-}
-
-- (Event *)createEvent
-{
-    return [NSEntityDescription insertNewObjectForEntityForName:@"Event"
-                                         inManagedObjectContext:self.managedObjectContext];
-}
-
-- (Material *)createMaterial
-{
-    return [NSEntityDescription insertNewObjectForEntityForName:@"Material"
-                                         inManagedObjectContext:self.managedObjectContext];
-}
-
-- (Sponsor *)createSponsor
-{
-    return [NSEntityDescription insertNewObjectForEntityForName:@"Sponsor"
-                                         inManagedObjectContext:self.managedObjectContext];
-}
-
-- (Contact *)createContact
-{
-    return [NSEntityDescription insertNewObjectForEntityForName:@"Contact"
-                                         inManagedObjectContext:self.managedObjectContext];
+    NSError* error;
+    return [self.managedObjectContext executeFetchRequest:request error:&error];
 }
 
 - (void)saveAll

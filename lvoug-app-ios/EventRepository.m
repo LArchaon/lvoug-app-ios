@@ -13,13 +13,13 @@
     for (id event in eventsFromApi) {
         // todo check if all associated objects removed when event is deleted.
         [self.dbClient removeExistingObject:[self get:[event objectForKey:@"id"]]];
-        Event * newEvent = [self.dbClient createEvent];
+        Event * newEvent = (Event *)[self.dbClient createDbObject:@"Event"];
         [JSONConverter constructEvent:newEvent fromJson:event];
         
         NSArray *materials = [event objectForKey:@"event_materials"];
         NSMutableArray *newMaterials = [[NSMutableArray alloc] init];
         for (id material in materials) {
-            Material *newMaterial = [self.dbClient createMaterial];
+            Material *newMaterial = (Material *)[self.dbClient createDbObject:@"Material"];
             [JSONConverter constructMaterial:newMaterial fromJson:material];
             [newMaterials addObject:newMaterial];
         }
@@ -28,7 +28,7 @@
         NSArray *contacts = [event objectForKey:@"contacts"];
         NSMutableArray *newContacts = [[NSMutableArray alloc] init];
         for (id contact in contacts) {
-            Contact *newContact = [self.dbClient createContact];
+            Contact *newContact = (Contact *)[self.dbClient createDbObject:@"Contact"];
             [JSONConverter constructContact:newContact fromJson:contact];
             [newContacts addObject:newContact];
         }
@@ -37,7 +37,7 @@
         NSArray *sponsors = [event objectForKey:@"sponsors"];
         NSMutableArray *newSponsors = [[NSMutableArray alloc] init];
         for (id sponsor in sponsors) {
-            Sponsor *newSponsor = [self.dbClient createSponsor];
+            Sponsor *newSponsor = (Sponsor *)[self.dbClient createDbObject:@"Sponsor"];
             [JSONConverter constructSponsor:newSponsor fromJson:sponsor];
             [newSponsors addObject:newSponsor];
         }
@@ -54,7 +54,15 @@
 
 - (NSArray *)getAll
 {
-    return [self.dbClient getEvents];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [self.dbClient getQueryObject:@"Event"];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortByIdDesc = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
+    [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByIdDesc, nil]];
+    
+    return [self.dbClient getResult:fetchRequest];
 }
 
 - (Event *)get:(NSNumber *)eventId;
@@ -66,5 +74,7 @@
     }
     return nil;
 }
+
+
 
 @end

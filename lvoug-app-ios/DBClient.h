@@ -1,10 +1,5 @@
 #import <Foundation/Foundation.h>
-
-#import "Event.h"
-#import "Contact.h"
-#import "Material.h"
-#import "Sponsor.h"
-#import "Article.h"
+#import <CoreData/CoreData.h>
 
 @interface DBClient : NSObject
 
@@ -12,17 +7,10 @@
 
 - (id)initWithContext:(NSManagedObjectContext *)nsManagedObjectContext;
 
-- (NSArray *)getEvents;
-- (NSArray *)getArticles;
-
+- (NSManagedObject *)createDbObject:(NSString *)className;
 - (void)removeExistingObject:(NSManagedObject *)object;
-
-- (Article *)createArticle;
-- (Event *)createEvent;
-- (Material *)createMaterial;
-- (Sponsor *)createSponsor;
-- (Contact *)createContact;
-
+- (NSEntityDescription *)getQueryObject:(NSString *) className;
+- (NSArray *)getResult:(NSFetchRequest *)request;
 - (void)saveAll;
 
 @end
