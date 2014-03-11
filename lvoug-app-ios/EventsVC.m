@@ -10,16 +10,12 @@
 {
     [super viewDidLoad];
 
-    NSArray *eventList = [[DataService instance] events];
-    
-    for (id event in eventList) {
-        [self.events addObject:event];
-    }
+    self.events = [[DataService instance] events];
     
     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f]];
 }
 
-- (NSMutableArray*)events
+- (NSArray*)events
 {
     if (_events == nil) {
         _events = [[NSMutableArray alloc]init];

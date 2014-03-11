@@ -2,6 +2,6 @@
 
 @interface EventsVC : BaseFirstLevelTVC
 
-@property (strong, nonatomic) NSMutableArray *events;
+@property (strong, nonatomic) NSArray *events;
 
 @end

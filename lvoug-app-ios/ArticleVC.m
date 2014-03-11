@@ -13,8 +13,19 @@
     
     self.articleTitle.text = article.title;
 
-    self.articleText.text = article.text;
-
+    NSMutableString * toString = [[NSMutableString alloc] initWithString:@"Article object contents: ["];
+    [toString appendString:@"\nID:"];
+    [toString appendString:[article.id stringValue]];
+    [toString appendString:@"\nTitle:"];
+    [toString appendString:article.title];
+    [toString appendString:@"\nText:"];
+    [toString appendString:article.text];
+    [toString appendString:@"\nDate:"];
+    [toString appendString:[article.date stringByAbbreviatingWithTildeInPath]];
+    [toString appendString:@"\nImage:"];
+    [toString appendString:article.image];
+    [toString appendString:@"\n]."];
+    self.articleText.text = toString;
     
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: article.image]];
     self.articleImage.image = [UIImage imageWithData: imageData];
