@@ -30,7 +30,7 @@
     [self.eventMap sizeToFit];
 }
 
--(void)initMapWithLatitude:(double)latitude andWithLongitude:(double)longitude
+- (void)initMapWithLatitude:(double)latitude andWithLongitude:(double)longitude
 {
     CLLocationCoordinate2D annotationCoord;
     annotationCoord.latitude = latitude;
@@ -50,7 +50,7 @@
     [self.eventMap addAnnotation:annotationPoint];
 }
 
--(void)setEvent:(NSNumber *)eventId
+- (void)setEvent:(NSNumber *)eventId
 {
     _chosenEvent = eventId;
 }

@@ -7,7 +7,7 @@
 
 @property (strong, nonatomic) DBClient *dbClient;
 
--(ArticleRepository *)initWithDbClient:(DBClient *)db;
+- (ArticleRepository *)initWithDbClient:(DBClient *)db;
 - (Boolean)updateAll:(NSArray *)articlesFromApi;
 - (Article *)get:(NSNumber *)articleId;
 - (NSArray *)getAll;

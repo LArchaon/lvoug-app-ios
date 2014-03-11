@@ -15,7 +15,7 @@
     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f]];
 }
 
--(NSArray*)articles
+- (NSArray*)articles
 {
     if (_articles == nil) {
         _articles = [[NSArray alloc]init];
@@ -23,7 +23,7 @@
     return _articles;
 }
 
--(NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.articles count];
 }
@@ -49,7 +49,7 @@
     return cell;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"openArticle"]) {
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];

@@ -3,12 +3,7 @@
 #import "Article.h"
 #import "ImageHelper.h"
 
-@interface ArticleVC ()
-
-@end
-
 @implementation ArticleVC
-
 
 - (void)viewDidLoad
 {
@@ -29,7 +24,7 @@
     [self.articleText sizeToFit];
 }
 
--(void)setArticle:(NSNumber *)articleId
+- (void)setArticle:(NSNumber *)articleId
 {
     _chosenArticle = articleId;
 }

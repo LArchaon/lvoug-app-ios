@@ -5,9 +5,6 @@
 
 @implementation SideMenuVC
 
-#pragma mark -
-#pragma mark - UITableViewDataSource
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -22,7 +19,7 @@
     [self.tableView setContentInset:UIEdgeInsetsMake(20, self.tableView.contentInset.left, self.tableView.contentInset.bottom, self.tableView.contentInset.right)];
 }
 
--(NSMutableArray*)menuItems
+- (NSMutableArray*)menuItems
 {
     if (_menuItems == nil) {
         _menuItems = [[NSMutableArray alloc]init];

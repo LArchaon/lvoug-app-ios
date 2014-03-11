@@ -7,7 +7,7 @@
 
 @implementation JSONConverter
 
-+(void)constructEvent:(Event *)event fromJson:(NSDictionary *)json
++ (void)constructEvent:(Event *)event fromJson:(NSDictionary *)json
 {
     event.id = [json objectForKey:@"id"];
     event.title = [json objectForKey:@"title"];
@@ -20,7 +20,7 @@
     event.date = [json objectForKey:@"event_date"];
 }
 
-+(void)constructArticle:(Article *)article fromJson:(NSDictionary *)json
++ (void)constructArticle:(Article *)article fromJson:(NSDictionary *)json
 {
     article.id = [json objectForKey:@"id"];
     article.title = [json objectForKey:@"title"];
@@ -29,21 +29,21 @@
     article.date = [json objectForKey:@"created_at"];
 }
 
-+(void)constructSponsor:(Sponsor *)sponsor fromJson:(NSDictionary *)json
++ (void)constructSponsor:(Sponsor *)sponsor fromJson:(NSDictionary *)json
 {
     sponsor.id = [json objectForKey:@"id"];
     sponsor.name = [json objectForKey:@"name"];
     sponsor.image = [json objectForKey:@"image"];
 }
 
-+(void)constructMaterial:(Material *)material fromJson:(NSDictionary *)json
++ (void)constructMaterial:(Material *)material fromJson:(NSDictionary *)json
 {
     material.id = [json objectForKey:@"id"];
     material.title = [json objectForKey:@"title"];
     material.url = [json objectForKey:@"url"];
 }
 
-+(void)constructContact:(Contact *)contact fromJson:(NSDictionary *)json
++ (void)constructContact:(Contact *)contact fromJson:(NSDictionary *)json
 {
     contact.id = [json objectForKey:@"id"];
     contact.name = [json objectForKey:@"name"];

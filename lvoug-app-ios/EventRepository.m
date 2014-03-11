@@ -2,7 +2,7 @@
 
 @implementation EventRepository
 
--(EventRepository *)initWithDbClient:(DBClient *)db
+- (EventRepository *)initWithDbClient:(DBClient *)db
 {
     self.dbClient = db;
     return self;

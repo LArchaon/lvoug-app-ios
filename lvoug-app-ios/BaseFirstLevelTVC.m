@@ -1,11 +1,3 @@
-//
-//  BaseFirstLevelVC.m
-//  lvoug-app-ios
-//
-//  Created by Daniel Louchansky on 13/02/14.
-//  Copyright (c) 2014 LVOUG. All rights reserved.
-//
-
 #import "BaseFirstLevelTVC.h"
 #import "MFSideMenu.h"
 

@@ -2,7 +2,7 @@
 
 @implementation ArticleRepository
 
--(ArticleRepository *)initWithDbClient:(DBClient *)db
+- (ArticleRepository *)initWithDbClient:(DBClient *)db
 {
     self.dbClient = db;
     return self;

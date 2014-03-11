@@ -7,7 +7,7 @@
 
 @property (strong, nonatomic) DBClient *dbClient;
 
--(EventRepository *)initWithDbClient:(DBClient *)db;
+- (EventRepository *)initWithDbClient:(DBClient *)db;
 - (Boolean)updateAll:(NSArray *)eventsFromApi;
 - (Event *)get:(NSNumber *)eventId;
 - (NSArray *)getAll;

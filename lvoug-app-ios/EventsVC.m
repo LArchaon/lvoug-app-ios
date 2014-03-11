@@ -4,10 +4,6 @@
 #import "DateHelper.h"
 #import "EventVC.h"
 
-@interface EventsVC ()
-
-@end
-
 @implementation EventsVC
 
 - (void)viewDidLoad
@@ -23,7 +19,7 @@
     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f]];
 }
 
--(NSMutableArray*)events
+- (NSMutableArray*)events
 {
     if (_events == nil) {
         _events = [[NSMutableArray alloc]init];
@@ -31,7 +27,7 @@
     return _events;
 }
 
--(NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.events count];
 }
@@ -58,7 +54,7 @@
     return cell;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"openEvent"]) {
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
