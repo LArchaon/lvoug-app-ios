@@ -1,5 +1,6 @@
 #import "EventVC.h"
 #import "DataService.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface EventVC ()
 
@@ -69,8 +70,7 @@
     id longitude = event.address_longitude;
     [self initMapWithLatitude:[latitude doubleValue] andWithLongitude:[longitude doubleValue]];
     
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: event.logo]];
-    self.eventImage.image = [UIImage imageWithData: imageData];
+    [self.eventImage setImageWithURL:[NSURL URLWithString:event.logo] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     [self.eventImage sizeToFit];
     [self.eventTitle sizeToFit];

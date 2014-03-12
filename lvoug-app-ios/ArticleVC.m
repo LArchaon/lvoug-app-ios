@@ -2,6 +2,7 @@
 #import "DataService.h"
 #import "Article.h"
 #import "ImageHelper.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation ArticleVC
 
@@ -27,8 +28,7 @@
     [toString appendString:@"\n]."];
     self.articleText.text = toString;
     
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: article.image]];
-    self.articleImage.image = [UIImage imageWithData: imageData];
+    [self.articleImage setImageWithURL:[NSURL URLWithString:article.image] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     [self.articleImage sizeToFit];
     [self.articleTitle sizeToFit];
