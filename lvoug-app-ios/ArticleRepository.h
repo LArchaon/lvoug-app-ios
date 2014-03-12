@@ -11,5 +11,6 @@
 - (Boolean)updateAll:(NSArray *)articlesFromApi;
 - (Article *)get:(NSNumber *)articleId;
 - (NSArray *)getAll;
+- (Article *)getNewest;
 
 @end

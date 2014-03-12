@@ -54,4 +54,22 @@
         return [result objectAtIndex:0];
 }
 
+- (Article *)getNewest
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+
+    NSSortDescriptor *sortByIdDesc = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
+    [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByIdDesc, nil]];
+    
+    NSEntityDescription *entity = [self.dbClient getQueryObject:@"Article"];
+    [fetchRequest setEntity:entity];
+    
+    NSArray * result = [self.dbClient getResult:fetchRequest];
+    
+    if (result.count == 0)
+        return nil;
+    else
+        return [result objectAtIndex:0];
+}
+
 @end

@@ -12,7 +12,7 @@
     
     // else show text 
     UITextView *uiText = [[UITextView alloc] initWithFrame:CGRectMake(0.0, 0.0, 100, 100)];
-    uiText.text = @"Please, push the refresh button";
+    uiText.text = @"Loading data from the internets...";
     self.view = uiText;
     
     

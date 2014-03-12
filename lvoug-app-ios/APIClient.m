@@ -1,4 +1,5 @@
 #import "APIClient.h"
+#import "DateHelper.h"
 
 @implementation APIClient
 
@@ -7,7 +8,7 @@
     NSMutableString *url = [[NSMutableString alloc] initWithString:@"http://lvoug-webservice.herokuapp.com/api/articles"];
     if (fetchFromDate != nil) {
         [url appendString:@"?from="];
-        [url appendString:[NSString stringWithFormat:@"%f", [fetchFromDate timeIntervalSince1970]]];
+        [url appendString:[DateHelper getStringApiFormatFromDate:fetchFromDate]];
     }
 
     NSDictionary *list = [self getDataFromUrl:url];
@@ -20,7 +21,7 @@
     NSMutableString *url = [[NSMutableString alloc] initWithString:@"http://lvoug-webservice.herokuapp.com/api/events"];
     if (fetchFromDate != nil) {
         [url appendString:@"?from="];
-        [url appendString:[NSString stringWithFormat:@"%f", [fetchFromDate timeIntervalSince1970]]];
+        [url appendString:[DateHelper getStringApiFormatFromDate:fetchFromDate]];
     }
     NSDictionary *list = [self getDataFromUrl:url];
     NSArray *events = [list objectForKey:@"events"];

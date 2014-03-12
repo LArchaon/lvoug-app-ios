@@ -2,10 +2,14 @@
 
 @interface DateHelper : NSObject
 
-+ (NSString *)getDateFromUnixtime:(NSString *)sDate;
-+ (NSString *)getDateTimeFromUnixtime:(NSString *)sDate;
++ (NSString *)getStringDateFromUnixtime:(NSString *)sDate;
++ (NSString *)getStringDateTimeFromUnixtime:(NSString *)sDate;
 
-+ (NSString *)getDateTimeFromApiFormat:(NSString *)sDate;
-+ (NSString *)getDateFromApiFormat:(NSString *)sDate;
++ (NSString *)getStringDateTimeFromApiFormat:(NSString *)sDate;
++ (NSString *)getStringDateFromApiFormat:(NSString *)sDate;
+
++ (NSString *)getStringApiFormatFromDate:(NSDate *)date;
+
++ (NSDate *)getDateFromApiFormat:(NSString *)sDate;
 
 @end

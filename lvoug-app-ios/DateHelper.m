@@ -2,12 +2,12 @@
 
 @implementation DateHelper
 
-+ (NSString *)getDateTimeFromApiFormat:(NSString *)sDate
++ (NSString *)getStringDateTimeFromApiFormat:(NSString *)sDate
 {
     return [self getFormat:@"dd.MM.yyyy HH:mm" fromApiFormat:sDate];
 }
 
-+ (NSString *)getDateFromApiFormat:(NSString *)sDate
++ (NSString *)getStringDateFromApiFormat:(NSString *)sDate
 {
     return [self getFormat:@"dd.MM.yyyy" fromApiFormat:sDate];
 }
@@ -21,13 +21,20 @@
     return [dateFormat stringFromDate:dateFromString];
 }
 
++ (NSString *)getStringApiFormatFromDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
+    return [dateFormat stringFromDate:date];
+}
 
-+ (NSString *)getDateTimeFromUnixtime:(NSString *)sDate
+
++ (NSString *)getStringDateTimeFromUnixtime:(NSString *)sDate
 {
     return [self getFormat:@"dd.MM.yyyy HH:mm" fromUnixtime:sDate];
 }
 
-+ (NSString *)getDateFromUnixtime:(NSString *)sDate
++ (NSString *)getStringDateFromUnixtime:(NSString *)sDate
 {
     return [self getFormat:@"dd.MM.yyyy" fromUnixtime:sDate];
 }
@@ -38,6 +45,12 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:format];
     return [dateFormatter stringFromDate:date];
+}
+
++ (NSDate *)getDateFromApiFormat:(NSString *)sDate {
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
+    return [dateFormat dateFromString:sDate];
 }
 
 @end

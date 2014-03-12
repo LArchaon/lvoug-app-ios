@@ -1,4 +1,5 @@
 #import "EventRepository.h"
+#import "DateHelper.h"
 
 @implementation EventRepository
 
@@ -83,6 +84,30 @@
         return [result objectAtIndex:0];
 }
 
+- (Event *)getUpcoming
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSSortDescriptor *sortByDateDesc = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByDateDesc, nil]];
+    
+    NSEntityDescription *entity = [self.dbClient getQueryObject:@"Event"];
+    [fetchRequest setEntity:entity];
+    
+    NSArray * result = [self.dbClient getResult:fetchRequest];
+    
+    if (result.count == 0)
+        return nil;
 
+    NSDate *now = [NSDate date];
+    Event *latestEvent = [result objectAtIndex:0];
+    NSTimeInterval interval = [now timeIntervalSinceDate: [DateHelper getDateFromApiFormat:latestEvent.date]];
+    
+    if (interval < 0) {
+        return latestEvent;
+    } else {
+        return nil;
+    }
+}
 
 @end

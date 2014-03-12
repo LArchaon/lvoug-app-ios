@@ -11,5 +11,6 @@
 - (Boolean)updateAll:(NSArray *)eventsFromApi;
 - (Event *)get:(NSNumber *)eventId;
 - (NSArray *)getAll;
+- (Event *)getUpcoming;
 
 @end

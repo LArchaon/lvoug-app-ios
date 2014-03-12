@@ -42,6 +42,16 @@ static DataService *_dataService = nil;
     return [self.eventRepository get:eventId];
 }
 
+- (Event *)upcomingEvent
+{
+    return [self.eventRepository getUpcoming];
+}
+
+-(Article *)newestArticle
+{
+    return [self.articleRepository getNewest];
+}
+
 - (void)syncData {
     NSDate *lastDate = [[DataService instance] getLastUpdateDate];
     NSTimeInterval timeDiff = [[NSDate date] timeIntervalSinceDate:lastDate];

@@ -10,6 +10,7 @@
 		88088FB318CEE20A0050E3A9 /* EventRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 88088FB218CEE20A0050E3A9 /* EventRepository.m */; };
 		88088FB618CEE21C0050E3A9 /* ArticleRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 88088FB518CEE21C0050E3A9 /* ArticleRepository.m */; };
 		883145A818AD739800C71E68 /* BaseFirstLevelTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 883145A718AD739800C71E68 /* BaseFirstLevelTVC.m */; };
+		8841FA2C18D0F9410003F24A /* EventListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8841FA2B18D0F9410003F24A /* EventListCell.m */; };
 		8843813918B7FA900034309D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8843813818B7FA900034309D /* CoreData.framework */; };
 		8843813C18B7FB0D0034309D /* OUG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8843813A18B7FB0D0034309D /* OUG.xcdatamodeld */; };
 		884F195618B9251A001A1396 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 884F195518B9251A001A1396 /* APIClient.m */; };
@@ -31,6 +32,8 @@
 		88A2452A18B3FB6400AC4FF6 /* EventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2452918B3FB6300AC4FF6 /* EventVC.m */; };
 		88B0973F18B15F1200B2CC2E /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B0973E18B15F1200B2CC2E /* ImageHelper.m */; };
 		88BB95D318C34B2A007CF95C /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BB95D218C34B2A007CF95C /* Article.m */; };
+		88BC1FC518D0E2DC002A249C /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BC1FC418D0E2DC002A249C /* SDWebImage.framework */; };
+		88BC1FC718D0E36D002A249C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BC1FC618D0E36D002A249C /* ImageIO.framework */; };
 		88C9286F18A7EE9E0089D375 /* ArticlesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9286C18A7EE9E0089D375 /* ArticlesVC.m */; };
 		88C9287018A7EE9E0089D375 /* SideMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9286E18A7EE9E0089D375 /* SideMenuVC.m */; };
 		88D570D718C214AB00D5C535 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D570D618C214AB00D5C535 /* DateHelper.m */; };
@@ -66,6 +69,8 @@
 		88088FB518CEE21C0050E3A9 /* ArticleRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleRepository.m; sourceTree = "<group>"; };
 		883145A618AD739800C71E68 /* BaseFirstLevelTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFirstLevelTVC.h; sourceTree = "<group>"; };
 		883145A718AD739800C71E68 /* BaseFirstLevelTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFirstLevelTVC.m; sourceTree = "<group>"; };
+		8841FA2A18D0F9410003F24A /* EventListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListCell.h; sourceTree = "<group>"; };
+		8841FA2B18D0F9410003F24A /* EventListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListCell.m; sourceTree = "<group>"; };
 		8843813818B7FA900034309D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8843813B18B7FB0D0034309D /* OUG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OUG.xcdatamodel; sourceTree = "<group>"; };
 		884F195418B9251A001A1396 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
@@ -106,6 +111,8 @@
 		88B0973E18B15F1200B2CC2E /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
 		88BB95D118C34B2A007CF95C /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		88BB95D218C34B2A007CF95C /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
+		88BC1FC418D0E2DC002A249C /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		88BC1FC618D0E36D002A249C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		88C9286B18A7EE9E0089D375 /* ArticlesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticlesVC.h; sourceTree = "<group>"; };
 		88C9286C18A7EE9E0089D375 /* ArticlesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticlesVC.m; sourceTree = "<group>"; };
 		88C9286D18A7EE9E0089D375 /* SideMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuVC.h; sourceTree = "<group>"; };
@@ -136,10 +143,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88BC1FC718D0E36D002A249C /* ImageIO.framework in Frameworks */,
 				8843813918B7FA900034309D /* CoreData.framework in Frameworks */,
 				886B7BB418B139FA00A407EE /* MapKit.framework in Frameworks */,
 				B517B90C1881F5A2000A53BD /* CoreGraphics.framework in Frameworks */,
 				B517B90E1881F5A2000A53BD /* UIKit.framework in Frameworks */,
+				88BC1FC518D0E2DC002A249C /* SDWebImage.framework in Frameworks */,
 				B517B90A1881F5A2000A53BD /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +188,15 @@
 				886B7BA618AD786700A407EE /* BaseFirstLevelVC.m */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		8841FA2918D0F9100003F24A /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				8841FA2A18D0F9410003F24A /* EventListCell.h */,
+				8841FA2B18D0F9410003F24A /* EventListCell.m */,
+			);
+			name = Elements;
 			sourceTree = "<group>";
 		};
 		884F194418B8FAB6001A1396 /* Services */ = {
@@ -233,6 +251,7 @@
 		886B7BB218B12D3800A407EE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8841FA2918D0F9100003F24A /* Elements */,
 				88088FB818CF9A610050E3A9 /* Base */,
 				88C9286D18A7EE9E0089D375 /* SideMenuVC.h */,
 				88C9286E18A7EE9E0089D375 /* SideMenuVC.m */,
@@ -272,6 +291,8 @@
 		B517B9081881F5A2000A53BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88BC1FC618D0E36D002A249C /* ImageIO.framework */,
+				88BC1FC418D0E2DC002A249C /* SDWebImage.framework */,
 				8843813818B7FA900034309D /* CoreData.framework */,
 				886B7BB318B139FA00A407EE /* MapKit.framework */,
 				B517B9091881F5A2000A53BD /* Foundation.framework */,
@@ -429,6 +450,7 @@
 				884F195618B9251A001A1396 /* APIClient.m in Sources */,
 				884F196618B93482001A1396 /* DBClient.m in Sources */,
 				886B7BA718AD786700A407EE /* BaseFirstLevelVC.m in Sources */,
+				8841FA2C18D0F9410003F24A /* EventListCell.m in Sources */,
 				883145A818AD739800C71E68 /* BaseFirstLevelTVC.m in Sources */,
 				8843813C18B7FB0D0034309D /* OUG.xcdatamodeld in Sources */,
 				884F196C18B95261001A1396 /* Sponsor.m in Sources */,
@@ -528,6 +550,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -560,6 +583,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -570,10 +594,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/bekas/Downloads,
+					"/Users/bekas/Dropbox/Projects/lvoug-app-ios",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "lvoug-app-ios/lvoug-app-ios-Prefix.pch";
 				INFOPLIST_FILE = "lvoug-app-ios/lvoug-app-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -585,10 +615,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/bekas/Downloads,
+					"/Users/bekas/Dropbox/Projects/lvoug-app-ios",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "lvoug-app-ios/lvoug-app-ios-Prefix.pch";
 				INFOPLIST_FILE = "lvoug-app-ios/lvoug-app-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
