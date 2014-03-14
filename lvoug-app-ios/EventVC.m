@@ -68,14 +68,15 @@
     
     id latitude = event.address_latitude;
     id longitude = event.address_longitude;
-    [self initMapWithLatitude:[latitude doubleValue] andWithLongitude:[longitude doubleValue]];
+    
+    if (latitude != nil && longitude != nil)
+        [self initMapWithLatitude:[latitude doubleValue] andWithLongitude:[longitude doubleValue]];
     
     [self.eventImage setImageWithURL:[NSURL URLWithString:event.logo] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     [self.eventImage sizeToFit];
     [self.eventTitle sizeToFit];
     [self.eventText sizeToFit];
-    [self.eventMap sizeToFit];
 }
 
 - (void)initMapWithLatitude:(double)latitude andWithLongitude:(double)longitude

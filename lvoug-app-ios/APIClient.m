@@ -36,7 +36,7 @@
                                               encoding:NSASCIIStringEncoding
                                                  error:&error];
     if(!error) {
-        NSData *jsonData = [json dataUsingEncoding:NSASCIIStringEncoding];
+        NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                  options:kNilOptions
                                                                    error:&error];

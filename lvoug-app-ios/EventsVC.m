@@ -45,7 +45,9 @@
     cell.textLabel.text = event.title;
     cell.detailTextLabel.text = [DateHelper getStringDateFromApiFormat:event.date];
     
-    [cell.imageView setImageWithURL:[NSURL URLWithString:event.logo] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    NSString * logoUrl = event.logo;
+    
+    [cell.imageView setImageWithURL:[NSURL URLWithString:logoUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     return cell;
 }

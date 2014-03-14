@@ -14,10 +14,15 @@
     event.text = [json objectForKey:@"description"];
     event.logo = [json objectForKey:@"logo"];
     event.address = [json objectForKey:@"address"];
-    event.address_latitude = [json objectForKey:@"address_latitude"];
-    event.address_longitude = [json objectForKey:@"address_longitude"];
     event.event_page = [json objectForKey:@"event_page"];
     event.date = [json objectForKey:@"event_date"];
+    
+    id latitude = [json objectForKey:@"address_latitude"];
+    if ([latitude isKindOfClass:[[NSNumber numberWithBool:YES] class]])
+        event.address_latitude = latitude;
+    id longitude = [json objectForKey:@"address_longitude"];
+    if ([longitude isKindOfClass:[[NSNumber numberWithBool:YES] class]])
+        event.address_longitude = longitude;
 }
 
 + (void)constructArticle:(Article *)article fromJson:(NSDictionary *)json
