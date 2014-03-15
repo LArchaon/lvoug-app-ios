@@ -15,11 +15,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="paZ-2g-bxG" kind="push" identifier="homeToArticle" id="e7J-V9-Ff7"/>
-                        <segue destination="qvZ-rx-A5a" kind="push" identifier="homeToAbout" id="4p2-Z8-1kA"/>
-                        <segue destination="99T-J1-SXt" kind="push" identifier="homeToEvent" id="sfc-YN-hLv"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5M-hL-Piw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,13 +65,14 @@
                             <outlet property="delegate" destination="99T-J1-SXt" id="Zwj-1e-Tts"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="YJy-Pp-p1Z">
+                    <navigationItem key="navigationItem" title="Events" id="YJy-Pp-p1Z">
                         <barButtonItem key="leftBarButtonItem" image="menu-icon-1" id="Jku-so-G1B">
                             <connections>
                                 <action selector="showLeftMenuPressed:" destination="99T-J1-SXt" id="Egf-cz-czD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nru-CR-TKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,6 +133,9 @@
                         </constraints>
                     </scrollView>
                     <navigationItem key="navigationItem" id="cal-VW-uWv"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="eventImage" destination="YdJ-Yb-nzZ" id="N4h-lE-4Db"/>
                         <outlet property="eventMap" destination="Ej7-4l-vmu" id="gId-ke-iCG"/>
@@ -153,49 +152,69 @@
             <objects>
                 <viewController storyboardIdentifier="articleVC" title="Article" id="d2D-y6-293" customClass="ArticleVC" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uGd-dD-b74"/>
-                        <viewControllerLayoutGuide type="bottom" id="Mbh-W2-deU"/>
+                        <viewControllerLayoutGuide type="top" id="Zmb-Ld-Sjq"/>
+                        <viewControllerLayoutGuide type="bottom" id="HFc-mU-te6"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" restorationIdentifier="articleContainer" id="Dhr-Cw-gSh" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view key="view" contentMode="scaleToFill" id="eat-Kj-BNi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="570"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" restorationIdentifier="articleImage" image="ico_news" translatesAutoresizingMaskIntoConstraints="NO" id="tdq-ln-CxF">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="articleScrollView" translatesAutoresizingMaskIntoConstraints="NO" id="NNk-FP-t5O">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="570"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" restorationIdentifier="articleText" text="Article text" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="IIc-h3-GOr">
+                                        <rect key="frame" x="30" y="170" width="260" height="380"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" restorationIdentifier="articleTitle" text="Article title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="e9h-m3-vKV">
+                                        <rect key="frame" x="30" y="100" width="260" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="articleImage" image="ico_news" translatesAutoresizingMaskIntoConstraints="NO" id="Pth-LQ-fFs">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="Ljp-mf-ld4"/>
+                                            <constraint firstAttribute="width" constant="320" id="X9e-Zs-7gL"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" restorationIdentifier="articleDate" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxd-qF-Rv3">
+                                        <rect key="frame" x="30" y="141" width="260" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.058823529409999999" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="DI7-hv-CFv"/>
-                                    <constraint firstAttribute="height" constant="80" id="OSW-Gz-vx0"/>
+                                    <constraint firstAttribute="trailing" secondItem="e9h-m3-vKV" secondAttribute="trailing" constant="30" id="6sm-nh-bv0"/>
+                                    <constraint firstAttribute="bottom" secondItem="IIc-h3-GOr" secondAttribute="bottom" constant="20" id="8QE-Mg-WMu"/>
+                                    <constraint firstItem="IIc-h3-GOr" firstAttribute="leading" secondItem="NNk-FP-t5O" secondAttribute="leading" constant="30" id="Jwq-Xh-tkx"/>
+                                    <constraint firstAttribute="trailing" secondItem="IIc-h3-GOr" secondAttribute="trailing" constant="30" id="YOH-Le-IDD"/>
+                                    <constraint firstItem="IIc-h3-GOr" firstAttribute="top" secondItem="Dxd-qF-Rv3" secondAttribute="bottom" constant="20" id="aob-gF-JOp"/>
+                                    <constraint firstItem="e9h-m3-vKV" firstAttribute="leading" secondItem="NNk-FP-t5O" secondAttribute="leading" constant="30" id="dXc-Uh-iVu"/>
+                                    <constraint firstItem="Dxd-qF-Rv3" firstAttribute="top" secondItem="e9h-m3-vKV" secondAttribute="bottom" constant="10" id="qAz-H8-YPU"/>
+                                    <constraint firstItem="e9h-m3-vKV" firstAttribute="top" secondItem="Pth-LQ-fFs" secondAttribute="bottom" constant="20" id="zeZ-4b-A2B"/>
                                 </constraints>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" restorationIdentifier="articleTitle" text="Article title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="WHL-uZ-qnf">
-                                <rect key="frame" x="30" y="97" width="260" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" restorationIdentifier="articleText" text="Article text" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="sQD-de-MbL">
-                                <rect key="frame" x="30" y="138" width="260" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="sQD-de-MbL" firstAttribute="leading" secondItem="Dhr-Cw-gSh" secondAttribute="leading" constant="30" id="VdX-hf-RTP"/>
-                            <constraint firstItem="WHL-uZ-qnf" firstAttribute="leading" secondItem="Dhr-Cw-gSh" secondAttribute="leading" constant="30" id="dEb-ds-pNc"/>
-                            <constraint firstAttribute="trailing" secondItem="WHL-uZ-qnf" secondAttribute="trailing" constant="30" id="j4U-1P-BV6"/>
-                            <constraint firstItem="WHL-uZ-qnf" firstAttribute="top" secondItem="tdq-ln-CxF" secondAttribute="bottom" constant="10" id="qse-iz-K9g"/>
-                            <constraint firstAttribute="trailing" secondItem="sQD-de-MbL" secondAttribute="trailing" constant="30" id="rdZ-cT-Um2"/>
-                            <constraint firstItem="sQD-de-MbL" firstAttribute="top" secondItem="WHL-uZ-qnf" secondAttribute="bottom" constant="10" id="seE-1R-2nq"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="h9a-uN-iuE"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="570"/>
                     <connections>
-                        <outlet property="articleImage" destination="tdq-ln-CxF" id="eKD-Fb-9LL"/>
-                        <outlet property="articleText" destination="sQD-de-MbL" id="DKR-cL-zAs"/>
-                        <outlet property="articleTitle" destination="WHL-uZ-qnf" id="tju-j3-aFE"/>
+                        <outlet property="articleDate" destination="Dxd-qF-Rv3" id="t9b-Gn-naQ"/>
+                        <outlet property="articleImage" destination="Pth-LQ-fFs" id="a0t-xG-Dbf"/>
+                        <outlet property="articleScrollView" destination="NNk-FP-t5O" id="ubm-IR-xSS"/>
+                        <outlet property="articleText" destination="IIc-h3-GOr" id="dsK-Oc-7WR"/>
+                        <outlet property="articleTitle" destination="e9h-m3-vKV" id="L0C-ck-9JD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="onF-LB-3NN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -247,13 +266,14 @@
                             <outlet property="delegate" destination="paZ-2g-bxG" id="ahm-cm-6ef"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="dH4-6o-kGp">
+                    <navigationItem key="navigationItem" title="News" id="dH4-6o-kGp">
                         <barButtonItem key="leftBarButtonItem" image="menu-icon-1" id="7Py-nh-Ixp">
                             <connections>
                                 <action selector="showLeftMenuPressed:" destination="paZ-2g-bxG" id="aK5-p4-iS1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aqx-bx-UTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -366,13 +386,14 @@ Par grupas dalībnieku var kļūt jebkurš interesents.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6oZ-KF-zMC">
+                    <navigationItem key="navigationItem" title="About" id="6oZ-KF-zMC">
                         <barButtonItem key="leftBarButtonItem" image="menu-icon-1" id="rYY-Pm-lrA">
                             <connections>
                                 <action selector="showLeftMenuPressed:" destination="qvZ-rx-A5a" id="YXi-Gk-oj4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqk-6u-ciP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationBar contentMode="scaleToFill" id="Zgl-CA-1PT">

@@ -11,7 +11,7 @@
     
     [self.menuItems addObject:@{@"title":@"Home", @"img":@"ico_home.png", @"controllerId": @"homeVC"}];
     [self.menuItems addObject:@{@"title":@"News", @"img":@"ico_news.png", @"controllerId": @"articlesVC"}];
-    [self.menuItems addObject:@{@"title":@"Past events", @"img":@"ico_events.png", @"controllerId": @"eventsVC"}];
+    [self.menuItems addObject:@{@"title":@"Events", @"img":@"ico_events.png", @"controllerId": @"eventsVC"}];
     [self.menuItems addObject:@{@"title":@"About", @"img":@"ico_about.png", @"controllerId": @"aboutVC"}];
     [self.menuItems addObject:@{@"title":@"Twitter", @"img":@"ico_twitter.png"}];
     

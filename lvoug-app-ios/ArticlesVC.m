@@ -33,10 +33,24 @@
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2)
+        return 90;
+    else
+        return 60;
+}
+
 - (UITableViewCell *) tableView:(UITableView *)tableView
           cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"newsCell"];
+    
+    if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2) {
+        [cell.textLabel setNumberOfLines:2];
+    } else {
+        [cell.textLabel setNumberOfLines:1];
+    }
     
     Article *article = self.articles [indexPath.row];
     cell.textLabel.text = article.title;

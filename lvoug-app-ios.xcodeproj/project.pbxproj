@@ -37,6 +37,7 @@
 		88C9286F18A7EE9E0089D375 /* ArticlesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9286C18A7EE9E0089D375 /* ArticlesVC.m */; };
 		88C9287018A7EE9E0089D375 /* SideMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9286E18A7EE9E0089D375 /* SideMenuVC.m */; };
 		88D570D718C214AB00D5C535 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D570D618C214AB00D5C535 /* DateHelper.m */; };
+		88E9116C18D47F9E0075BCA7 /* APIClientMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E9116B18D47F9E0075BCA7 /* APIClientMock.m */; };
 		B517B90A1881F5A2000A53BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B9091881F5A2000A53BD /* Foundation.framework */; };
 		B517B90C1881F5A2000A53BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B90B1881F5A2000A53BD /* CoreGraphics.framework */; };
 		B517B90E1881F5A2000A53BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B90D1881F5A2000A53BD /* UIKit.framework */; };
@@ -120,6 +121,8 @@
 		88C9286E18A7EE9E0089D375 /* SideMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuVC.m; sourceTree = "<group>"; };
 		88D570D518C214AB00D5C535 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
 		88D570D618C214AB00D5C535 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
+		88E9116A18D47F9E0075BCA7 /* APIClientMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClientMock.h; sourceTree = "<group>"; };
+		88E9116B18D47F9E0075BCA7 /* APIClientMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClientMock.m; sourceTree = "<group>"; };
 		B517B9061881F5A2000A53BD /* lvoug-app-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lvoug-app-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B517B9091881F5A2000A53BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B517B90B1881F5A2000A53BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -209,6 +212,8 @@
 				88088FB518CEE21C0050E3A9 /* ArticleRepository.m */,
 				884F195418B9251A001A1396 /* APIClient.h */,
 				884F195518B9251A001A1396 /* APIClient.m */,
+				88E9116A18D47F9E0075BCA7 /* APIClientMock.h */,
+				88E9116B18D47F9E0075BCA7 /* APIClientMock.m */,
 				884F196418B93482001A1396 /* DBClient.h */,
 				884F196518B93482001A1396 /* DBClient.m */,
 				884F195D18B933DC001A1396 /* DataService.h */,
@@ -459,6 +464,7 @@
 				886244A418BD372C00C5C13F /* MFSideMenuShadow.m in Sources */,
 				88A2452A18B3FB6400AC4FF6 /* EventVC.m in Sources */,
 				88B0973F18B15F1200B2CC2E /* ImageHelper.m in Sources */,
+				88E9116C18D47F9E0075BCA7 /* APIClientMock.m in Sources */,
 				884F196F18B95261001A1396 /* Event.m in Sources */,
 				884F197218B95261001A1396 /* Material.m in Sources */,
 				886B7BAA18AD796600A407EE /* EventsVC.m in Sources */,

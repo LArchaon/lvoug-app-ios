@@ -24,6 +24,10 @@
     return YES;
 }
 
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    [[DataService instance] syncData];
+}
+
 - (UIViewController *)getCurrentVC {
     MFSideMenuContainerViewController *container = [self getRootController];
     return [[container centerViewController] topViewController];
