@@ -1,5 +1,6 @@
 #import "EventVC.h"
 #import "DataService.h"
+#import "DateHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface EventVC ()
@@ -11,11 +12,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    Event *event = [[DataService instance] event:_chosenEvent];
-    
-    self.eventTitle.text = event.title;
-    
+
+    /*
     NSMutableString * toString = [[NSMutableString alloc] initWithString:@"Event object contents: ["];
     [toString appendString:@"\nID:"];
     [toString appendString:[event.id stringValue]];
@@ -60,22 +58,27 @@
         [toString appendString:@" "];
         [toString appendString:eventSponsor.name];
     }
+    */
+    //self.articleScrollView.contentSize = CGSizeMake([self window_width], self.articleText.frame.origin.y + self.articleText.frame.size.height);
     
+    //self.articleScrollView.contentSize = CGSizeMake([self window_width], 1000);
     
+    Event *event = [[DataService instance] event:_chosenEvent];
     
-    self.eventText.text = toString;
-
+    self.eventTitle.text = event.title;
+    self.eventText.text = event.text;
+    self.eventDate.text = [DateHelper getStringDateTimeFromApiFormat:event.date];
+    [self.eventImage setImageWithURL:[NSURL URLWithString:event.logo] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     id latitude = event.address_latitude;
     id longitude = event.address_longitude;
-    
     if (latitude != nil && longitude != nil)
         [self initMapWithLatitude:[latitude doubleValue] andWithLongitude:[longitude doubleValue]];
     
-    [self.eventImage setImageWithURL:[NSURL URLWithString:event.logo] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    
     [self.eventImage sizeToFit];
     [self.eventTitle sizeToFit];
+    [self.eventDate sizeToFit];
+    [self.eventPageButton sizeToFit];
     [self.eventText sizeToFit];
 }
 
