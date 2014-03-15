@@ -2,6 +2,7 @@
 #import "Article.h"
 #import "Event.h"
 #import "APIClient.h"
+#import "APIClientMock.h"
 #import "JSONConverter.h"
 #import "EventRepository.h"
 #import "ArticleRepository.h"

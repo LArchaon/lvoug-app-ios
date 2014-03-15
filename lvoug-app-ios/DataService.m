@@ -16,7 +16,8 @@ static DataService *_dataService = nil;
         DBClient * dbClient = [[DBClient alloc] initWithContext:appDelegate.managedObjectContext];
         _dataService.articleRepository = [[ArticleRepository alloc] initWithDbClient:dbClient];
         _dataService.eventRepository = [[EventRepository alloc] initWithDbClient:dbClient];
-        _dataService.apiClient = [[APIClient alloc] init];
+        //_dataService.apiClient = [[APIClient alloc] init];
+        _dataService.apiClient = [[APIClientMock alloc] init];
     }
     
     return _dataService;

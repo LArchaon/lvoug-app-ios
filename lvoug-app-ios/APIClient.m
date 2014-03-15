@@ -33,7 +33,7 @@
     NSError *error = nil;
     NSURL *url = [NSURL URLWithString:stringUrl];
     NSString *json = [NSString stringWithContentsOfURL:url
-                                              encoding:NSASCIIStringEncoding
+                                              encoding:NSUTF8StringEncoding
                                                  error:&error];
     if(!error) {
         NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
