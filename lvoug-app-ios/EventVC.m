@@ -3,108 +3,72 @@
 #import "DateHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface EventVC ()
-
-@end
-
 @implementation EventVC
+
+NSString * eventPage;
+NSNumber * eventLatitude;
+NSNumber * eventLongitude;
+NSNumber * chosenEvent;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    /*
-    NSMutableString * toString = [[NSMutableString alloc] initWithString:@"Event object contents: ["];
-    [toString appendString:@"\nID:"];
-    [toString appendString:[event.id stringValue]];
-    [toString appendString:@"\nTitle:"];
-    [toString appendString:event.title];
-    [toString appendString:@"\nText:"];
-    [toString appendString:event.text];
-    [toString appendString:@"\nDate:"];
-    [toString appendString:[event.date stringByAbbreviatingWithTildeInPath]];
-    [toString appendString:@"\nLogo:"];
-    [toString appendString:event.logo];
-    [toString appendString:@"\nPage:"];
-    [toString appendString:event.event_page];
-    [toString appendString:@"\nAddress:"];
-    [toString appendString:event.address];
-    [toString appendString:@"\nLatitude:"];
-    [toString appendString:[event.address_latitude stringValue]];
-    [toString appendString:@"\nLongitude:"];
-    [toString appendString:[event.address_longitude stringValue]];
-    [toString appendString:@"\n]."];
-    
-    for (id material in event.eventMaterials) {
-        Material * eventMaterial = (Material *)material;
-        [toString appendString:@"\nMaterial:"];
-        [toString appendString:[eventMaterial.id stringValue]];
-        [toString appendString:@" "];
-        [toString appendString:eventMaterial.url];
-    }
-    
-    for (id contact in event.eventContacts) {
-        Contact * eventContact = (Contact *)contact;
-        [toString appendString:@"\nContact:"];
-        [toString appendString:[eventContact.id stringValue]];
-        [toString appendString:@" "];
-        [toString appendString:eventContact.name];
-    }
-    
-    for (id sponsor in event.eventSponsors) {
-        Sponsor * eventSponsor = (Sponsor *)sponsor;
-        [toString appendString:@"\nSponsor:"];
-        [toString appendString:[eventSponsor.id stringValue]];
-        [toString appendString:@" "];
-        [toString appendString:eventSponsor.name];
-    }
-    */
-    //self.articleScrollView.contentSize = CGSizeMake([self window_width], self.articleText.frame.origin.y + self.articleText.frame.size.height);
-    
-    //self.articleScrollView.contentSize = CGSizeMake([self window_width], 1000);
-    
-    Event *event = [[DataService instance] event:_chosenEvent];
+    Event *event = [[DataService instance] event:chosenEvent];
     
     self.eventTitle.text = event.title;
     self.eventText.text = event.text;
+    
+    NSMutableString * address = [[NSMutableString alloc] init];
+    [address appendString:event.address];
+    [address appendString:@" (get directions)"];
+    self.eventAddress.text = address;
     self.eventDate.text = [DateHelper getStringDateTimeFromApiFormat:event.date];
+    
     [self.eventImage setImageWithURL:[NSURL URLWithString:event.logo] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
-    id latitude = event.address_latitude;
-    id longitude = event.address_longitude;
-    if (latitude != nil && longitude != nil)
-        [self initMapWithLatitude:[latitude doubleValue] andWithLongitude:[longitude doubleValue]];
+    eventPage = event.event_page;
+    self.eventPageButton.backgroundColor = [UIColor colorWithRed:255/255.0f green:129/255.0f blue:127/255.0f alpha:1.0f];
+    [self.eventPageButton addTarget:self action:@selector(openUrlOnButtonPress) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.eventImage sizeToFit];
-    [self.eventTitle sizeToFit];
-    [self.eventDate sizeToFit];
-    [self.eventPageButton sizeToFit];
-    [self.eventText sizeToFit];
+    eventLatitude = event.address_latitude;
+    eventLongitude = event.address_longitude;
+
+    if (eventLatitude != nil && eventLongitude != nil) {
+        self.eventAddress.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+        self.eventAddress.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMapOnAddressPress)];
+        [self.eventAddress addGestureRecognizer:tapGesture];
+    }
 }
 
-- (void)initMapWithLatitude:(double)latitude andWithLongitude:(double)longitude
+- (void)openUrlOnButtonPress
 {
-    CLLocationCoordinate2D annotationCoord;
-    annotationCoord.latitude = latitude;
-    annotationCoord.longitude = longitude;
-    
-    CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = latitude;
-    zoomLocation.longitude = longitude;
-    
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 20000, 20000);
-    
-    MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
-    annotationPoint.coordinate = annotationCoord;
-    annotationPoint.title = self.eventTitle.text;
-    
-    [self.eventMap setRegion:viewRegion animated:YES];
-    [self.eventMap addAnnotation:annotationPoint];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: eventPage]];
+}
+
+- (void)openMapOnAddressPress
+{
+    Class mapItemClass = [MKMapItem class];
+    if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
+    {
+        CLLocationCoordinate2D coordinate =
+        CLLocationCoordinate2DMake([eventLatitude doubleValue], [eventLongitude doubleValue]);
+        MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate
+                                                       addressDictionary:nil];
+        MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+        [mapItem setName:@"Venue"];
+        
+        NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking};
+        MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+        [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem]
+                       launchOptions:launchOptions];
+    }
 }
 
 - (void)setEvent:(NSNumber *)eventId
 {
-    _chosenEvent = eventId;
+    chosenEvent = eventId;
 }
 
 @end

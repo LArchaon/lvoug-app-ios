@@ -38,6 +38,7 @@
 		88C9287018A7EE9E0089D375 /* SideMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9286E18A7EE9E0089D375 /* SideMenuVC.m */; };
 		88D570D718C214AB00D5C535 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D570D618C214AB00D5C535 /* DateHelper.m */; };
 		88E9116C18D47F9E0075BCA7 /* APIClientMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E9116B18D47F9E0075BCA7 /* APIClientMock.m */; };
+		88E9116D18D5BC000075BCA7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E9116F18D5BC000075BCA7 /* Home.storyboard */; };
 		B517B90A1881F5A2000A53BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B9091881F5A2000A53BD /* Foundation.framework */; };
 		B517B90C1881F5A2000A53BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B90B1881F5A2000A53BD /* CoreGraphics.framework */; };
 		B517B90E1881F5A2000A53BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B90D1881F5A2000A53BD /* UIKit.framework */; };
@@ -50,7 +51,6 @@
 		B517B9251881F5A2000A53BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B517B90D1881F5A2000A53BD /* UIKit.framework */; };
 		B517B92D1881F5A2000A53BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B517B92B1881F5A2000A53BD /* InfoPlist.strings */; };
 		B517B92F1881F5A2000A53BD /* lvoug_app_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B517B92E1881F5A2000A53BD /* lvoug_app_iosTests.m */; };
-		B517B9391881F62F000A53BD /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B517B9381881F62F000A53BD /* Home.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +123,7 @@
 		88D570D618C214AB00D5C535 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
 		88E9116A18D47F9E0075BCA7 /* APIClientMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClientMock.h; sourceTree = "<group>"; };
 		88E9116B18D47F9E0075BCA7 /* APIClientMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClientMock.m; sourceTree = "<group>"; };
+		88E9116E18D5BC000075BCA7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Home.storyboard; sourceTree = "<group>"; };
 		B517B9061881F5A2000A53BD /* lvoug-app-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lvoug-app-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B517B9091881F5A2000A53BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B517B90B1881F5A2000A53BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -139,7 +140,6 @@
 		B517B92A1881F5A2000A53BD /* lvoug-app-iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "lvoug-app-iosTests-Info.plist"; sourceTree = "<group>"; };
 		B517B92C1881F5A2000A53BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B517B92E1881F5A2000A53BD /* lvoug_app_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lvoug_app_iosTests.m; sourceTree = "<group>"; };
-		B517B9381881F62F000A53BD /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,7 +322,7 @@
 				886B7BB218B12D3800A407EE /* View Controllers */,
 				B517B9181881F5A2000A53BD /* OUGAppDelegate.h */,
 				B517B9191881F5A2000A53BD /* OUGAppDelegate.m */,
-				B517B9381881F62F000A53BD /* Home.storyboard */,
+				88E9116F18D5BC000075BCA7 /* Home.storyboard */,
 			);
 			path = "lvoug-app-ios";
 			sourceTree = "<group>";
@@ -432,7 +432,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B517B9391881F62F000A53BD /* Home.storyboard in Resources */,
+				88E9116D18D5BC000075BCA7 /* Home.storyboard in Resources */,
 				B517B9141881F5A2000A53BD /* InfoPlist.strings in Resources */,
 				B517B91C1881F5A2000A53BD /* Images.xcassets in Resources */,
 			);
@@ -504,6 +504,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		88E9116F18D5BC000075BCA7 /* Home.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88E9116E18D5BC000075BCA7 /* en */,
+			);
+			name = Home.storyboard;
+			sourceTree = "<group>";
+		};
 		B517B9121881F5A2000A53BD /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

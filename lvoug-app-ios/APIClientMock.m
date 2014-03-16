@@ -175,8 +175,8 @@
 - (NSArray *)generateCoordinates
 {
     NSMutableArray *coords = [[NSMutableArray alloc] init];
-    id coord1 = [[NSNumber alloc] initWithDouble:100.00];
-    id coord2 = [[NSNumber alloc] initWithDouble:150.00];
+    NSNumber *coord1 = [[NSNumber alloc] initWithDouble:100.00];
+    NSNumber *coord2 = [[NSNumber alloc] initWithDouble:150.00];
     
     [coords addObject:[[NSArray alloc] initWithObjects:coord1, coord2, nil]];
     [coords addObject:[[NSArray alloc] initWithObjects:coord2, coord1, nil]];
