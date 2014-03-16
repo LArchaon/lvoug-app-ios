@@ -6,26 +6,20 @@
 
 @implementation ArticlesVC
 
+NSArray * _articles;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.articles = [[DataService instance] articles];
+    _articles = [[DataService instance] articles];
     
     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f]];
 }
 
-- (NSArray*)articles
-{
-    if (_articles == nil) {
-        _articles = [[NSArray alloc]init];
-    }
-    return _articles;
-}
-
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.articles count];
+    return [_articles count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -52,7 +46,7 @@
         [cell.textLabel setNumberOfLines:1];
     }
     
-    Article *article = self.articles [indexPath.row];
+    Article *article = _articles [indexPath.row];
     cell.textLabel.text = article.title;
     cell.detailTextLabel.text = [DateHelper getStringDateFromApiFormat:article.date];
     
@@ -63,7 +57,7 @@
 {
     if ([segue.identifier isEqualToString:@"openArticle"]) {
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-        Article *article = [self.articles objectAtIndex:ip.row];
+        Article *article = [_articles objectAtIndex:ip.row];
         [segue.destinationViewController setArticle:article.id];
     }
 }

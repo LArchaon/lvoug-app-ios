@@ -8,26 +8,28 @@
 
 @implementation EventsVC
 
+NSArray * _events;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    self.events = [[DataService instance] events];
+    _events = [[DataService instance] events];
     
     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.0-1.0 green:0.0-1.0 blue:0.0-1.0 alpha:0.5f]];
 }
 
-- (NSArray*)events
-{
-    if (_events == nil) {
-        _events = [[NSMutableArray alloc]init];
-    }
-    return _events;
-}
-
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.events count];
+    return [_events count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2)
+        return 140;
+    else
+        return 80;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -40,14 +42,14 @@
 {
     EventListCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"eventsCell"];
     
-    Event *event = self.events [indexPath.row];
+    Event *event = _events [indexPath.row];
     
     cell.textLabel.text = event.title;
     cell.detailTextLabel.text = [DateHelper getStringDateFromApiFormat:event.date];
     
-    NSString * logoUrl = event.logo;
-    
-    [cell.imageView setImageWithURL:[NSURL URLWithString:logoUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2) {
+        [cell.imageView setImageWithURL:[NSURL URLWithString:event.logo] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    }
     
     return cell;
 }
@@ -56,7 +58,7 @@
 {
     if ([segue.identifier isEqualToString:@"openEvent"]) {
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-        Event *event = [self.events objectAtIndex:ip.row];
+        Event *event = [_events objectAtIndex:ip.row];
         [segue.destinationViewController setEvent: event.id];
     }
 }

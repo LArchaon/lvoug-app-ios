@@ -10,6 +10,7 @@
     
     // todo if data in db, show it
     
+    
     // else show text 
     UITextView *uiText = [[UITextView alloc] initWithFrame:CGRectMake(0.0, 0.0, 100, 100)];
     uiText.text = @"Loading data from the internets...";

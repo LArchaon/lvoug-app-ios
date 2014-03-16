@@ -3,6 +3,4 @@
 
 @interface ArticlesVC : BaseFirstLevelTVC
 
-@property (strong, nonatomic) NSArray *articles;
-
 @end

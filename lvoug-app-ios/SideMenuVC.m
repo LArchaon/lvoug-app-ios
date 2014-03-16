@@ -5,6 +5,8 @@
 
 @implementation SideMenuVC
 
+NSMutableArray * _menuItems;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
