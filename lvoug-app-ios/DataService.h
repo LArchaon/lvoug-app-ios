@@ -30,5 +30,8 @@
 - (void)storeLastLogoutDate:(NSDate *)date;
 - (NSDate *)getLastLogoutDate; // unused
 
+- (Article *)newestArticle;
+- (Event *)upcomingEvent;
+
 
 @end

@@ -34,10 +34,16 @@
 }
 
 - (void)reloadCurrentView {
-    UIView *currentview = [self getCurrentVC].view;
-    UIView *superview = currentview.superview;
-    [currentview removeFromSuperview];
-    [superview addSubview:currentview];
+    UIViewController *currentVC = [self getCurrentVC];
+    if ([currentVC isViewLoaded]) {
+        [currentVC reloadInputViews];
+        UIView *currentview = currentVC.view;
+        UIView *superview = currentview.superview;
+        [currentview removeFromSuperview];
+        [superview addSubview:currentview];
+    } else {
+        [self reloadCurrentView];
+    }
 }
 
 - (MFSideMenuContainerViewController *) getRootController {

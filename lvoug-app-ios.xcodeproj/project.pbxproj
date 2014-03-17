@@ -34,6 +34,7 @@
 		88BB95D318C34B2A007CF95C /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BB95D218C34B2A007CF95C /* Article.m */; };
 		88BC1FC518D0E2DC002A249C /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BC1FC418D0E2DC002A249C /* SDWebImage.framework */; };
 		88BC1FC718D0E36D002A249C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BC1FC618D0E36D002A249C /* ImageIO.framework */; };
+		88C85BFE18D7A3EB008B49D3 /* AboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C85BFD18D7A3EB008B49D3 /* AboutVC.m */; };
 		88C9286F18A7EE9E0089D375 /* ArticlesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9286C18A7EE9E0089D375 /* ArticlesVC.m */; };
 		88C9287018A7EE9E0089D375 /* SideMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9286E18A7EE9E0089D375 /* SideMenuVC.m */; };
 		88D570D718C214AB00D5C535 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D570D618C214AB00D5C535 /* DateHelper.m */; };
@@ -115,6 +116,8 @@
 		88BB95D218C34B2A007CF95C /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		88BC1FC418D0E2DC002A249C /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		88BC1FC618D0E36D002A249C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		88C85BFC18D7A3EB008B49D3 /* AboutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutVC.h; sourceTree = "<group>"; };
+		88C85BFD18D7A3EB008B49D3 /* AboutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutVC.m; sourceTree = "<group>"; };
 		88C9286B18A7EE9E0089D375 /* ArticlesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticlesVC.h; sourceTree = "<group>"; };
 		88C9286C18A7EE9E0089D375 /* ArticlesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticlesVC.m; sourceTree = "<group>"; };
 		88C9286D18A7EE9E0089D375 /* SideMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuVC.h; sourceTree = "<group>"; };
@@ -271,6 +274,8 @@
 				88A2452618B3F19200AC4FF6 /* ArticleVC.m */,
 				88A2452818B3FB6300AC4FF6 /* EventVC.h */,
 				88A2452918B3FB6300AC4FF6 /* EventVC.m */,
+				88C85BFC18D7A3EB008B49D3 /* AboutVC.h */,
+				88C85BFD18D7A3EB008B49D3 /* AboutVC.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -482,6 +487,7 @@
 				88C9287018A7EE9E0089D375 /* SideMenuVC.m in Sources */,
 				88088FB318CEE20A0050E3A9 /* EventRepository.m in Sources */,
 				B517B9161881F5A2000A53BD /* main.m in Sources */,
+				88C85BFE18D7A3EB008B49D3 /* AboutVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

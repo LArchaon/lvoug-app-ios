@@ -26,10 +26,7 @@ NSArray * _events;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2)
-        return 140;
-    else
-        return 80;
+    return 150;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -44,12 +41,10 @@ NSArray * _events;
     
     Event *event = _events [indexPath.row];
     
-    cell.textLabel.text = event.title;
-    cell.detailTextLabel.text = [DateHelper getStringDateFromApiFormat:event.date];
+    cell.eventTitle.text = event.title;
+    cell.eventDate.text = [DateHelper getStringDateFromApiFormat:event.date];
     
-    if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2) {
-        [cell.imageView setImageWithURL:[NSURL URLWithString:event.logo] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    }
+    [cell.eventImage setImageWithURL:[NSURL URLWithString:event.logo] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     return cell;
 }

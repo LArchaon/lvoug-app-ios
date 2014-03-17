@@ -48,7 +48,7 @@ static DataService *_dataService = nil;
     return [self.eventRepository getUpcoming];
 }
 
--(Article *)newestArticle
+- (Article *)newestArticle
 {
     return [self.articleRepository getNewest];
 }
@@ -95,7 +95,7 @@ static DataService *_dataService = nil;
         @finally {
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         }
-        
+        /*
         OUGAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
         
         Boolean isHomeVC = [[appDelegate getCurrentVC] isKindOfClass:[HomeVC class]];
@@ -109,6 +109,7 @@ static DataService *_dataService = nil;
         } else if (isArticlesVC && articlesUpdated) {
             [appDelegate reloadCurrentView];
         }
+          */
     });
 }
 
