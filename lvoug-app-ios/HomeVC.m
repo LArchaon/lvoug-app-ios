@@ -7,19 +7,20 @@
 {
     [super viewDidLoad];
     
-    UITextView *uiText = [[UITextView alloc] initWithFrame:CGRectMake(0.0, 0.0, 100, 100)];
     Article *newestArticle = [[DataService instance] newestArticle];
     Event *upcomingEvent = [[DataService instance] upcomingEvent];
-    if (upcomingEvent != nil) {
-        
-        uiText.text = @"Upcoming event";
-    } else if (newestArticle != nil) {
-        uiText.text = @"Newest article";
-    } else {
-        uiText.text = @"Loading data from the internets...";
-    }
     
-    self.view = uiText;
+    // todo add info to view
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshView)
+                                                 name:@"articlesUpdated"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshView)
+                                                 name:@"eventsUpdated"
+                                               object:nil];
 }
 
 @end

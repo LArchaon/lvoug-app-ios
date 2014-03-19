@@ -27,4 +27,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)refreshView
+{
+    UIViewController *currentVC = self;
+    if (currentVC.isViewLoaded && currentVC.view.window) {
+        UIView *currentview = currentVC.view;
+        UIView *superview = currentview.superview;
+        [currentview removeFromSuperview];
+        [superview addSubview:currentview];
+    }
+}
+
 @end

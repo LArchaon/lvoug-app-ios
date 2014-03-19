@@ -95,21 +95,16 @@ static DataService *_dataService = nil;
         @finally {
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         }
-        /*
-        OUGAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-        
-        Boolean isHomeVC = [[appDelegate getCurrentVC] isKindOfClass:[HomeVC class]];
-        Boolean isEventsVC = [[appDelegate getCurrentVC] isKindOfClass:[EventsVC class]];
-        Boolean isArticlesVC = [[appDelegate getCurrentVC] isKindOfClass:[ArticlesVC class]];
-        
-        if (isHomeVC && (eventsUpdated || articlesUpdated)) {
-            [appDelegate reloadCurrentView];
-        } else if (isEventsVC && eventsUpdated) {
-            [appDelegate reloadCurrentView];
-        } else if (isArticlesVC && articlesUpdated) {
-            [appDelegate reloadCurrentView];
+
+             
+        if (eventsUpdated) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"eventsUpdated" object:nil];
         }
-          */
+        
+        if (articlesUpdated) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"articlesUpdated" object:nil];
+        }
+        
     });
 }
 

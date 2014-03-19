@@ -3,5 +3,6 @@
 @interface BaseFirstLevelVC : UIViewController
 
 - (IBAction)showLeftMenuPressed:(id)sender;
+- (void)refreshView;
 
 @end
