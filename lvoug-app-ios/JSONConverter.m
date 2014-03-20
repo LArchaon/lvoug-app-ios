@@ -17,11 +17,11 @@
     event.event_page = [json objectForKey:@"event_page"];
     event.date = [json objectForKey:@"event_date"];
     
-    id latitude = [json objectForKey:@"address_latitude"];
-    if ([latitude isKindOfClass:[[NSNumber numberWithBool:YES] class]])
+    NSNumber *latitude = [json objectForKey:@"address_latitude"];
+    if ([latitude isKindOfClass:[[NSNumber numberWithDouble:1.0] class]])
         event.address_latitude = latitude;
-    id longitude = [json objectForKey:@"address_longitude"];
-    if ([longitude isKindOfClass:[[NSNumber numberWithBool:YES] class]])
+    NSNumber *longitude = [json objectForKey:@"address_longitude"];
+    if ([longitude isKindOfClass:[[NSNumber numberWithDouble:1.0] class]])
         event.address_longitude = longitude;
 }
 

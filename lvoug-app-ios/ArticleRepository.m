@@ -11,11 +11,20 @@
 - (Boolean)updateAll:(NSArray *)eventsFromApi
 {
     for (id article in eventsFromApi) {
-        [self.dbClient removeExistingObject:[self get:[article objectForKey:@"id"]]];
+        NSLog(@"Updating article - removing existing object");
+        Article *oldArticle = [self get:[article objectForKey:@"id"]];
+        NSLog(@"Existing object:");
+        if (oldArticle == nil) NSLog(@"nil"); else NSLog(oldArticle.title);
+        [self.dbClient removeExistingObject:oldArticle];
+        NSLog(@"Updating article - creating new object");
         Article * newArticle = (Article *)[self.dbClient createDbObject:@"Article"];
+        NSLog(@"Updating article - adding fields to new object");
         [JSONConverter constructArticle:newArticle fromJson:article];
+        NSLog(@"Updating article - saving");
         [self.dbClient saveAll];
     }
+    
+    NSLog(@"article DB update done");
     
     if (eventsFromApi.count == 0)
         return FALSE;

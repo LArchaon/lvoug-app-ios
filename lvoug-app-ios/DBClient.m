@@ -23,7 +23,9 @@
 - (void)removeExistingObject:(NSManagedObject *)object
 {
     if (object != nil) {
+        NSLog(@"removing existing object");
         [self.managedObjectContext deleteObject:object];
+        NSLog(@"removed");
     }
 }
 

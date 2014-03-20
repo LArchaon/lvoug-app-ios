@@ -23,10 +23,7 @@ NSArray * contacts;
     self.eventTitle.text = event.title;
     self.eventText.text = event.text;
     
-    NSMutableString * address = [[NSMutableString alloc] init];
-    [address appendString:event.address];
-    [address appendString:@" (get directions)"];
-    self.eventAddress.text = address;
+    self.eventAddress.text = event.address;
     self.eventDate.text = [DateHelper getStringDateTimeFromApiFormat:event.date];
     
     [self.eventImage setImageWithURL:[NSURL URLWithString:event.logo] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
@@ -38,11 +35,10 @@ NSArray * contacts;
     eventLatitude = event.address_latitude;
     eventLongitude = event.address_longitude;
 
-    if (eventLatitude != nil && eventLongitude != nil) {
-        self.eventAddress.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
-        self.eventAddress.userInteractionEnabled = YES;
+    if (eventLatitude != nil && eventLongitude != nil && [eventLatitude intValue] != 0 && [eventLongitude intValue] != 0) {
+        self.mapIcon.userInteractionEnabled = YES;
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMapOnAddressPress)];
-        [self.eventAddress addGestureRecognizer:tapGesture];
+        [self.mapIcon addGestureRecognizer:tapGesture];
     }
     
     contacts = [NSArray arrayWithArray:[event.eventContacts allObjects]];
@@ -67,16 +63,18 @@ NSArray * contacts;
     if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
     {
         CLLocationCoordinate2D coordinate =
-        CLLocationCoordinate2DMake([eventLatitude doubleValue], [eventLongitude doubleValue]);
+            CLLocationCoordinate2DMake([eventLatitude doubleValue], [eventLongitude doubleValue]);
+        
         MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate
                                                        addressDictionary:nil];
+        
         MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
         [mapItem setName:@"Venue"];
         
-        NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking};
-        MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
-        [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem]
-                       launchOptions:launchOptions];
+        //NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking};
+        //MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+        [MKMapItem openMapsWithItems:@[mapItem]
+                       launchOptions:nil];
     }
 }
 

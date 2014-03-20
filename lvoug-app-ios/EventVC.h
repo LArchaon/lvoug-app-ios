@@ -9,6 +9,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventDate;
 @property (weak, nonatomic) IBOutlet UIButton *eventPageButton;
 @property (weak, nonatomic) IBOutlet UILabel *eventAddress;
+@property (weak, nonatomic) IBOutlet UIImageView *mapIcon;
 
 @property (weak, nonatomic) IBOutlet UITableView *eventMaterials;
 @property (weak, nonatomic) IBOutlet UITableView *eventContacts;

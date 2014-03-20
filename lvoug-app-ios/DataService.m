@@ -62,21 +62,30 @@ static DataService *_dataService = nil;
 }
 
 - (void)forceSyncData:(NSDate *)lastUpdateDate {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-        
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    DataService *service = self;
+    
+    dispatch_queue_t myQueue = dispatch_queue_create("API Sync Queue",NULL);
+    dispatch_async(myQueue, ^{
+        NSLog(@"In queue");
         Boolean articlesUpdated = FALSE;
         Boolean eventsUpdated = FALSE;
         
+        NSString *alertTitle;
+        NSString *alertText;
+        
         @try {
-            articlesUpdated = [self reloadArticles:lastUpdateDate];
-            eventsUpdated = [self reloadEvents:lastUpdateDate];
-            [self storeLastUpdateDate:[NSDate date]];
+            NSLog(@"Updating articles");
+            articlesUpdated = [service reloadArticles:lastUpdateDate];
+            NSLog(@"Updating events");
+            eventsUpdated = [service reloadEvents:lastUpdateDate];
+            NSLog(@"Updating upadte date");
+            [service storeLastUpdateDate:[NSDate date]];
+            NSLog(@"finish");
         }
         @catch (NSException *exception) {
-            NSString *alertTitle;
-            NSString *alertText;
-            
+            NSLog(@"Exception on sync");
             if (lastUpdateDate == nil) {
                 alertTitle = @"No network connection";
                 alertText = @"You must be connected to the internet to use this app.";
@@ -84,36 +93,44 @@ static DataService *_dataService = nil;
                 alertTitle = @"No network connection";
                 alertText = @"Internet connection needed to load new data.";
             }
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
-                                                            message:alertText
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
         }
-        @finally {
+        NSLog(@"Before ui change");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"Sync finish, updating ui");
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        }
-
-             
-        if (eventsUpdated) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"eventsUpdated" object:nil];
-        }
-        
-        if (articlesUpdated) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"articlesUpdated" object:nil];
-        }
-        
+            
+            if (alertTitle != nil && alertText != nil) {
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                                message:alertText
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                
+            } else {
+                
+                if (eventsUpdated) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"eventsUpdated" object:nil];
+                }
+                
+                if (articlesUpdated) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"articlesUpdated" object:nil];
+                }
+                
+            }
+            NSLog(@"UI update end");
+        });
     });
 }
 
 - (Boolean)reloadArticles:(NSDate *)lastUpdateDate
 {
+    NSLog(@"Calling api articles");
     NSArray *articles = [self.apiClient getArticles:lastUpdateDate];
-
+    NSLog(@"Syncing articles with db");
     [self.articleRepository updateAll:articles];
-    
+    NSLog(@"D articles B sync finish");
     if (articles.count == 0)
         return FALSE;
     else
@@ -122,10 +139,11 @@ static DataService *_dataService = nil;
 
 - (Boolean)reloadEvents:(NSDate *)lastUpdateDate
 {
+    NSLog(@"Calling api events");
     NSArray *events = [self.apiClient getEvents:lastUpdateDate];
-    
+    NSLog(@"Syncing events with db");
     [self.eventRepository updateAll:events];
-
+    NSLog(@"events DB sync finish");
     if (events.count == 0)
         return FALSE;
     else

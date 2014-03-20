@@ -175,12 +175,12 @@
 - (NSArray *)generateCoordinates
 {
     NSMutableArray *coords = [[NSMutableArray alloc] init];
-    NSNumber *coord1 = [[NSNumber alloc] initWithDouble:100.00];
-    NSNumber *coord2 = [[NSNumber alloc] initWithDouble:150.00];
+    NSNumber *coord1 = [[NSNumber alloc] initWithDouble:56.976761];
+    NSNumber *coord2 = [[NSNumber alloc] initWithDouble:24.193745];
     
     [coords addObject:[[NSArray alloc] initWithObjects:coord1, coord2, nil]];
-    [coords addObject:[[NSArray alloc] initWithObjects:coord2, coord1, nil]];
-    [coords addObject:[[NSArray alloc] initWithObjects:@"null", @"null", nil]];
+    //[coords addObject:[[NSArray alloc] initWithObjects:coord2, coord1, nil]];
+    //[coords addObject:[[NSArray alloc] initWithObjects:@"null", @"null", nil]];
     
     return [coords objectAtIndex:arc4random() % [coords count]];
 }
