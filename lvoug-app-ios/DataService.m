@@ -55,7 +55,7 @@ static DataService *_dataService = nil;
 - (void)syncData {
     NSDate *lastDate = [[DataService instance] getLastUpdateDate];
     NSTimeInterval timeDiff = [[NSDate date] timeIntervalSinceDate:lastDate];
-    if (lastDate == nil || timeDiff > (60 * 60)) {
+    if (lastDate == nil || timeDiff > [[[DataService getConfig] objectForKey:@"apiRefreshTimeoutInSeconds"] integerValue]) {
         [self forceSyncData:lastDate];
     }
 }
@@ -195,10 +195,9 @@ static NSMutableDictionary *configItems;
         [configItems setObject:@"LvougLv" forKey:@"gplus"];
 
         // change before deploy
-        [configItems setObject:@"APIClientMock" forKey:@"apiClient"];
-
+        [configItems setObject:@"APIClientMock" forKey:@"apiClient"]; // set APIClient
+        [configItems setObject:[[NSNumber alloc] initWithInt:1] forKey:@"apiRefreshTimeoutInSeconds"]; // set 3600
     }
-
     
     return configItems;
 }

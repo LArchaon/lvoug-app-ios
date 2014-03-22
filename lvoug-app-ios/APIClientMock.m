@@ -18,6 +18,12 @@
         [articles addObject:[self getArticleMock:[[NSNumber alloc] initWithInt:6]]];
         
         [data setValue:articles forKey:@"articles"];
+    } else if ([stringUrl hasPrefix:@"http://lvoug-webservice.herokuapp.com/api/articles"]) {
+        NSMutableArray *articles = [[NSMutableArray alloc] init];
+        
+        [articles addObject:[self getArticleMock:[[NSNumber alloc] initWithInt:6]]];
+        
+        [data setValue:articles forKey:@"articles"];
     }
     
     if ([stringUrl isEqualToString:@"http://lvoug-webservice.herokuapp.com/api/events"]) {
@@ -28,6 +34,12 @@
         [events addObject:[self getEventMock:[[NSNumber alloc] initWithInt:3]]];
         [events addObject:[self getEventMock:[[NSNumber alloc] initWithInt:4]]];
         [events addObject:[self getEventMock:[[NSNumber alloc] initWithInt:5]]];
+        [events addObject:[self getEventMock:[[NSNumber alloc] initWithInt:6]]];
+        
+        [data setValue:events forKey:@"events"];
+    } else if ([stringUrl hasPrefix:@"http://lvoug-webservice.herokuapp.com/api/events"]) {
+        NSMutableArray *events = [[NSMutableArray alloc] init];
+        
         [events addObject:[self getEventMock:[[NSNumber alloc] initWithInt:6]]];
         
         [data setValue:events forKey:@"events"];

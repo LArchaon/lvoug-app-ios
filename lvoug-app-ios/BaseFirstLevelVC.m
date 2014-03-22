@@ -29,13 +29,7 @@
 
 - (void)refreshView
 {
-    UIViewController *currentVC = self;
-    if (currentVC.isViewLoaded && currentVC.view.window) {
-        UIView *currentview = currentVC.view;
-        UIView *superview = currentview.superview;
-        [currentview removeFromSuperview];
-        [superview addSubview:currentview];
-    }
+    [self viewDidLoad];
 }
 
 @end

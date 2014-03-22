@@ -78,15 +78,30 @@ NSArray * contacts;
     UITableViewCell * cell;
     if (tableView == self.eventMaterials) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"materialCell"];
-        Material *material = [materials objectAtIndex:indexPath.row];
-        cell.textLabel.text = material.title;
+        
+        if (materials.count > indexPath.row) {
+            Material *material = [materials objectAtIndex:indexPath.row];
+            cell.textLabel.text = material.title;
+        } else {
+            cell.textLabel.text = @"No materials provided";
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+            [cell setUserInteractionEnabled:FALSE];
+            [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        }
     }
     
     if (tableView == self.eventSponsors) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"sponsorCell"];
-        Sponsor *sponsor = [sponsors objectAtIndex:indexPath.row];
-        cell.textLabel.text = sponsor.name;
-        [cell.imageView setImageWithURL:[NSURL URLWithString:sponsor.image] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        
+        if (sponsors.count > indexPath.row) {
+            Sponsor *sponsor = [sponsors objectAtIndex:indexPath.row];
+            cell.textLabel.text = sponsor.name;
+            [cell.imageView setImageWithURL:[NSURL URLWithString:sponsor.image] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        } else {
+            cell.textLabel.text = @"no sponsors for event";
+            cell.imageView.image = nil;
+            [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        }
     }
     
     return cell;
@@ -95,23 +110,28 @@ NSArray * contacts;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    
     if (collectionView == self.eventContacts) {
         ContactCollectionCell *cell = (ContactCollectionCell *) [collectionView dequeueReusableCellWithReuseIdentifier:@"contactCell" forIndexPath:indexPath];
         
-        Contact *contact = [contacts objectAtIndex:indexPath.row];
-        NSMutableString * nameSurname = [[NSMutableString alloc] init];
-        [nameSurname appendString:contact.name];
-        [nameSurname appendString:@" "];
-        [nameSurname appendString:contact.surname];
-        
-        cell.contactEmail.text = contact.email;
-        cell.contactNameSurname.text = nameSurname;
-        cell.contactPhone.text = contact.telephone;
-        
-        [cell.contactEmail addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:cell action:@selector(openMail:)]];
-        [cell.contactPhone addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:cell action:@selector(callPhone:)]];
-        
+        if (contacts.count > indexPath.row) {
+            Contact *contact = [contacts objectAtIndex:indexPath.row];
+            NSMutableString * nameSurname = [[NSMutableString alloc] init];
+            [nameSurname appendString:contact.name];
+            [nameSurname appendString:@" "];
+            [nameSurname appendString:contact.surname];
+            
+            cell.contactEmail.text = contact.email;
+            cell.contactNameSurname.text = nameSurname;
+            cell.contactPhone.text = contact.telephone;
+            
+            [cell.contactEmail addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMail:)]];
+            [cell.contactPhone addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(callPhone:)]];
+        } else {
+            cell.contactNameSurname.text = @"No contacts";
+            cell.contactPhone.text = nil;
+            cell.contactEmail.text = nil;
+        }
+
         return cell;
     } else {
         UICollectionViewCell * cell;
@@ -119,19 +139,18 @@ NSArray * contacts;
         return cell;
     }
     
-    
 }
 
 - (void)openMail:(UITapGestureRecognizer *)recognizer
 {
-    ContactCollectionCell *cell = (ContactCollectionCell *)recognizer.view;
-    [NavigationHelper openMail:cell.contactEmail.text];
+    UITextView *contactEmail = (UITextView *)recognizer.view;
+    [NavigationHelper openMail:contactEmail.text];
 }
 
 - (void)callPhone:(UITapGestureRecognizer *)recognizer
 {
-    ContactCollectionCell *cell = (ContactCollectionCell *)recognizer.view;
-    [NavigationHelper call:cell.contactPhone.text];
+    UITextView *contactPhone = (UITextView *)recognizer.view;
+    [NavigationHelper call:contactPhone.text];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -161,6 +180,9 @@ NSArray * contacts;
     if (tableView == self.eventSponsors)
         rowCount = sponsors.count;
     
+    if (rowCount == 0)
+        rowCount = 1;
+    
     return rowCount;
 }
 
@@ -170,6 +192,9 @@ NSArray * contacts;
     
     if (collectionView == self.eventContacts)
         rowCount = contacts.count;
+    
+    if (rowCount == 0)
+        rowCount = 1;
     
     return rowCount;
 }
