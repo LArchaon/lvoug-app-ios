@@ -28,7 +28,6 @@
     return [dateFormat stringFromDate:date];
 }
 
-
 + (NSString *)getStringDateTimeFromUnixtime:(NSString *)sDate
 {
     return [self getFormat:@"dd.MM.yyyy HH:mm" fromUnixtime:sDate];

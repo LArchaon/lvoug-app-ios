@@ -16,8 +16,7 @@ static DataService *_dataService = nil;
         DBClient * dbClient = [[DBClient alloc] initWithContext:appDelegate.managedObjectContext];
         _dataService.articleRepository = [[ArticleRepository alloc] initWithDbClient:dbClient];
         _dataService.eventRepository = [[EventRepository alloc] initWithDbClient:dbClient];
-        //_dataService.apiClient = [[APIClient alloc] init];
-        _dataService.apiClient = [[APIClientMock alloc] init];
+        _dataService.apiClient = [[NSClassFromString([[self getConfig] objectForKey:@"apiClient"]) alloc] init];
     }
     
     return _dataService;
@@ -150,20 +149,58 @@ static DataService *_dataService = nil;
         return TRUE;
 }
 
-- (void)storeLastLogoutDate:(NSDate *)date {
+- (void)storeLastLogoutDate:(NSDate *)date
+{
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"kLastCloseDate"];
 }
 
-- (NSDate *)getLastLogoutDate {
+- (NSDate *)getLastLogoutDate
+{
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"kLastCloseDate"];
 }
 
-- (void)storeLastUpdateDate:(NSDate *)date {
+- (void)storeLastUpdateDate:(NSDate *)date
+{
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"kLastUpdateDate"];
 }
 
-- (NSDate *)getLastUpdateDate {
+- (NSDate *)getLastUpdateDate
+{
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"kLastUpdateDate"];
+}
+
+static NSMutableArray *menuItems;
+static NSMutableDictionary *configItems;
+
++ (NSArray *)getMenuItems
+{
+    if (menuItems == nil) {
+        menuItems = [[NSMutableArray alloc]init];
+        [menuItems addObject:@{@"title":@"Home", @"img":@"ico_home.png", @"controllerId": @"homeVC"}];
+        [menuItems addObject:@{@"title":@"News", @"img":@"ico_news.png", @"controllerId": @"articlesVC"}];
+        [menuItems addObject:@{@"title":@"Events", @"img":@"ico_events.png", @"controllerId": @"eventsVC"}];
+        [menuItems addObject:@{@"title":@"About", @"img":@"ico_about.png", @"controllerId": @"aboutVC"}];
+    }
+    
+    return menuItems;
+}
+
++ (NSDictionary *)getConfig
+{
+    if (configItems == nil) {
+        configItems = [[NSMutableDictionary alloc] init];
+        
+        [configItems setObject:@"lvoug" forKey:@"facebook"];
+        [configItems setObject:@"lvoug" forKey:@"twitter"];
+        [configItems setObject:@"LvougLv" forKey:@"gplus"];
+
+        // change before deploy
+        [configItems setObject:@"APIClientMock" forKey:@"apiClient"];
+
+    }
+
+    
+    return configItems;
 }
 
 @end

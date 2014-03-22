@@ -51,7 +51,7 @@ NSArray * _articles;
         [cell.textLabel setNumberOfLines:1];
     }
     
-    Article *article = _articles [indexPath.row];
+    Article *article = _articles[indexPath.row];
     cell.textLabel.text = article.title;
     cell.detailTextLabel.text = [DateHelper getStringDateFromApiFormat:article.date];
     

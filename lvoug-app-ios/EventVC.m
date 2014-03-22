@@ -2,6 +2,9 @@
 #import "DataService.h"
 #import "DateHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "NavigationHelper.h"
+#import "MapBuilder.h"
+#import "ContactCollectionCell.h"
 
 @implementation EventVC
 
@@ -29,14 +32,12 @@ NSArray * contacts;
     [self.eventImage setImageWithURL:[NSURL URLWithString:event.logo] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     eventPage = event.event_page;
-    self.eventPageButton.backgroundColor = [UIColor colorWithRed:255/255.0f green:129/255.0f blue:127/255.0f alpha:1.0f];
-    [self.eventPageButton addTarget:self action:@selector(openUrlOnButtonPress) forControlEvents:UIControlEventTouchUpInside];
+    [self.eventPageButton addTarget:self action:@selector(openUrlOnEventPageButtonPress) forControlEvents:UIControlEventTouchUpInside];
     
     eventLatitude = event.address_latitude;
     eventLongitude = event.address_longitude;
 
     if (eventLatitude != nil && eventLongitude != nil && [eventLatitude intValue] != 0 && [eventLongitude intValue] != 0) {
-        self.mapIcon.userInteractionEnabled = YES;
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMapOnAddressPress)];
         [self.mapIcon addGestureRecognizer:tapGesture];
     }
@@ -52,29 +53,18 @@ NSArray * contacts;
     self.eventContacts.delegate = self;
 }
 
-- (void)openUrlOnButtonPress
+- (void)openUrlOnEventPageButtonPress
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: eventPage]];
+    [NavigationHelper openUrl:eventPage];
 }
 
 - (void)openMapOnAddressPress
 {
     Class mapItemClass = [MKMapItem class];
-    if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
-    {
-        CLLocationCoordinate2D coordinate =
-            CLLocationCoordinate2DMake([eventLatitude doubleValue], [eventLongitude doubleValue]);
-        
-        MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate
-                                                       addressDictionary:nil];
-        
-        MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-        [mapItem setName:@"Venue"];
-        
-        //NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking};
-        //MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
-        [MKMapItem openMapsWithItems:@[mapItem]
-                       launchOptions:nil];
+    if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)]) {
+        MapBuilder *mapBuilder = [[MapBuilder alloc] init];
+        [mapBuilder setPlacemarkWithLatitude:[eventLatitude doubleValue] andLongitude:[eventLongitude doubleValue] andTitle:@"Venue"];
+        [mapBuilder openInApp];
     }
 }
 
@@ -83,7 +73,8 @@ NSArray * contacts;
     chosenEvent = eventId;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell * cell;
     if (tableView == self.eventMaterials) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"materialCell"];
@@ -98,18 +89,49 @@ NSArray * contacts;
         [cell.imageView setImageWithURL:[NSURL URLWithString:sponsor.image] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     }
     
-    if (tableView == self.eventContacts) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell"];
+    return cell;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    
+    if (collectionView == self.eventContacts) {
+        ContactCollectionCell *cell = (ContactCollectionCell *) [collectionView dequeueReusableCellWithReuseIdentifier:@"contactCell" forIndexPath:indexPath];
+        
         Contact *contact = [contacts objectAtIndex:indexPath.row];
         NSMutableString * nameSurname = [[NSMutableString alloc] init];
         [nameSurname appendString:contact.name];
         [nameSurname appendString:@" "];
         [nameSurname appendString:contact.surname];
-        cell.textLabel.text = nameSurname;
-        cell.detailTextLabel.text = contact.email;
+        
+        cell.contactEmail.text = contact.email;
+        cell.contactNameSurname.text = nameSurname;
+        cell.contactPhone.text = contact.telephone;
+        
+        [cell.contactEmail addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:cell action:@selector(openMail:)]];
+        [cell.contactPhone addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:cell action:@selector(callPhone:)]];
+        
+        return cell;
+    } else {
+        UICollectionViewCell * cell;
+        NSLog(@"empty cell");
+        return cell;
     }
     
-    return cell;
+    
+}
+
+- (void)openMail:(UITapGestureRecognizer *)recognizer
+{
+    ContactCollectionCell *cell = (ContactCollectionCell *)recognizer.view;
+    [NavigationHelper openMail:cell.contactEmail.text];
+}
+
+- (void)callPhone:(UITapGestureRecognizer *)recognizer
+{
+    ContactCollectionCell *cell = (ContactCollectionCell *)recognizer.view;
+    [NavigationHelper call:cell.contactPhone.text];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -125,6 +147,11 @@ NSArray * contacts;
     return 1;
 }
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger rowCount = 0;
@@ -134,30 +161,33 @@ NSArray * contacts;
     if (tableView == self.eventSponsors)
         rowCount = sponsors.count;
     
-    if (tableView == self.eventContacts)
-        rowCount = contacts.count;
+    return rowCount;
+}
 
+- (NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    NSInteger rowCount = 0;
+    
+    if (collectionView == self.eventContacts)
+        rowCount = contacts.count;
     
     return rowCount;
 }
 
-/* three shitcode methods because i don't 
- * know how to make UIScrollView and three 
- * UITableViews friends using autolayout.
+/* these shitcode methods exist because i don't
+ * know how to make parent UIScrollView and three
+ * child UIScrollViews friends using autolayout.
  * todo refactor */
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self adjustHeightOfTableview];
+    [self adjustHeightOfScrollView:self.eventMaterials withHeight:self.eventMaterialsConstraint];
+    [self adjustHeightOfScrollView:self.eventSponsors withHeight:self.eventSponsorsConstraint];
+    [self adjustHeightOfScrollView:self.eventContacts withHeight:self.eventContactsConstraint];
+
 }
 
-- (void)adjustHeightOfTableview {
-    [self adjustHeightOfTableview:self.eventMaterials withHeight:self.eventMaterialsConstraint];
-    [self adjustHeightOfTableview:self.eventContacts withHeight:self.eventContactsConstraint];
-    [self adjustHeightOfTableview:self.eventSponsors withHeight:self.eventSponsorsConstraint];
-}
-
-- (void)adjustHeightOfTableview:(UITableView *)current withHeight:(NSLayoutConstraint *)constraint
+- (void)adjustHeightOfScrollView:(UIScrollView *)current withHeight:(NSLayoutConstraint *)constraint
 {
     CGFloat height = current.contentSize.height;
     [UIView animateWithDuration:0.25 animations:^{

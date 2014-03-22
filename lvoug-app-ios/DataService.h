@@ -33,5 +33,6 @@
 - (Article *)newestArticle;
 - (Event *)upcomingEvent;
 
-
++ (NSArray *)getMenuItems;
++ (NSDictionary *)getConfig;
 @end

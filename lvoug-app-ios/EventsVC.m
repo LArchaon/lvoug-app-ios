@@ -42,9 +42,9 @@ NSArray * _events;
 - (UITableViewCell *) tableView:(UITableView *)tableView
           cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EventListCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"eventsCell"];
+    EventListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventsCell"];
     
-    Event *event = _events [indexPath.row];
+    Event *event = _events[indexPath.row];
     
     cell.eventTitle.text = event.title;
     cell.eventDate.text = [DateHelper getStringDateFromApiFormat:event.date];

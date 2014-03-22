@@ -1,14 +1,12 @@
 #import "AboutVC.h"
+#import "NavigationHelper.h"
+#import "DataService.h"
 
 @implementation AboutVC
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.aboutFacebook setUserInteractionEnabled:YES];
-    [self.aboutTwitter setUserInteractionEnabled:YES];
-    [self.aboutGoogle setUserInteractionEnabled:YES];
     
     [self.aboutFacebook addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openFacebook)]];
     [self.aboutTwitter addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openTwitter)]];
@@ -17,17 +15,17 @@
 
 - (void)openFacebook
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://facebook.com/lvoug"]];
+    [NavigationHelper openFacebook:[[DataService getConfig] objectForKey:@"facebook"]];
 }
 
 - (void)openTwitter
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://twitter.com/lvoug"]];
+    [NavigationHelper openFacebook:[[DataService getConfig] objectForKey:@"twitter"]];
 }
 
 - (void)openGooglePlus
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://plus.google.com/+LvougLv/posts"]];
+    [NavigationHelper openFacebook:[[DataService getConfig] objectForKey:@"gplus"]];
 }
 
 @end
