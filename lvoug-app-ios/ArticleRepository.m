@@ -42,6 +42,8 @@
     NSSortDescriptor *sortByIdDesc = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
     [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByIdDesc, nil]];
     
+    [fetchRequest setFetchLimit:10];
+    
     return [self.dbClient getResult:fetchRequest];
 }
 
