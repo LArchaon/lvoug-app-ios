@@ -13,4 +13,7 @@
 - (NSArray *)getResult:(NSFetchRequest *)request;
 - (void)saveAll;
 
+- (void)unlock;
+- (void)lock;
+
 @end

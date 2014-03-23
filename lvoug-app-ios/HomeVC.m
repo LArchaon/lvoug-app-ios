@@ -7,6 +7,9 @@
 
 NSNumber *event;
 NSNumber *article;
+UITapGestureRecognizer *eventOpenRecognizer;
+UITapGestureRecognizer *articleOpenRecognizer;
+
 
 - (void)viewDidLoad
 {
@@ -27,37 +30,54 @@ NSNumber *article;
     Event *upcomingEvent = [[DataService instance] upcomingEvent];
     
     if (newestArticle != nil) {
-        self.latestArticle.textLabel.text = newestArticle.title;
+        self.latestArticleTitle.text = newestArticle.title;
         article = newestArticle.id;
-        [self.latestArticle setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         [self.latestArticle setUserInteractionEnabled:TRUE];
+        if (articleOpenRecognizer != nil) {
+            [self.latestArticle removeGestureRecognizer:articleOpenRecognizer];
+        }
+        articleOpenRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openArticle)];
+        [self.latestArticle addGestureRecognizer:articleOpenRecognizer];
     } else {
-        self.latestArticle.textLabel.text = @"Loading...";
-        [self.latestArticle setAccessoryType:UITableViewCellAccessoryNone];
+        self.latestArticleTitle.text = @"Loading...";
+        article = nil;
         [self.latestArticle setUserInteractionEnabled:FALSE];
     }
     
     if (upcomingEvent != nil) {
-        self.latestEvent.textLabel.text = upcomingEvent.title;
+        self.latestEventTitle.text = upcomingEvent.title;
         event = upcomingEvent.id;
-        [self.latestEvent setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         [self.latestEvent setUserInteractionEnabled:TRUE];
+        if (eventOpenRecognizer != nil) {
+            [self.latestEvent removeGestureRecognizer:eventOpenRecognizer];
+        }
+        eventOpenRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openEvent)];
+        [self.latestEvent addGestureRecognizer:eventOpenRecognizer];
+
     } else {
-        self.latestEvent.textLabel.text = @"No upcoming event.";
-        [self.latestEvent setAccessoryType:UITableViewCellAccessoryNone];
+        self.latestEventTitle.text = @"No upcoming event.";
+        event = nil;
         [self.latestEvent setUserInteractionEnabled:FALSE];
     }
 
+
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)openArticle
 {
-    if ([segue.identifier isEqualToString:@"openEvent"]) {
-        [segue.destinationViewController setEvent: event];
+    if (article != nil) {
+        ArticleVC *viewController = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"articleVC"];
+        [viewController setArticle:article];
+        [self.navigationController pushViewController:viewController animated:YES];
     }
-    
-    if ([segue.identifier isEqualToString:@"openArticle"]) {
-        [segue.destinationViewController setArticle: article];
+}
+
+- (void)openEvent
+{
+    if (event != nil) {
+        EventVC *viewController = [[UIStoryboard storyboardWithName:@"Home" bundle:nil] instantiateViewControllerWithIdentifier:@"eventVC"];
+        [viewController setEvent: event];
+        [self.navigationController pushViewController:viewController animated:YES];
     }
 }
 

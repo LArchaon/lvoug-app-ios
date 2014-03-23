@@ -11,6 +11,8 @@
 - (Boolean)updateAll:(NSArray *)eventsFromApi
 {
     for (id article in eventsFromApi) {
+        [self.dbClient lock];
+        
         NSLog(@"Updating article - removing existing object");
         Article *oldArticle = [self get:[article objectForKey:@"id"]];
         NSLog(@"Existing object:");
@@ -18,10 +20,11 @@
         [self.dbClient removeExistingObject:oldArticle];
         NSLog(@"Updating article - creating new object");
         Article * newArticle = (Article *)[self.dbClient createDbObject:@"Article"];
-        NSLog(@"Updating article - adding fields to new object");
         [JSONConverter constructArticle:newArticle fromJson:article];
         NSLog(@"Updating article - saving");
         [self.dbClient saveAll];
+        
+        [self.dbClient unlock];
     }
     
     NSLog(@"article DB update done");
@@ -36,15 +39,18 @@
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     
-    NSEntityDescription *entity = [self.dbClient getQueryObject:@"Article"];
-    [fetchRequest setEntity:entity];
-    
     NSSortDescriptor *sortByIdDesc = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
     [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByIdDesc, nil]];
     
     [fetchRequest setFetchLimit:10];
     
-    return [self.dbClient getResult:fetchRequest];
+    [self.dbClient lock];
+    NSEntityDescription *entity = [self.dbClient getQueryObject:@"Article"];
+    [fetchRequest setEntity:entity];
+    NSArray *result = [self.dbClient getResult:fetchRequest];
+    [self.dbClient unlock];
+    
+    return result;
 }
 
 - (Article *)get:(NSNumber *)articleId
@@ -54,10 +60,11 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat: @"id == %@", articleId];
     [fetchRequest setPredicate:predicate];
     
+    [self.dbClient lock];
     NSEntityDescription *entity = [self.dbClient getQueryObject:@"Article"];
     [fetchRequest setEntity:entity];
-
     NSArray * result = [self.dbClient getResult:fetchRequest];
+    [self.dbClient unlock];
     
     if (result.count == 0)
         return nil;
@@ -72,10 +79,11 @@
     NSSortDescriptor *sortByIdDesc = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
     [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByIdDesc, nil]];
     
+    [self.dbClient lock];
     NSEntityDescription *entity = [self.dbClient getQueryObject:@"Article"];
     [fetchRequest setEntity:entity];
-    
     NSArray * result = [self.dbClient getResult:fetchRequest];
+    [self.dbClient unlock];
     
     if (result.count == 0)
         return nil;

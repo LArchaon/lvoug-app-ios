@@ -12,8 +12,7 @@
 - (Boolean)updateAll:(NSArray *)eventsFromApi
 {
     for (id event in eventsFromApi) {
-        NSLog(@"got event");
-        // todo check if all associated objects removed when event is deleted.
+        [self.dbClient lock];
         NSLog(@"remove existing event");
         [self.dbClient removeExistingObject:[self get:[event objectForKey:@"id"]]];
         NSLog(@"create new event");
@@ -49,6 +48,8 @@
         newEvent.eventSponsors = [NSSet setWithArray:newSponsors];
         NSLog(@"event save");
         [self.dbClient saveAll];
+        
+        [self.dbClient unlock];
     }
     
     NSLog(@"event DB update done");
@@ -63,15 +64,18 @@
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     
-    NSEntityDescription *entity = [self.dbClient getQueryObject:@"Event"];
-    [fetchRequest setEntity:entity];
-    
     NSSortDescriptor *sortByIdDesc = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
     [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByIdDesc, nil]];
     
     [fetchRequest setFetchLimit:7];
     
-    return [self.dbClient getResult:fetchRequest];
+    [self.dbClient lock];
+    NSEntityDescription *entity = [self.dbClient getQueryObject:@"Event"];
+    [fetchRequest setEntity:entity];
+    NSArray *result = [self.dbClient getResult:fetchRequest];
+    [self.dbClient unlock];
+    
+    return result;
 }
 
 - (Event *)get:(NSNumber *)eventId;
@@ -81,10 +85,11 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat: @"id == %@", eventId];
     [fetchRequest setPredicate:predicate];
     
+    [self.dbClient lock];
     NSEntityDescription *entity = [self.dbClient getQueryObject:@"Event"];
     [fetchRequest setEntity:entity];
-    
     NSArray * result = [self.dbClient getResult:fetchRequest];
+    [self.dbClient unlock];
     
     if (result.count == 0)
         return nil;
@@ -99,10 +104,11 @@
     NSSortDescriptor *sortByDateDesc = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
     [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByDateDesc, nil]];
     
+    [self.dbClient lock];
     NSEntityDescription *entity = [self.dbClient getQueryObject:@"Event"];
     [fetchRequest setEntity:entity];
-    
     NSArray * result = [self.dbClient getResult:fetchRequest];
+    [self.dbClient unlock];
     
     if (result.count == 0)
         return nil;
