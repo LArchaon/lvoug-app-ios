@@ -2,6 +2,7 @@
 #import "DataService.h"
 #import "EventVC.h"
 #import "ArticleVC.h"
+#import "DateHelper.h"
 
 @implementation HomeVC
 
@@ -31,6 +32,8 @@ UITapGestureRecognizer *articleOpenRecognizer;
     
     if (newestArticle != nil) {
         self.latestArticleTitle.text = newestArticle.title;
+        self.latestArticleDate.text = [DateHelper getStringDateFromApiFormat:newestArticle.date];
+        
         article = newestArticle.id;
         [self.latestArticle setUserInteractionEnabled:TRUE];
         if (articleOpenRecognizer != nil) {
@@ -40,12 +43,14 @@ UITapGestureRecognizer *articleOpenRecognizer;
         [self.latestArticle addGestureRecognizer:articleOpenRecognizer];
     } else {
         self.latestArticleTitle.text = @"Loading...";
+        self.latestArticleDate.text = nil;
         article = nil;
         [self.latestArticle setUserInteractionEnabled:FALSE];
     }
     
     if (upcomingEvent != nil) {
         self.latestEventTitle.text = upcomingEvent.title;
+        self.latestEventDate.text = [DateHelper getStringDateTimeFromApiFormat:upcomingEvent.date];
         event = upcomingEvent.id;
         [self.latestEvent setUserInteractionEnabled:TRUE];
         if (eventOpenRecognizer != nil) {
@@ -56,11 +61,10 @@ UITapGestureRecognizer *articleOpenRecognizer;
 
     } else {
         self.latestEventTitle.text = @"No upcoming event.";
+        self.latestEventDate.text = nil;
         event = nil;
         [self.latestEvent setUserInteractionEnabled:FALSE];
     }
-
-
 }
 
 - (void)openArticle

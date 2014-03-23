@@ -160,8 +160,8 @@
 - (NSString *)generateDate
 {
     NSMutableArray *dates = [[NSMutableArray alloc] init];
-    [dates addObject:[DateHelper getStringApiFormatFromDate:[NSDate date]]];
-    [dates addObject:[DateHelper getStringApiFormatFromDate:[NSDate date]]];
+    [dates addObject:[DateHelper getStringApiFormatFromDate:[[NSDate date] dateByAddingTimeInterval:60*60*24*5]]];
+    [dates addObject:[DateHelper getStringApiFormatFromDate:[[NSDate date] dateByAddingTimeInterval:60*60*24*3]]];
     [dates addObject:[DateHelper getStringApiFormatFromDate:[NSDate date]]];
     return [dates objectAtIndex:arc4random() % [dates count]];
 }
