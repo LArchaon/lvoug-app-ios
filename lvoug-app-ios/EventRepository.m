@@ -114,7 +114,9 @@
     if (result.count == 0)
         return nil;
 
-    NSDate *now = [NSDate date];
+    NSTimeInterval timeInterval = [NSDate timeIntervalSinceReferenceDate] - (60*60*24);
+    NSDate *now= [NSDate dateWithTimeIntervalSinceReferenceDate:timeInterval];
+    
     Event *latestEvent = [result objectAtIndex:0];
     NSTimeInterval interval = [now timeIntervalSinceDate: [DateHelper getDateFromApiFormat:latestEvent.date]];
     
