@@ -10,7 +10,7 @@
 - (EventRepository *)initWithDbClient:(DBClient *)db;
 - (Boolean)updateAll:(NSArray *)eventsFromApi;
 - (Event *)get:(NSNumber *)eventId;
-- (NSArray *)getAll;
+- (NSArray *)getAllWithOffset:(NSUInteger)offset andLimit:(NSUInteger)limit;
 - (Event *)getUpcoming;
 
 @end

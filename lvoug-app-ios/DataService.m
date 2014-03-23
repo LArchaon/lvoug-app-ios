@@ -24,12 +24,14 @@ static DataService *_dataService = nil;
 
 - (NSArray *)articles
 {
-    return [self.articleRepository getAll];
+    NSUInteger limit = (NSUInteger)[[[DataService getConfig] objectForKey:@"articleListItemCount"] integerValue];
+    return [self.articleRepository getAllWithOffset:0 andLimit:limit];
 }
 
 - (NSArray *)events
 {
-    return [self.eventRepository getAll];
+    NSUInteger limit = (NSUInteger)[[[DataService getConfig] objectForKey:@"eventListItemCount"] integerValue];
+    return [self.eventRepository getAllWithOffset:0 andLimit:limit];
 }
 
 - (Article *)article:(NSNumber *)articleId
@@ -193,7 +195,9 @@ static NSMutableDictionary *configItems;
         [configItems setObject:@"lvoug" forKey:@"facebook"];
         [configItems setObject:@"lvoug" forKey:@"twitter"];
         [configItems setObject:@"LvougLv" forKey:@"gplus"];
-
+        [configItems setObject:[[NSNumber alloc] initWithUnsignedInt:7] forKey:@"eventListItemCount"];
+        [configItems setObject:[[NSNumber alloc] initWithUnsignedInt:10] forKey:@"articleListItemCount"];
+        
         // change before deploy
         [configItems setObject:@"APIClientMock" forKey:@"apiClient"]; // set APIClient
         [configItems setObject:[[NSNumber alloc] initWithInt:1] forKey:@"apiRefreshTimeoutInSeconds"]; // set 3600

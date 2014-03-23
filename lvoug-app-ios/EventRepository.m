@@ -60,14 +60,15 @@
         return TRUE;
 }
 
-- (NSArray *)getAll
+- (NSArray *)getAllWithOffset:(NSUInteger)offset andLimit:(NSUInteger)limit
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     
     NSSortDescriptor *sortByIdDesc = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:NO];
     [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sortByIdDesc, nil]];
     
-    [fetchRequest setFetchLimit:7];
+    [fetchRequest setFetchLimit:limit];
+    [fetchRequest setFetchOffset:offset];
     
     [self.dbClient lock];
     NSEntityDescription *entity = [self.dbClient getQueryObject:@"Event"];

@@ -10,7 +10,7 @@
 - (ArticleRepository *)initWithDbClient:(DBClient *)db;
 - (Boolean)updateAll:(NSArray *)articlesFromApi;
 - (Article *)get:(NSNumber *)articleId;
-- (NSArray *)getAll;
+- (NSArray *)getAllWithOffset:(NSUInteger)offset andLimit:(NSUInteger)limit;
 - (Article *)getNewest;
 
 @end
