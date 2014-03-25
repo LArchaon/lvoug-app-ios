@@ -115,10 +115,10 @@
         return nil;
 
     NSTimeInterval timeInterval = [NSDate timeIntervalSinceReferenceDate] - (60*60*24);
-    NSDate *now= [NSDate dateWithTimeIntervalSinceReferenceDate:timeInterval];
+    NSDate *yesterday = [NSDate dateWithTimeIntervalSinceReferenceDate:timeInterval];
     
     Event *latestEvent = [result objectAtIndex:0];
-    NSTimeInterval interval = [now timeIntervalSinceDate: [DateHelper getDateFromApiFormat:latestEvent.date]];
+    NSTimeInterval interval = [yesterday timeIntervalSinceDate: [DateHelper getDateFromApiFormat:latestEvent.date]];
     
     if (interval < 0) {
         return latestEvent;

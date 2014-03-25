@@ -40,6 +40,8 @@ NSArray * contacts;
     if (eventLatitude != nil && eventLongitude != nil && [eventLatitude intValue] != 0 && [eventLongitude intValue] != 0) {
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMapOnAddressPress)];
         [self.mapIcon addGestureRecognizer:tapGesture];
+    } else {
+        self.mapIcon.image = nil;
     }
     
     contacts = [NSArray arrayWithArray:[event.eventContacts allObjects]];
@@ -81,7 +83,7 @@ NSArray * contacts;
         
         if (materials.count > indexPath.row) {
             Material *material = [materials objectAtIndex:indexPath.row];
-            cell.textLabel.text = material.title;
+            cell.textLabel.text = material.title;            
         } else {
             cell.textLabel.text = @"No materials provided";
             [cell setAccessoryType:UITableViewCellAccessoryNone];
