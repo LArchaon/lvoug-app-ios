@@ -199,7 +199,7 @@ static NSMutableDictionary *configItems;
         [configItems setObject:[[NSNumber alloc] initWithUnsignedInt:10] forKey:@"articleListItemCount"];
         
         // change before deploy
-        [configItems setObject:@"APIClientMock" forKey:@"apiClient"]; // set APIClient
+        [configItems setObject:@"APIClient" forKey:@"apiClient"]; // set APIClient
         [configItems setObject:[[NSNumber alloc] initWithInt:1] forKey:@"apiRefreshTimeoutInSeconds"]; // set 3600
     }
     

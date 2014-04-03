@@ -62,6 +62,7 @@ UITapGestureRecognizer *articleOpenRecognizer;
     } else {
         self.latestEventTitle.text = @"No upcoming event.";
         self.latestEventDate.text = nil;
+        self.latestEventArrow.image = nil;
         event = nil;
         [self.latestEvent setUserInteractionEnabled:FALSE];
     }

@@ -37,6 +37,9 @@
 		88BB95D318C34B2A007CF95C /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BB95D218C34B2A007CF95C /* Article.m */; };
 		88BC1FC518D0E2DC002A249C /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BC1FC418D0E2DC002A249C /* SDWebImage.framework */; };
 		88BC1FC718D0E36D002A249C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BC1FC618D0E36D002A249C /* ImageIO.framework */; };
+		88C19D1D18EDC9A300BC6B02 /* SponsorCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19D1C18EDC9A300BC6B02 /* SponsorCollectionCell.m */; };
+		88C19D2118EDD03100BC6B02 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19D2018EDD03100BC6B02 /* TTTAttributedLabel.m */; };
+		88C19D2318EDD75800BC6B02 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C19D2218EDD75800BC6B02 /* CoreText.framework */; };
 		88C85BFE18D7A3EB008B49D3 /* AboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C85BFD18D7A3EB008B49D3 /* AboutVC.m */; };
 		88C9286F18A7EE9E0089D375 /* ArticlesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9286C18A7EE9E0089D375 /* ArticlesVC.m */; };
 		88C9287018A7EE9E0089D375 /* SideMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C9286E18A7EE9E0089D375 /* SideMenuVC.m */; };
@@ -125,6 +128,11 @@
 		88BB95D218C34B2A007CF95C /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		88BC1FC418D0E2DC002A249C /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		88BC1FC618D0E36D002A249C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		88C19D1B18EDC9A300BC6B02 /* SponsorCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorCollectionCell.h; sourceTree = "<group>"; };
+		88C19D1C18EDC9A300BC6B02 /* SponsorCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorCollectionCell.m; sourceTree = "<group>"; };
+		88C19D1F18EDD03100BC6B02 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		88C19D2018EDD03100BC6B02 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		88C19D2218EDD75800BC6B02 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		88C85BFC18D7A3EB008B49D3 /* AboutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutVC.h; sourceTree = "<group>"; };
 		88C85BFD18D7A3EB008B49D3 /* AboutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutVC.m; sourceTree = "<group>"; };
 		88C9286B18A7EE9E0089D375 /* ArticlesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticlesVC.h; sourceTree = "<group>"; };
@@ -159,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C19D2318EDD75800BC6B02 /* CoreText.framework in Frameworks */,
 				88BC1FC718D0E36D002A249C /* ImageIO.framework in Frameworks */,
 				8843813918B7FA900034309D /* CoreData.framework in Frameworks */,
 				886B7BB418B139FA00A407EE /* MapKit.framework in Frameworks */,
@@ -217,6 +226,8 @@
 				8841FA2B18D0F9410003F24A /* EventListCell.m */,
 				889ADB1F18DDDC2200BF0E8D /* ContactCollectionCell.h */,
 				889ADB2018DDDC2200BF0E8D /* ContactCollectionCell.m */,
+				88C19D1B18EDC9A300BC6B02 /* SponsorCollectionCell.h */,
+				88C19D1C18EDC9A300BC6B02 /* SponsorCollectionCell.m */,
 			);
 			name = Elements;
 			sourceTree = "<group>";
@@ -295,6 +306,15 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		88C19D1E18EDD03100BC6B02 /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				88C19D1F18EDD03100BC6B02 /* TTTAttributedLabel.h */,
+				88C19D2018EDD03100BC6B02 /* TTTAttributedLabel.m */,
+			);
+			path = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
 		B517B8FD1881F5A2000A53BD = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +337,7 @@
 		B517B9081881F5A2000A53BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88C19D2218EDD75800BC6B02 /* CoreText.framework */,
 				882A7D2818D3B53800C978CB /* QuartzCore.framework */,
 				88BC1FC618D0E36D002A249C /* ImageIO.framework */,
 				88BC1FC418D0E2DC002A249C /* SDWebImage.framework */,
@@ -335,6 +356,7 @@
 			children = (
 				B517B91B1881F5A2000A53BD /* Images.xcassets */,
 				8862449B18BD372C00C5C13F /* MFSideMenu */,
+				88C19D1E18EDD03100BC6B02 /* TTTAttributedLabel */,
 				B517B9101881F5A2000A53BD /* Supporting Files */,
 				88088FB718CF98DE0050E3A9 /* Helpers */,
 				884F196318B93420001A1396 /* Domain Entities */,
@@ -495,7 +517,9 @@
 				884F195C18B9333F001A1396 /* JSONConverter.m in Sources */,
 				88D570D718C214AB00D5C535 /* DateHelper.m in Sources */,
 				884F197518B95261001A1396 /* Contact.m in Sources */,
+				88C19D1D18EDC9A300BC6B02 /* SponsorCollectionCell.m in Sources */,
 				886B7BAD18B0F4FB00A407EE /* HomeVC.m in Sources */,
+				88C19D2118EDD03100BC6B02 /* TTTAttributedLabel.m in Sources */,
 				88C9286F18A7EE9E0089D375 /* ArticlesVC.m in Sources */,
 				884F195F18B933DC001A1396 /* DataService.m in Sources */,
 				88A2452718B3F19200AC4FF6 /* ArticleVC.m in Sources */,

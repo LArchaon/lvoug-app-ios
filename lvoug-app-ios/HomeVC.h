@@ -7,5 +7,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *latestArticleTitle;
 @property (weak, nonatomic) IBOutlet UILabel *latestArticleDate;
 @property (weak, nonatomic) IBOutlet UILabel *latestEventDate;
+@property (weak, nonatomic) IBOutlet UIImageView *latestEventArrow;
 
 @end
